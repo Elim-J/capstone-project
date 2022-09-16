@@ -1,6 +1,6 @@
 import React from 'react';
-//create a Form.css
-//Could import a cool img for form
+import '../css/Form.css';
+import image from '../testimg.jpg';
 
 export default function Form(props){
     
@@ -32,12 +32,20 @@ export default function Form(props){
     }
 
     return (
-        <div className={props.darkMode ? 'dark' : ''}>
-            <div className='form--container'>
+        <div className={props.darkMode ? 'dark form-img-container' : 'form-img-container'}>
+            <img src={image} alt="People driving at night" />
                 <form onSubmit={handleSubmit}>
+                    <div className='text-container'>
+                        <p>This is not a real online service!</p>
+                        <p>However, if you still want to pay us, that's cool with us. Sign up!</p>
+                        <p>You <em>know</em> you want to.</p>
+                        <h2>Let's do this!</h2>
+                    </div>
+
+
                     <div className='first--last'>
                         <input
-                            className='input--firstName'
+                            className='firstName'
                             type='text'
                             placeholder='First Name'
                             name="firstName"
@@ -45,7 +53,7 @@ export default function Form(props){
                             value={formData.firstName}    
                         />
                         <input 
-                            className='input--lastName'
+                            className='lastName'
                             type='text'
                             placeholder='Last Name'
                             name='lastName'
@@ -54,8 +62,9 @@ export default function Form(props){
                         />
                     </div>
 
-                    <div className="email--username--pass">
+                    <div className="email--username">
                         <input 
+                            className='email'
                             type='email'
                             placeholder='Email'
                             name='email'
@@ -65,6 +74,7 @@ export default function Form(props){
                         />
 
                         <input 
+                            className='userName'
                             type='text'
                             placeholder='*Username'
                             name='userName'
@@ -72,21 +82,31 @@ export default function Form(props){
                             value={formData.userName}
                             required
                         />
+                    </div>
 
+                    <div className='label--pass'>
+                        <label htmlFor="password">Password Requirements: 
+                            <ul>
+                                <li>Minimum length is 8 characters</li>
+                                <li>At least one uppercase letter</li>
+                                <li>At least one number</li>
+                                <li>At least one special character</li>
+                            </ul>
+                        </label>
                         <input 
                             type='text'
                             placeholder='*Password'
                             name='password'
+                            id='password'
                             onChange={updateForm}
+                            oninput="this.setCustomValidity('test')"
                             value={formData.password}
-                            //pattern="#"
+                            pattern='^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$'
                             required
                         />
-                    </div>
-
+                    </div>    
                     <button>Submit</button>
                 </form>
-            </div>
         </div>
     )
 }
