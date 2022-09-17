@@ -23,17 +23,19 @@ const SortWrapper = () => {
 
     function handleStepForward() {
         if(currentFrame < vid.length - 1){
+            handlePause();
             setCurrentFrame(currentFrame => currentFrame + 1);
         }
     }
 
     function handleStepBackward() {
         if(currentFrame > 0){
+            handlePause();
             setCurrentFrame(currentFrame => currentFrame - 1);
         }
     }
 
-    function handleSkipToBeginning() {
+    function handleReset() {
         setCurrentFrame(0);
     }
 
@@ -110,8 +112,8 @@ const SortWrapper = () => {
             <button onClick={handleStepForward}>
                 Step Forward
             </button>
-            <button onClick={handleSkipToBeginning}>
-                Skip to beginning
+            <button onClick={handleReset}>
+                Reset
             </button>
             <button onClick={handleSkipToEnd}>
                 Skip to End
