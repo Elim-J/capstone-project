@@ -41,10 +41,11 @@ function bfs(grid) {
       }
       path.reverse();
       //console.log(path);
-      console.log('Finished after searching ' + numberOfNodes);
+      console.log("Finished after searching " + numberOfNodes);
       return vid;
     } else {
-      if ( //Search Up
+      if (
+        //Search Up
         searchNode.row - 1 >= 0 &&
         !grid[searchNode.row - 1][searchNode.column].isBlocked &&
         !grid[searchNode.row - 1][searchNode.column].isExplored
@@ -56,7 +57,8 @@ function bfs(grid) {
           prevNode: searchNode,
         });
       }
-      if ( //Search Down
+      if (
+        //Search Down
         searchNode.row + 1 < rows &&
         !grid[searchNode.row + 1][searchNode.column].isBlocked &&
         !grid[searchNode.row + 1][searchNode.column].isExplored
@@ -68,7 +70,8 @@ function bfs(grid) {
           prevNode: searchNode,
         });
       }
-      if ( //Search Left
+      if (
+        //Search Left
         searchNode.column - 1 >= 0 &&
         !grid[searchNode.row][searchNode.column - 1].isBlocked &&
         !grid[searchNode.row][searchNode.column - 1].isExplored
@@ -80,7 +83,8 @@ function bfs(grid) {
           prevNode: searchNode,
         });
       }
-      if ( //Search Right
+      if (
+        //Search Right
         searchNode.column + 1 < cols &&
         !grid[searchNode.row][searchNode.column + 1].isBlocked &&
         !grid[searchNode.row][searchNode.column + 1].isExplored
@@ -95,7 +99,7 @@ function bfs(grid) {
     }
     vid.push(generateFrame(grid, rows, cols));
   }
-  console.log('Finished after searching ' + numberOfNodes);
+  console.log("Finished after searching " + numberOfNodes);
   return vid;
 }
 function generateFrame(grid, rows, cols) {
@@ -184,19 +188,26 @@ function generateRandomGrid(rows, cols, numberOfBlocks) {
   return rndGrid;
 }
 
-for (let i = 0; i < 1000; i++){
-    console.log('i: ' + i);
-    let blocks;
-    let rows = Math.floor(Math.random()*50) + 3;
-    let cols = Math.floor(Math.random()*50) + 3;
-    
-    do {
-        blocks = Math.floor(Math.random()*50);
-    } while (blocks > (rows * cols - 2))
-    
-    let grid = generateRandomGrid(rows, cols, blocks);
-    console.log('Rows: ' + rows + ', cols:' + cols + ' \nTotal nodes in grid: \n' + rows*cols);
-    let vid = bfs(grid);
+for (let i = 0; i < 1000; i++) {
+  console.log("i: " + i);
+  let blocks;
+  let rows = Math.floor(Math.random() * 50) + 3;
+  let cols = Math.floor(Math.random() * 50) + 3;
+
+  do {
+    blocks = Math.floor(Math.random() * 50);
+  } while (blocks > rows * cols - 2);
+
+  let grid = generateRandomGrid(rows, cols, blocks);
+  console.log(
+    "Rows: " +
+      rows +
+      ", cols:" +
+      cols +
+      " \nTotal nodes in grid: \n" +
+      rows * cols
+  );
+  let vid = bfs(grid);
 }
 
 //for (let i = 0; i < 10000; i++){
