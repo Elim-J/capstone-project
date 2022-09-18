@@ -116,4 +116,4 @@ let testGridBlockedFully = [[{isStart: true, isEnd: false, isBlocked: false, isE
 [{isStart: false, isEnd: false, isBlocked: false, isExplored: false},{isStart: false, isEnd: false, isBlocked: false, isExplored: false},{isStart: false, isEnd: false, isBlocked: false, isExplored: false},{isStart: false, isEnd: false, isBlocked: false, isExplored: false}],
 [{isStart: false, isEnd: false, isBlocked: false, isExplored: false},{isStart: false, isEnd: false, isBlocked: false, isExplored: false},{isStart: false, isEnd: false, isBlocked: false, isExplored: false},{isStart: false, isEnd: true, isBlocked: false, isExplored: false}]];
 
-printVid(bfs(testGridBlocked, 4, 4));
+printVid(bfs(testGridBlocked));
