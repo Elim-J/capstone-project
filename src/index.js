@@ -7,4 +7,8 @@ ReactDOM.render(
     <App />
   </React.StrictMode>,
   document.getElementById('root')
+<<<<<<< Updated upstream
 );
+=======
+);
+>>>>>>> Stashed changes
