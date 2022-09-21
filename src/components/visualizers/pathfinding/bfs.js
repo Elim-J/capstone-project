@@ -5,7 +5,9 @@ function bfs(grid) {
   let foundStartingPos = false;
   let startPos;
   let queue = [];
-  let vid = [generateFrame(grid, rows, cols)];
+  let visitedNodes = [];
+  let blockNodes = [];
+  let endNodes = [];
 
   try {
     for (let i = 0; i < rows; i++) {
@@ -24,6 +26,7 @@ function bfs(grid) {
   } catch (E) {
     return E;
   }
+  let vid = [generateFrame(grid, rows, cols, null, 'Starting bfs algorithm...', [])];
   grid[startPos.row][startPos.column].isExplored = true;
   queue.push(startPos);
   let numberOfNodes = 1;
@@ -34,14 +37,12 @@ function bfs(grid) {
       grid[searchNode.row][searchNode.column].isExplored = true;
       let path = [{ row: searchNode.row, column: searchNode.column }];
       let currentNode = searchNode;
-      vid.push(generateFrame(grid, rows, cols));
       while (currentNode != null) {
         path.push({ row: currentNode.row, column: currentNode.column });
         currentNode = currentNode.prevNode;
       }
       path.reverse();
-      //console.log(path);
-      console.log("Finished after searching " + numberOfNodes);
+      vid.push(generateFrame(grid, rows, cols, path, 'Returning path', []));
       return vid;
     } else {
       if (
@@ -56,19 +57,7 @@ function bfs(grid) {
           column: searchNode.column,
           prevNode: searchNode,
         });
-      }
-      if (
-        //Search Down
-        searchNode.row + 1 < rows &&
-        !grid[searchNode.row + 1][searchNode.column].isBlocked &&
-        !grid[searchNode.row + 1][searchNode.column].isExplored
-      ) {
-        grid[searchNode.row + 1][searchNode.column].isExplored = true;
-        queue.push({
-          row: searchNode.row + 1,
-          column: searchNode.column,
-          prevNode: searchNode,
-        });
+        vid.push(generateFrame(grid, rows, cols, null, 'Visiting node above', []));
       }
       if (
         //Search Left
@@ -82,6 +71,21 @@ function bfs(grid) {
           column: searchNode.column - 1,
           prevNode: searchNode,
         });
+        vid.push(generateFrame(grid, rows, cols, null, 'Visiting node to the left', []));
+      }
+      if (
+        //Search Down
+        searchNode.row + 1 < rows &&
+        !grid[searchNode.row + 1][searchNode.column].isBlocked &&
+        !grid[searchNode.row + 1][searchNode.column].isExplored
+      ) {
+        grid[searchNode.row + 1][searchNode.column].isExplored = true;
+        queue.push({
+          row: searchNode.row + 1,
+          column: searchNode.column,
+          prevNode: searchNode,
+        });
+        vid.push(generateFrame(grid, rows, cols, null, 'Visiting node below', []));
       }
       if (
         //Search Right
@@ -95,15 +99,15 @@ function bfs(grid) {
           column: searchNode.column + 1,
           prevNode: searchNode,
         });
+        vid.push(generateFrame(grid, rows, cols, null, 'Visiting node to the right', []));
       }
     }
-    vid.push(generateFrame(grid, rows, cols));
   }
   console.log("Finished after searching " + numberOfNodes);
   return vid;
 }
-function generateFrame(grid, rows, cols) {
-  let frame = [{}];
+function generateFrame(grid, rows, cols, path, message, highlightCode) {
+  let frame = [{rows: rows, cols: cols, path: path, message: message, highlightCode: highlightCode}];
   for (let i = 0; i < rows; i++) {
     let thisRow = [];
     for (let j = 0; j < cols; j++) {
@@ -188,27 +192,27 @@ function generateRandomGrid(rows, cols, numberOfBlocks) {
   return rndGrid;
 }
 
-for (let i = 0; i < 1000; i++) {
-  console.log("i: " + i);
-  let blocks;
-  let rows = Math.floor(Math.random() * 50) + 3;
-  let cols = Math.floor(Math.random() * 50) + 3;
+// for (let i = 0; i < 1000; i++) {
+//   console.log("i: " + i);
+//   let blocks;
+//   let rows = Math.floor(Math.random() * 50) + 3;
+//   let cols = Math.floor(Math.random() * 50) + 3;
 
-  do {
-    blocks = Math.floor(Math.random() * 50);
-  } while (blocks > rows * cols - 2);
+//   do {
+//     blocks = Math.floor(Math.random() * 50);
+//   } while (blocks > rows * cols - 2);
 
-  let grid = generateRandomGrid(rows, cols, blocks);
-  console.log(
-    "Rows: " +
-      rows +
-      ", cols:" +
-      cols +
-      " \nTotal nodes in grid: \n" +
-      rows * cols
-  );
-  let vid = bfs(grid);
-}
+//   let grid = generateRandomGrid(rows, cols, blocks);
+//   console.log(
+//     "Rows: " +
+//       rows +
+//       ", cols:" +
+//       cols +
+//       " \nTotal nodes in grid: \n" +
+//       rows * cols
+//   );
+//   let vid = bfs(grid);
+// }
 
 //for (let i = 0; i < 10000; i++){
 // let grid = [
