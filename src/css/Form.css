@@ -4,6 +4,7 @@
     --darkmd--txt: white;
     --darkmd--input-border: rgb(77,77,77,1);
     --darkmd--label-txt: rgb(95,95,95,1);
+    --lightmd--txt: rgb(95,95,95,1);
     /* figure out color scheme later */
 }
 
@@ -36,6 +37,10 @@ form {
     height: 100vh; 
 }
 
+.form-el {
+    margin-left: 10%;
+}
+
 .firstName, .email{
     margin-right: 1rem;
 }
@@ -61,8 +66,8 @@ input:focus {
 }
 
 button {
-    color: var(--darkmd--accent);
-    background-color: var(--darkmd--bg);
+    color: var(--lightmd--txt);
+    background-color: var(--darkmd--accent);
     font-weight: bolder;
     font-size: 20px;
     width: 250px;
@@ -80,7 +85,7 @@ label {
 
 input {
    border: 1px solid var(--darkmd--input-border);
-   color: var(--darkmd--txt);
+   color: var(rgb(95,95,95,1));
 }
 
 input:focus {
@@ -98,6 +103,10 @@ div.dark h2, div.dark p {
 
 div.dark input {
    background-color: var(--darkmd--bg);  
+}
+
+div.dark button {
+    color: var(--darkmd--txt);
 }
 
 /* Light Mode */
