@@ -26,7 +26,7 @@ export const homeObjTwo = {
     description: 'Get access to our study tools and track your progress without any additional fees!',
     buttonLabel: 'Learn More',
     imgStart: true,
-    image: require('../../images/svg-3.svg'),
+    image: require('../../images/svg-5.svg'),
     alt: 'Piggybank', 
     dark: false,
     primary: false,

@@ -53,7 +53,7 @@ const Navbar = ({ toggle }) => {
                   duration={500}
                   spy={true}
                   exact='true'
-                  offfset={-80}
+                  offset={-80}
                   activeClass='active'
                 >
                   About</NavLinks>
@@ -65,7 +65,7 @@ const Navbar = ({ toggle }) => {
                   duration={500}
                   spy={true}
                   exact='true'
-                  offfset={0}
+                  offset={-80}
                   activeClass='active'
                 >
                   Discover</NavLinks>
@@ -77,7 +77,7 @@ const Navbar = ({ toggle }) => {
                   duration={500}
                   spy={true}
                   exact='true'
-                  offfset={-80}
+                  offset={-80}
                   activeClass='active'
                 >
                   Tools</NavLinks>
@@ -89,7 +89,7 @@ const Navbar = ({ toggle }) => {
                   duration={500}
                   spy={true}
                   exact='true'
-                  offfset={-80}
+                  offset={-80}
                   activeClass='active'
                 >Sign Up</NavLinks>
               </NavItem>

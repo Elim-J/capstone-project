@@ -65,7 +65,7 @@ export const ToolsIcon = styled.img`
 
 export const ToolsH1 = styled.h1`
   font-size: 2.5rem;
-  color: #0176bf;
+  color: #0076bf;
   margin-bottom: 64px;
   @media screen and (max-width: 480px) {
     font-size: 2rem
