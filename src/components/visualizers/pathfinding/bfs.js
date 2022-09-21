@@ -35,7 +35,7 @@ function bfs(grid) {
     const searchNode = queue.shift();
     if (grid[searchNode.row][searchNode.column].isEnd) {
       grid[searchNode.row][searchNode.column].isExplored = true;
-      let path = [{ row: searchNode.row, column: searchNode.column }];
+      let path = [];
       let currentNode = searchNode;
       while (currentNode != null) {
         path.push({ row: currentNode.row, column: currentNode.column });
@@ -234,3 +234,7 @@ function generateRandomGrid(rows, cols, numberOfBlocks) {
 // ];
 // printFrame(generateFrame(grid, 3, 3));
 // let vid = bfs(grid);
+
+let grid = [[{ isStart: true, isEnd: false, isBlocked: false, isExplored: false }],[{ isStart: false, isEnd: true, isBlocked: false, isExplored: false }]]
+
+console.log(bfs(grid)[2][0].path);
