@@ -35,21 +35,5 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
-  },
-  "description": "This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).",
-  "main": "index.js",
-  "devDependencies": {
-    "jest": "^27.5.1"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/Elim-J/capstone-project.git"
-  },
-  "keywords": [],
-  "author": "Erik Wenslaff",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/Elim-J/capstone-project/issues"
-  },
-  "homepage": "https://github.com/Elim-J/capstone-project#readme"
+  }
 }
