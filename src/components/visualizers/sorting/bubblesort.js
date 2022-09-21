@@ -3,8 +3,9 @@ export function bubbleSort(ints){
     let intsCopy = [...ints];
     let vid = [];
     let hasSwapped = false;
-    let passes = 1;
+    let passes = 0;
     do {
+        ++passes;
         hasSwapped = false;
         vid.push(generateFrame(intsCopy, hasSwapped, passes, 'Iterating over array', 'for (int i = 0; i < arr.length - i; i++){\n   ... \n}', []));
         for (let i = 0; i < intsCopy.length - passes; i++){
@@ -17,7 +18,6 @@ export function bubbleSort(ints){
                 vid.push(generateFrame(intsCopy, hasSwapped, passes, 'Swapped ' + intsCopy[i+1] + ' and ' + intsCopy[i], 'int swap = arr[i];\narr[i] = arr[i + 1];\narr[i + 1] = swap;', [i, i+1]));
             }
         }
-        ++passes;
     } while(hasSwapped);
     vid.push(generateFrame(intsCopy, hasSwapped, passes, 'Finished', 'return arr;', []))
     return vid;
@@ -34,5 +34,3 @@ function generateFrame(ints, hasSwapped, passes, message, code, highlightedValue
     }
     return frame;
 }
-
-console.log(bubbleSort([3,2,1,4,5,2,3])[0][0].message);
