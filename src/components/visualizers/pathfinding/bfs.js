@@ -1,4 +1,4 @@
-function bfs(grid) {
+export function bfs(grid) {
   //grid must be a rectangle
   let rows = grid.length;
   let cols = grid[0].length;
@@ -235,6 +235,6 @@ function generateRandomGrid(rows, cols, numberOfBlocks) {
 // printFrame(generateFrame(grid, 3, 3));
 // let vid = bfs(grid);
 
-let grid = [[{ isStart: true, isEnd: false, isBlocked: false, isExplored: false }],[{ isStart: false, isEnd: true, isBlocked: false, isExplored: false }]]
+// let grid = [[{ isStart: true, isEnd: false, isBlocked: false, isExplored: false }],[{ isStart: false, isEnd: true, isBlocked: false, isExplored: false }]]
 
-console.log(bfs(grid)[2][0].path);
+// console.log(bfs(grid)[2][0].path);
