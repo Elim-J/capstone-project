@@ -8,7 +8,8 @@
     "@testing-library/user-event": "^13.5.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "react-scripts": "5.0.1",
+    "react-scripts": "^5.0.1",
+    "selenium-webdriver": "^4.4.0",
     "web-vitals": "^2.1.4"
   },
   "scripts": {
@@ -34,5 +35,21 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
-  }
+  },
+  "description": "This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).",
+  "main": "index.js",
+  "devDependencies": {
+    "jest": "^27.5.1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Elim-J/capstone-project.git"
+  },
+  "keywords": [],
+  "author": "Erik Wenslaff",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Elim-J/capstone-project/issues"
+  },
+  "homepage": "https://github.com/Elim-J/capstone-project#readme"
 }
