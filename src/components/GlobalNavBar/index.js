@@ -10,6 +10,7 @@ import {
   NavMenu,
   NavItem,
   NavLinks,
+  NavLinksPages,
   NavBtn,
   NavBtnLink
 } from './NavbarElements'
@@ -46,58 +47,27 @@ const Navbar = ({ toggle }) => {
               <FaBars />
             </MobileIcon>
             <NavMenu>
+              
               <NavItem>
-                <NavLinks
-                  to='about'
+                <NavLinksPages
+                  to='/algorithms'
                   smooth={true}
                   duration={500}
                   spy={true}
-                  exact='true'
+                  exact='false'
                   offset={-80}
                   activeClass='active'
-                >
-                  About</NavLinks>
+                >Algorithms</NavLinksPages>
               </NavItem>
-              <NavItem>
-                <NavLinks
-                  to='discover'
-                  smooth={true}
-                  duration={500}
-                  spy={true}
-                  exact='true'
-                  offset={-80}
-                  activeClass='active'
-                >
-                  Discover</NavLinks>
-              </NavItem>
-              <NavItem>
-                <NavLinks
-                  to='tools'
-                  smooth={true}
-                  duration={500}
-                  spy={true}
-                  exact='true'
-                  offset={-80}
-                  activeClass='active'
-                >
-                  Tools</NavLinks>
-              </NavItem>
-              <NavItem>
-                <NavLinks
-                  to='signup'
-                  smooth={true}
-                  duration={500}
-                  spy={true}
-                  exact='true'
-                  offset={-80}
-                  activeClass='active'
-                >Sign Up</NavLinks>
-              </NavItem>
+
               
             </NavMenu>
+
+
+
             <NavBtn>
-                <NavBtnLink to='/signin'>Sign In</NavBtnLink>
-              </NavBtn>
+              <NavBtnLink to='/signin'>Sign In</NavBtnLink>
+            </NavBtn>
           </NavbarContainer>
         </Nav>
       </IconContext.Provider>
