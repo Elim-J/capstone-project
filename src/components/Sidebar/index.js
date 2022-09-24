@@ -6,6 +6,7 @@ import {
     SidebarWrapper,
     SidebarMenu,
     SidebarLink,
+    SidebarLinkR,
     SideBtnWrap,
     SidebarRoute
  } from './SidebarElements'
@@ -22,6 +23,7 @@ const Sidebar = ({ isOpen, toggle  }) => {
                     <SidebarLink to='discover' onClick={toggle}> Discover </SidebarLink>
                     <SidebarLink to='tools' onClick={toggle}> Tools</SidebarLink>
                     <SidebarLink to='signup' onClick={toggle}>Sign Up</SidebarLink>
+                    <SidebarLinkR to='/algorithms' onClick={toggle}> Algorithms</SidebarLinkR>
                 </SidebarMenu>
                 <SideBtnWrap>
                     <SidebarRoute to='/signin'>Sign In</SidebarRoute>
