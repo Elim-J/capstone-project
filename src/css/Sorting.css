@@ -1,7 +1,7 @@
 .sort-wrapper {
     display: flex;
-    border-style: solid;
-    background-color: rgb(181, 159, 159);
+    /* border-style: solid; */
+    /* background-color: rgb(181, 159, 159); */
     margin: 25px 25px;
     width: 95%;
     align-items: flex-end;
@@ -25,9 +25,12 @@
     font-weight: bold;
 }
 
-.center-button {
-    /* margin: 0px;
-    position: absolute;
-    left: 50%; */
+.actionbar {
+    display: flex;
+    justify-content: center;
+    background-color: rgba(0,0,0, .2);
+    overflow: hidden;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
 }
-
