@@ -17,8 +17,19 @@ const BubblesortPage = () => {
     return (
         <>
             <ScrollToTop />
+            <Sidebar isOpen={isOpen} toggle={toggle} />
+            <Navbar toggle={toggle} />
+            <br></br>
+            <br></br>
+            <br></br>
+            <br></br>
+            <br></br>
             <SortWrapper />
-
+            <br></br>
+            <br></br>
+            <br></br>
+            <br></br>
+            <Footer />
         </>
     )
 }
