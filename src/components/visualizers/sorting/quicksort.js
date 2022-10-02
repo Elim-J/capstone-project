@@ -196,4 +196,4 @@ function generateFrame(tree, message, code) {
     return frame;
 }
 
-console.log(JSON.stringify(quickSort([2, 4, 1, 5, 3])));
+console.log(JSON.stringify(quickSort([9, 8, 7, 6, 5, 4, 3, 2, 1])));
