@@ -72,6 +72,18 @@ const Navbar = ({ toggle }) => {
                 >Trello</NavLinksPages>
               </NavItem>
               
+            <NavItem>
+                <NavLinksPages
+                  to='/bubblesort'
+                  smooth={true}
+                  duration={500}
+                  spy={true}
+                  exact='false'
+                  offset={-80}
+                  activeClass='active'
+                >Bubble Sort</NavLinksPages>
+              </NavItem>
+              
             </NavMenu>
 
 
