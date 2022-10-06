@@ -1,4 +1,4 @@
-function quickSort(arr) {
+export function quickSort(arr) {
     let isDonePartitioning = false;
     let rootOfTree = { elements: [], leftSubTree: null, rightSubTree: null, highlight: false };
     for (let i = 0; i < arr.length; i++) {
@@ -195,5 +195,7 @@ function generateFrame(tree, message, code) {
 
     return frame;
 }
+
+//{data: , }
 
 console.log(JSON.stringify(quickSort([9, 8, 7, 6, 5, 4, 3, 2, 1])));

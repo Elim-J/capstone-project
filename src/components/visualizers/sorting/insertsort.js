@@ -26,3 +26,5 @@ function generateFrame(ints, message, code, highlightedValues){
     }
     return frame;
 }
+
+console.log(JSON.stringify(insertSort([])));
