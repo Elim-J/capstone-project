@@ -10,6 +10,7 @@ import NavigateNextIcon from '@mui/icons-material/NavigateNext';
 import SkipNextIcon from '@mui/icons-material/SkipNext';
 import SkipPreviousIcon from '@mui/icons-material/SkipPrevious';
 import ShuffleIcon from '@mui/icons-material/Shuffle';
+import Tab from '../../Tab/Tab';
 
 
 const SortWrapper = () => {
@@ -113,23 +114,63 @@ const SortWrapper = () => {
         },
     });
     //
+    var jsCode = 'for (int i = 0; i < arr.length - i; i++){ \n' + '\n }';
+    const code = [
+        {
+            title: "Javascript",
+            content: "bbbbbbbbbbbbb",
+        },
+        {
+            title: "Python",
+            content: "............"
+        },
+        {
+            title: "C",
+            content: "aaaaaaaaaaaaa"
+        },
+    ];
 
     return (
-        <>
-            <div className='sort-wrapper'>
-                {console.log('Current frame: ' + currentFrame + "vid.length:" + vid.length)}
-                {currentFrame > vid.length - 1 && setCurrentFrame(vid.length - 1)}
-                {vid && vid[currentFrame] && vid[currentFrame].map((element, i) => {
-                    if (i !== 0){
-                        return <Rectangle key={i} data={element.val} color={element.color}/>
-                    }
-                })}
+        <div className="sort-wrapper">
+            <div className="sorting-content">
+                <div className='graph-wrapper'>
+                    {console.log('Current frame: ' + currentFrame + "vid.length:" + vid.length)}
+                    {currentFrame > vid.length - 1 && setCurrentFrame(vid.length - 1)}
+                    {vid && vid[currentFrame] && vid[currentFrame].map((element, i) => {
+                        if (i !== 0){
+                            return <Rectangle key={i} data={element.val} color={element.color}/>
+                        }
+                    })}
+                </div>
+
+                
+
+                {/* <div className="code-content">
+                    <div className="row">
+                            <div className="col text-center">
+                                <div className="row text-left">
+                                    <Tab active={1}>
+                                        {code.map((tab, i) => (
+                                        <Tab.TabPane key={`tab-${i}`} tab={tab.title}>
+                                                {tab.content}
+                                                
+                                        </Tab.TabPane> 
+                                        ))}
+                                    </Tab>
+                                </div>
+                            </div>
+                    </div>
+                    
+                </div> */}
+                
             </div>
+
             <div>Delay (ms): {speed}</div>
             <div>{isPaused && 'Paused'}{!isPaused && 'Playing'}</div>
             <div>Delay (ms): {speed}</div>
             <div>{vid && vid[currentFrame] && vid[currentFrame][0].message}</div>
             <div>{vid && vid[currentFrame] && vid[currentFrame][0].code}</div>
+            
             
             {/* {console.log('Printing frame: ' , vid[currentFrame])} */}
             <div className="actionbar">
@@ -164,9 +205,10 @@ const SortWrapper = () => {
                             Decrease Speed
                         </Button>    
                     </ButtonGroup>
+                    
                 </ThemeProvider>
             </div>
-        </>
+        </div>
     )
 }
 

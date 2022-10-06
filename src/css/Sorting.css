@@ -1,9 +1,12 @@
-.sort-wrapper {
+.sorting-content {
     display: flex;
-    /* border-style: solid; */
-    /* background-color: rgb(181, 159, 159); */
+}
+.graph-wrapper {
+    display: flex;
+    /* border-style: solid;
+    background-color: rgb(181, 159, 159); */
     margin: 25px 25px;
-    width: 95%;
+    /* width: 70%; */
     align-items: flex-end;
     height: 600px
 }
@@ -33,4 +36,13 @@
     position: fixed;
     bottom: 0;
     width: 100%;
+}
+
+.code-content{
+    display: flex;
+    position: fixed;
+    right: 0;
+    top: 60%;
+    padding: 20px 20px;
+    padding-right: 50px;
 }
