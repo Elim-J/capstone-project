@@ -108,6 +108,18 @@ const Navbar = ({ toggle }) => {
                 >Algorithms</NavLinksPages>
               </NavItem>
 
+              <NavItem>
+                <NavLinksPages
+                  to='/trello'
+                  smooth={true}
+                  duration={500}
+                  spy={true}
+                  exact='false'
+                  offset={-80}
+                  activeClass='active'
+                >Trello</NavLinksPages>
+              </NavItem>
+
               
             </NavMenu>
 
