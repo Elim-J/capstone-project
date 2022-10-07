@@ -1,4 +1,4 @@
-export function quickSort(arr) {
+function quickSort(arr) {
     let isDonePartitioning = false;
     let rootOfTree = { elements: [], leftSubTree: null, rightSubTree: null, highlight: false };
     for (let i = 0; i < arr.length; i++) {
@@ -11,7 +11,7 @@ export function quickSort(arr) {
     while (!sorted(rootOfTree)) {
 
         if (!isDonePartitioning) {
-            nodeToPartition = findNextNodeToPartition(rootOfTree);
+            let nodeToPartition = findNextNodeToPartition(rootOfTree);
             const pivot = nodeToPartition.elements[nodeToPartition.elements.length - 1].val;
             nodeToPartition.elements[nodeToPartition.elements.length - 1].color = 'green';
             vid.push(generateFrame(JSON.parse(JSON.stringify(rootOfTree)), 'Picking Pivot', '[Highlight code]', []));
@@ -84,8 +84,6 @@ export function quickSort(arr) {
     vid.push(generateFrame(JSON.parse(JSON.stringify(rootOfTree)), 'Returning...', '[Highlight ending code]', []));
     return vid;
 }
-
-{ }
 
 function sorted(tree) {
     if (tree.leftSubTree != null || tree.rightSubTree != null) {
@@ -191,11 +189,46 @@ function isBeingPartitioned(tree) {
 
 
 function generateFrame(tree, message, code) {
-    let frame = { rootTree: tree, message: message, code: code };
+    let frame = { rootTree: fixTree(tree), message: message, code: code };
 
     return frame;
 }
 
-//{data: , }
+function fixTree(rootOfTree){
+    let fixedRootOfTree = {data: fixData(rootOfTree.elements), children: [], attributes: null};
+    let prevNodes = [rootOfTree];
+    let prevFixedNodes = [fixedRootOfTree];
+    while (prevNodes.length != 0){
+        let newNodes = [];
+        let newFixedNodes = [];
+        prevNodes.forEach(node => {
+            if (node.leftSubTree != null){
+                let fixedNode = {data: fixData(node.leftSubTree.elements), children: [], attributes: null};
+                prevFixedNodes[0].children.push(fixedNode);
+                newNodes.push(node.leftSubTree);
+                newFixedNodes.push(fixedNode);
+            }
+            if (node.rightSubTree != null){
+                let fixedNode = {data: fixData(node.rightSubTree.elements), children: [], attributes: null};
+                prevFixedNodes[0].children.push(fixedNode);
+                newNodes.push(node.rightSubTree);
+                newFixedNodes.push(fixedNode);
+            }
+        })
+        prevNodes = newNodes;
+        prevFixedNodes = newFixedNodes;
+    }
+    return fixedRootOfTree;
+}
+
+function fixData(elements){
+    let data = '[';
+    elements.forEach(element => {
+        data += element.val + ', ';
+    });
+    data += ']'
+    data = data.replace(', ]', ']');
+    return data;
+}
 
 console.log(JSON.stringify(quickSort([9, 8, 7, 6, 5, 4, 3, 2, 1])));
