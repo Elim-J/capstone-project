@@ -1,4 +1,4 @@
-function quickSort(arr) {
+function quickSort(arr, pivotType) {
     let isDonePartitioning = false;
     let rootOfTree = { elements: [], leftSubTree: null, rightSubTree: null, highlight: false };
     for (let i = 0; i < arr.length; i++) {
@@ -12,15 +12,31 @@ function quickSort(arr) {
 
         if (!isDonePartitioning) {
             let nodeToPartition = findNextNodeToPartition(rootOfTree);
-            const pivot = nodeToPartition.elements[nodeToPartition.elements.length - 1].val;
-            nodeToPartition.elements[nodeToPartition.elements.length - 1].color = 'green';
+            let pivotVal;
+            let pivotPos;
+            if (pivotType == 'last'){
+                pivotPos = nodeToPartition.elements.length - 1;
+                pivotVal = nodeToPartition.elements[pivotPos].val;
+            }
+            else if (pivotType == 'middle'){
+                pivotPos = Math.floor(nodeToPartition.elements.length / 2);
+                pivotVal = nodeToPartition.elements[pivotPos].val;
+            }
+            else if (pivotType == 'first'){
+                pivotPos = 0;
+                pivotVal = nodeToPartition.elements[pivotPos].val;
+            }
+            else{
+                pivotPos = Math.floor(Math.random() * (nodeToPartition.elements.length));
+                pivotVal = nodeToPartition.elements[pivotPos].val;
+            }
+            nodeToPartition.elements[pivotPos].color = 'green';
             vid.push(generateFrame(JSON.parse(JSON.stringify(rootOfTree)), 'Picking Pivot', '[Highlight code]', []));
 
             let leftSubTree = { elements: [], leftSubTree: null, rightSubTree: null, highlight: false };
             let rightSubTree = { elements: [], leftSubTree: null, rightSubTree: null, highlight: false };
-            for (let i = 0; i < nodeToPartition.elements.length - 1; i++) {
-
-                if (nodeToPartition.elements[i].val < pivot) {
+            for (let i = 0; i < nodeToPartition.elements.length; i++) {
+                if (i != pivotPos && nodeToPartition.elements[i].val < pivotVal){
                     let ele = { val: nodeToPartition.elements[i].val, color: 'blue' };
                     leftSubTree.elements.push(ele);
                 }
@@ -30,12 +46,12 @@ function quickSort(arr) {
             for (let i = 0; i < nodeToPartition.elements.length; i++) {
                 partitioningElements.push(nodeToPartition.elements[i]);
             }
-            nodeToPartition.elements = [{ val: pivot, color: 'green' }];
+            nodeToPartition.elements = [{ val: pivotVal, color: 'green' }];
 
             vid.push(generateFrame(JSON.parse(JSON.stringify(rootOfTree)), 'Created left sub tree...', '[Highlight ending code]', []));
 
-            for (let i = 0; i < partitioningElements.length - 1; i++) {
-                if (partitioningElements[i].val >= pivot) {
+            for (let i = 0; i < partitioningElements.length; i++) {
+                if (i != pivotPos && partitioningElements[i].val >= pivotVal) {
                     let ele = { val: partitioningElements[i].val, color: 'red' };
                     rightSubTree.elements.push(ele);
                 }
@@ -231,4 +247,8 @@ function fixData(elements){
     return data;
 }
 
-console.log(JSON.stringify(quickSort([9, 8, 7, 6, 5, 4, 3, 2, 1])));
+//last
+//middle
+//first
+//otherwise, random
+console.log(JSON.stringify(quickSort([9, 8, 7, 6, 5, 4, 3, 2, 1], 'random')));
