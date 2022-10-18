@@ -1,136 +1,76 @@
-import React, {useState, useEffect, useRef} from 'react';
+import React, {useState, useEffect} from 'react';
 import Rectangle from './Rectangle';
 import '../../../css/Sorting.css';
 import { bubbleSort } from './bubblesort';
-
+import CodeContent from './CodeContent';
+import ActionBar from './Actionbar';
 
 const SortWrapper = () => {
-    // const [intervalId, setIntervalId] = useState(null);
-    const [timeoutId, setTimeoutId] = useState(null);
     const [currentFrame, setCurrentFrame] = useState(0);
     const [vid, setVid] = useState([]);
-    const [speed, setSpeed] = useState(1); //initial play speed in ms
+    const [speed, setSpeed] = useState(500); //initial play speed in ms
     const [isPaused, setIsPaused] = useState(true);
     
-    const currentSpeed = useRef(speed);
-
     useEffect(() => {
         const randomArr = Array.from({length: 20}, () => Math.floor(Math.random() * 30));
         let sortedArrFrames = bubbleSort(randomArr);
         setVid(sortedArrFrames);
+        setCurrentFrame(0);
         setIsPaused(true);
     }, []);
 
-    function handleStepForward() {
-        if(currentFrame < vid.length - 1){
-            handlePause();
-            setCurrentFrame(currentFrame => currentFrame + 1);
-        }
-    }
-
-    function handleStepBackward() {
-        if(currentFrame > 0){
-            handlePause();
-            setCurrentFrame(currentFrame => currentFrame - 1);
-        }
-    }
-
-    function handleReset() {
-        setCurrentFrame(0);
-    }
-
-    function handleSkipToEnd() {
-        setCurrentFrame(vid.length - 1);
-    }
-
-    function handlePlay() {
-        if (isPaused) {
-            setIsPaused(false);
-
-            const stepForward = () => {
-                handleStepForward();
-                const timeoutId = setTimeout(stepForward, currentSpeed.current);
-                setTimeoutId(timeoutId);
-            }
-
-            const timeoutId = setTimeout(stepForward, currentSpeed.current);
-            setTimeoutId(timeoutId);
-        }
-    }
-    
-    function handlePause() {
-        if (!isPaused) {
-            setIsPaused(true);
-            clearTimeout(timeoutId);
-            setTimeoutId(null);
-        }
-    }
-
-    function handleIncreaseSpeed(){
-        if (speed - 10 > 0){
-            setSpeed(speed => {
-                currentSpeed.current = speed - 10;
-                return speed - 10;
-            });
-        }
-    }
-
-    function handleDecreaseSpeed(){
-        setSpeed(speed => {
-            currentSpeed.current = speed + 10;
-            return speed + 10;
+    const highlightCodeLine = (lines) => {
+        const prevHighlight = document.querySelectorAll('.highlight');
+        prevHighlight.forEach((element, i) => {
+            element.className = '';
+        });
+        lines.forEach((element, i) => {
+            document.getElementById(`code-${element}`).className ='highlight';
         });
     }
 
     return (
-        <>
-            <div className='sort-wrapper'>
-                {console.log('Current frame: ' + currentFrame)}
-                {currentFrame > vid.length - 1 && setCurrentFrame(vid.length - 1)}
-                {vid && vid[currentFrame] && vid[currentFrame].map((element, i) => {
-                    if (i !== 0){
-                        return <Rectangle key={i} data={element.val} color={element.color}/>
-                    }
-                })}
+        <div className="sort-wrapper">
+
+            {/* This should probably be its own component */}
+            <div className="sorting-content">
+                <div className='graph-wrapper'>
+                    {console.log('Current frame: ' + currentFrame + "vid.length:" + vid.length)}
+                    {currentFrame > vid.length - 1 && setCurrentFrame(vid.length - 1)}
+                    {vid && vid[currentFrame] && vid[currentFrame].map((element, i) => {
+                        if (i !== 0){
+                            highlightCodeLine(element.highlightedLines);
+                            return <Rectangle key={i} data={element.val} color={element.color}/>
+                        }
+                    })}
+                </div>
+
+                
+                {/* pass in const of alg probably from enum */}
+                <div className="code-wrapper">
+                    <CodeContent alg="BubbleSort"/>
+                </div>
+                
+                
             </div>
-            <div>{isPaused && 'Paused'}{!isPaused && 'Playing'}</div>
+
+            {/* Remove this eventually */}
             <div>Delay (ms): {speed}</div>
+            <div>{isPaused && 'Paused'}{!isPaused && 'Playing'}</div>
             <div>{vid && vid[currentFrame] && vid[currentFrame][0].message}</div>
             <div>{vid && vid[currentFrame] && vid[currentFrame][0].code}</div>
             
-            {/* {console.log('Printing frame: ' , vid[currentFrame])} */}
-            <button className='center-button' onClick={() =>{
-                const randomArr = Array.from({length: 20}, () => Math.floor(Math.random() * 30));
-                setVid(bubbleSort(randomArr));
-                setCurrentFrame(0);
-            }}>
-                Generate Random Data
-            </button>
-            <button onClick={handleStepBackward}>
-                Step Backward
-            </button>
-            <button onClick={handleStepForward}>
-                Step Forward
-            </button>
-            <button onClick={handleReset}>
-                Reset
-            </button>
-            <button onClick={handleSkipToEnd}>
-                Skip to End
-            </button>
-            <button onClick={handlePlay}>
-                Play
-            </button>
-            <button onClick={handlePause}>
-                Pause
-            </button>
-            <button onClick={handleIncreaseSpeed}>
-                Increase Speed
-            </button>
-            <button onClick={handleDecreaseSpeed}>
-                Decrease Speed
-            </button>
-        </>
+            
+            <ActionBar 
+                currentFrame={currentFrame}
+                setCurrentFrame={setCurrentFrame}
+                vid={vid}
+                setVid={setVid}
+                speed={speed}
+                setSpeed={setSpeed}
+                isPaused={isPaused}
+                setIsPaused={setIsPaused}/>
+        </div> 
     )
 }
 
