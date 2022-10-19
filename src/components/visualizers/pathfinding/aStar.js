@@ -122,7 +122,7 @@ function aStar(grid) {
     return vid;
   }
   function generateFrame(grid, rows, cols, path, message, highlightCode) {
-    let frame = [{rows: rows, cols: cols, path: path, message: message, highlightCode: highlightCode}];
+    let frame = {info: {rows: rows, cols: cols, path: path, message: message, highlightCode: highlightCode}, grid: []};
     for (let i = 0; i < rows; i++) {
       let thisRow = [];
       for (let j = 0; j < cols; j++) {
@@ -135,7 +135,7 @@ function aStar(grid) {
           isExplored: grid[i][j].isExplored,
         });
       }
-      frame.push(thisRow);
+      frame.grid.push(thisRow);
     }
     return frame;
   }
