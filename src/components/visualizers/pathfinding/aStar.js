@@ -1,4 +1,5 @@
 function aStar(grid) {
+    console.log('in astar');
     //grid must be a rectangle
     let rows = grid.length;
     let cols = grid[0].length;
@@ -126,6 +127,8 @@ function aStar(grid) {
       let thisRow = [];
       for (let j = 0; j < cols; j++) {
         thisRow.push({
+          row: i,
+          col: j,
           isStart: grid[i][j].isStart,
           isEnd: grid[i][j].isEnd,
           isBlocked: grid[i][j].isBlocked,
@@ -261,4 +264,4 @@ let grid = [
 ];
 
 
-printVid(aStar(grid));
+export default aStar;

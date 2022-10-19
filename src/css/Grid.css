@@ -1,0 +1,18 @@
+.grid-wrapper {
+    max-width: 80%;
+    margin: auto;
+}
+.grid-with-nodes {
+    width: fit-content;
+    margin: auto;
+}
+
+.grid-container {
+    width: fit-content;
+    margin: auto;
+    text-align: center;
+
+}
+.row-container {
+    display: flex;
+}
