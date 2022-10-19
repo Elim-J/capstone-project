@@ -1,5 +1,4 @@
 function aStar(grid) {
-    console.log('in astar');
     //grid must be a rectangle
     let rows = grid.length;
     let cols = grid[0].length;
@@ -39,7 +38,7 @@ function aStar(grid) {
       let lowestHeuristicPos = 0;
       queue.forEach((node, i) => {
         if (node.heuristic < lowestHeuristicVal){
-          lowestHeuristicVal = node.heursitic;
+          lowestHeuristicVal = node.heuristic;
           lowestHeuristicPos = i;
         }
       })
@@ -141,15 +140,15 @@ function aStar(grid) {
   }
   
   function printFrame(frame) {
-    for (let i = 1; i < frame.length; i++) {
-      for (let j = 0; j < frame[i].length; j++) {
-        if (frame[i][j].isStart) {
+    for (let i = 0; i < frame.grid.length; i++) {
+      for (let j = 0; j < frame.grid[i].length; j++) {
+        if (frame.grid[i][j].isStart) {
           process.stdout.write("B ");
-        } else if (frame[i][j].isEnd) {
+        } else if (frame.grid[i][j].isEnd) {
           process.stdout.write("E ");
-        } else if (frame[i][j].isBlocked) {
+        } else if (frame.grid[i][j].isBlocked) {
           process.stdout.write("X ");
-        } else if (frame[i][j].isExplored) {
+        } else if (frame.grid[i][j].isExplored) {
           process.stdout.write("v ");
         } else {
           process.stdout.write("O ");
@@ -263,5 +262,8 @@ let grid = [
   ]
 ];
 
+let grid2 = [[{"row":0,"col":0,"isStart":true,"isEnd":false,"isBlocked":false,"isExplored":false},{"row":0,"col":1,"isStart":false,"isEnd":false,"isBlocked":false,"isExplored":false},{"row":0,"col":2,"isStart":false,"isEnd":false,"isBlocked":false,"isExplored":false},{"row":0,"col":3,"isStart":false,"isEnd":false,"isBlocked":false,"isExplored":false}],[{"row":1,"col":0,"isStart":false,"isEnd":false,"isBlocked":false,"isExplored":false},{"row":1,"col":1,"isStart":false,"isEnd":false,"isBlocked":false,"isExplored":false},{"row":1,"col":2,"isStart":false,"isEnd":false,"isBlocked":false,"isExplored":false},{"row":1,"col":3,"isStart":false,"isEnd":false,"isBlocked":false,"isExplored":false}],[{"row":2,"col":0,"isStart":false,"isEnd":false,"isBlocked":false,"isExplored":false},{"row":2,"col":1,"isStart":false,"isEnd":false,"isBlocked":false,"isExplored":false},{"row":2,"col":2,"isStart":false,"isEnd":false,"isBlocked":false,"isExplored":false},{"row":2,"col":3,"isStart":false,"isEnd":false,"isBlocked":false,"isExplored":false}],[{"row":3,"col":0,"isStart":false,"isEnd":false,"isBlocked":false,"isExplored":false},{"row":3,"col":1,"isStart":false,"isEnd":false,"isBlocked":false,"isExplored":false},{"row":3,"col":2,"isStart":false,"isEnd":false,"isBlocked":false,"isExplored":false},{"row":3,"col":3,"isStart":false,"isEnd":true,"isBlocked":false,"isExplored":false}]];
 
-export default aStar;
+printVid(aStar(grid2));
+
+// export default aStar;
