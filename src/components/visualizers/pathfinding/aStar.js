@@ -264,6 +264,6 @@ let grid = [
 
 let grid2 = [[{"row":0,"col":0,"isStart":true,"isEnd":false,"isBlocked":false,"isExplored":false},{"row":0,"col":1,"isStart":false,"isEnd":false,"isBlocked":false,"isExplored":false},{"row":0,"col":2,"isStart":false,"isEnd":false,"isBlocked":false,"isExplored":false},{"row":0,"col":3,"isStart":false,"isEnd":false,"isBlocked":false,"isExplored":false}],[{"row":1,"col":0,"isStart":false,"isEnd":false,"isBlocked":false,"isExplored":false},{"row":1,"col":1,"isStart":false,"isEnd":false,"isBlocked":false,"isExplored":false},{"row":1,"col":2,"isStart":false,"isEnd":false,"isBlocked":false,"isExplored":false},{"row":1,"col":3,"isStart":false,"isEnd":false,"isBlocked":false,"isExplored":false}],[{"row":2,"col":0,"isStart":false,"isEnd":false,"isBlocked":false,"isExplored":false},{"row":2,"col":1,"isStart":false,"isEnd":false,"isBlocked":false,"isExplored":false},{"row":2,"col":2,"isStart":false,"isEnd":false,"isBlocked":false,"isExplored":false},{"row":2,"col":3,"isStart":false,"isEnd":false,"isBlocked":false,"isExplored":false}],[{"row":3,"col":0,"isStart":false,"isEnd":false,"isBlocked":false,"isExplored":false},{"row":3,"col":1,"isStart":false,"isEnd":false,"isBlocked":false,"isExplored":false},{"row":3,"col":2,"isStart":false,"isEnd":false,"isBlocked":false,"isExplored":false},{"row":3,"col":3,"isStart":false,"isEnd":true,"isBlocked":false,"isExplored":false}]];
 
-printVid(aStar(grid2));
+printVid(aStar(grid));
 
 // export default aStar;
