@@ -92,6 +92,7 @@ const Grid = () => {
         setVid(rndVid);
         setGrid(rndVid[0].grid);
         setCurrentFrame(0);
+        console.log(JSON.stringify(rndVid[0].grid));
     };
 
     const clearGrid = () => {
