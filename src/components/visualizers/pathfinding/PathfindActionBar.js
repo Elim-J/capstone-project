@@ -7,19 +7,22 @@ import NavigateNextIcon from '@mui/icons-material/NavigateNext';
 import SkipNextIcon from '@mui/icons-material/SkipNext';
 import SkipPreviousIcon from '@mui/icons-material/SkipPrevious';
 
-const PathfindActionBar = ({grid, setGrid, currentFrame, setCurrentFrame, vid, setVid}) => { //, speed, setSpeed, isPaused, setIsPaused
+const PathfindActionBar = ({grid, setGrid, currentFrame, setCurrentFrame, vid, setVid, speed, setSpeed, isPaused, setIsPaused}) => {
 
-    // const [timeoutId, setTimeoutId] = useState(null);
+    const [timeoutId, setTimeoutId] = useState(null);
 
-    // const currentSpeed = useRef(speed);
+    const currentSpeed = useRef(speed);
+    let frame = useRef(currentFrame);
     
     const handleStepForward = () => {
         if(vid && currentFrame < vid.length - 1){
             console.log('stepping forward');
-            // console.log(JSON.stringify(vid));
-            console.log(vid[currentFrame + 1].grid);
-            setGrid(vid[currentFrame + 1].grid);
-            setCurrentFrame(currentFrame + 1);
+            console.log('currentSpeed: ' + currentSpeed.current);
+            console.log('currentFrame: ' + frame.current);
+
+            // console.log(vid[frame.current++].grid);
+            setGrid(vid[++frame.current].grid);
+            setCurrentFrame(frame.current);
         }
         
     };
@@ -29,20 +32,43 @@ const PathfindActionBar = ({grid, setGrid, currentFrame, setCurrentFrame, vid, s
         if(vid && currentFrame > 0){
             //pause here
             console.log('stepping backward');
-            setGrid(vid[currentFrame - 1].grid);
-            setCurrentFrame(currentFrame - 1);
+            setGrid(vid[--frame.current].grid);
+            setCurrentFrame(frame.current);
         }
     };
 
     const handleReset = () => {
-        setCurrentFrame(0);
-        setGrid(vid[0].grid);
+        frame.current = 0;
+        setCurrentFrame(frame.current);
+        setGrid(vid[frame.current].grid);
     }
 
     const handleSkipToEnd = () => {
-        setCurrentFrame(vid.length - 1);
-        setGrid(vid[vid.length - 1].grid);
+        frame.current = vid.length - 1;
+        setCurrentFrame(frame.current);
+        setGrid(vid[frame.current]  .grid);
     }
+
+    const handlePlayAndPause = () => {
+        
+        if (isPaused) {
+            setIsPaused(false);
+
+            const stepForward = () => {
+                handleStepForward();
+                console.log("in play");
+                const timeoutId = setTimeout(stepForward, currentSpeed.current);
+                setTimeoutId(timeoutId);
+            }
+
+            const timeoutId = setTimeout(stepForward, currentSpeed.current);
+            setTimeoutId(timeoutId);
+        } else {
+            setIsPaused(true);
+            clearTimeout(timeoutId);
+            setTimeoutId(null);
+        }
+    };
 
     const { palette } = createTheme();
     const { augmentColor } = palette;
@@ -64,10 +90,9 @@ const PathfindActionBar = ({grid, setGrid, currentFrame, setCurrentFrame, vid, s
                     <Button variant="text" onClick={handleStepBackward}>
                         <NavigateBeforeIcon/>
                     </Button>
-                    <Button size="large" variant="text" >
-                        {/* onClick={handlePlayAndPause} */}
-                        {/* {isPaused ? <PlayArrowIcon/> : <PauseIcon/>} */}
-                        <PlayArrowIcon/>
+                    <Button size="large" variant="text" onClick={handlePlayAndPause}>
+                        {isPaused ? <PlayArrowIcon/> : <PauseIcon/>}
+                        {/* <PlayArrowIcon/> */}
                     </Button>
                     <Button variant="text" onClick={handleStepForward}>
                         <NavigateNextIcon/>

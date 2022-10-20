@@ -23,9 +23,11 @@ const Grid = () => {
     const [grid, setGrid] = useState(startingVid[0].grid);
     const [startCell, setStart] = useState(null);
     const [endCell, setEnd] = useState(null);
-    const [alg, setAlg] = useState(0);
+    const [alg, setAlg] = useState(PathfindingAlgs.Astar);
     const [currentFrame, setCurrentFrame] = useState(0);
     const [vid, setVid] = useState(startingVid);
+    const [isPaused, setIsPaused] = useState(true);
+    const [speed, setSpeed] = useState(250); //ms
 
     //used as a lock
     const [isBusy, setIsBusy] = useState(false);
@@ -37,6 +39,7 @@ const Grid = () => {
 
     useEffect(() => {
         setGrid(createGrid);
+        setIsPaused(true);
     }, []);
 
     const randomizeStartAndEnd = () => {
@@ -232,7 +235,10 @@ const Grid = () => {
         <div className="grid-container">
             {gridWithNodes}
         </div>
-        <PathfindActionBar grid={grid} setGrid={setGrid} currentFrame={currentFrame} setCurrentFrame={setCurrentFrame} vid={vid} setVid={setVid}/>
+        <PathfindActionBar grid={grid} setGrid={setGrid} 
+            currentFrame={currentFrame} setCurrentFrame={setCurrentFrame} vid={vid} setVid={setVid}
+            speed={speed} setSpeed={setSpeed}
+            isPaused={isPaused} setIsPaused={setIsPaused}/>
         </>
     );
 }
