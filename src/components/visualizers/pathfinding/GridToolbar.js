@@ -2,7 +2,7 @@ import { Button, ButtonGroup, createTheme, ThemeProvider } from '@mui/material';
 import "../../../css/GridToolbar.css";
 import PathfindingAlgs from "../../../constants/PathfindingAlgs";
 
-const GridToolbar = ({ onSearch, setAlg, onClear, onRandomGrid, onClearWalls }) => {
+const GridToolbar = ({ onSearch, setAlg, onClear, onRandomGrid, onClearWalls, onStepForward, onStepBackward }) => {
 
 
     return (
@@ -24,7 +24,10 @@ const GridToolbar = ({ onSearch, setAlg, onClear, onRandomGrid, onClearWalls }) 
                         <h5>Algorithm&nbsp;&nbsp;</h5>
                         <label className="dropdown">
                             <select className="form-select algorithm-dropdown-toggle"
-                                onChange={(e) => setAlg(e.target.value)}
+                                onChange={(e) => {
+                                    // console.log(e.target.value);
+                                    onSearch(e.target.value);
+                                }}
                                 defaultValue={PathfindingAlgs.None}>
                                     {Object.values(PathfindingAlgs).map(val => (
                                         <option
@@ -38,7 +41,6 @@ const GridToolbar = ({ onSearch, setAlg, onClear, onRandomGrid, onClearWalls }) 
                                     )}
                             </select>
                         </label>
-                        <Button variant="secondary" className="my-btn ms-2" onClick={onSearch}>Search</Button>
                     </li>
 
                     <li className="toolbarItem d-flex flex-column flex-md-row">
@@ -48,6 +50,12 @@ const GridToolbar = ({ onSearch, setAlg, onClear, onRandomGrid, onClearWalls }) 
                     <li className="toolbarItem d-flex flex-column flex-md-row">
                         <Button className="my-btn" variant="dark" onClick={onRandomGrid}>Randomize Grid</Button>
                     </li>
+                    {/* <li className="toolbarItem d-flex flex-column flex-md-row">
+                        <Button className="my-btn" variant="dark" onClick={onStepForward}>Step Forward</Button>
+                    </li>
+                    <li className="toolbarItem d-flex flex-column flex-md-row">
+                        <Button className="my-btn" variant="dark" onClick={onStepBackward}>Step Backward</Button>
+                    </li> */}
                 </ul>
 
             </div>

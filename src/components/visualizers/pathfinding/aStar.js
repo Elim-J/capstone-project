@@ -1,5 +1,6 @@
-function aStar(grid) {
+function aStar(g) {
     //grid must be a rectangle
+    let grid = structuredClone(g);
     let rows = grid.length;
     let cols = grid[0].length;
     let foundStartingPos = false;
@@ -32,6 +33,7 @@ function aStar(grid) {
     startPos.heuristic = findHeuristic(startPos.row, startPos.column, endNodes, 'Manhattan');
     let vid = [generateFrame(grid, rows, cols, null, 'Starting A* algorithm...', [])];
     grid[startPos.row][startPos.column].isExplored = true;
+    grid[startPos.row][startPos.column].isDiscovered = true;
     queue.push(startPos);
     while (queue.length > 0) {
       let lowestHeuristicVal = queue[0].heuristic;
@@ -43,9 +45,12 @@ function aStar(grid) {
         }
       })
       let searchNode = queue.splice(lowestHeuristicPos, 1);
+      delete searchNode.heuristic;
       searchNode = searchNode[0];
+      searchNode.isExplored = true;
+      grid[searchNode.row][searchNode.column].isExplored = true;
+      delete grid[searchNode.row][searchNode.column].heuristic;
       if (grid[searchNode.row][searchNode.column].isEnd) {
-        grid[searchNode.row][searchNode.column].isExplored = true;
         let path = [];
         let currentNode = searchNode;
         while (currentNode != null) {
@@ -53,21 +58,26 @@ function aStar(grid) {
           currentNode = currentNode.prevNode;
         }
         path.reverse();
-        vid.push(generateFrame(grid, rows, cols, path, 'Returning path', []));
+        for (let i = 0; i < path.length; i++){
+          let currentPath = path.slice(0, i);
+          vid.push(generateFrame(grid, rows, cols, currentPath, 'Returning path', []));
+        }
         return vid;
       } else {
         if (
           //Search Up
           searchNode.row - 1 >= 0 &&
           !grid[searchNode.row - 1][searchNode.column].isBlocked &&
-          !grid[searchNode.row - 1][searchNode.column].isExplored
+          !grid[searchNode.row - 1][searchNode.column].isDiscovered
         ) {
-          grid[searchNode.row - 1][searchNode.column].isExplored = true;
+          let heuristicVal = findHeuristic(searchNode.row - 1, searchNode.column, endNodes, 'Manhattan');
+          grid[searchNode.row - 1][searchNode.column].isDiscovered = true;
+          grid[searchNode.row - 1][searchNode.column].heuristic = heuristicVal;
           queue.push({
             row: searchNode.row - 1,
             column: searchNode.column,
             prevNode: searchNode,
-            heuristic: findHeuristic(searchNode.row - 1, searchNode.column, endNodes, 'Manhattan')
+            heuristic: heuristicVal
           });
           vid.push(generateFrame(grid, rows, cols, null, 'Visiting node above', []));
         }
@@ -75,14 +85,16 @@ function aStar(grid) {
           //Search Left
           searchNode.column - 1 >= 0 &&
           !grid[searchNode.row][searchNode.column - 1].isBlocked &&
-          !grid[searchNode.row][searchNode.column - 1].isExplored
+          !grid[searchNode.row][searchNode.column - 1].isDiscovered
         ) {
-          grid[searchNode.row][searchNode.column - 1].isExplored = true;
+          let heuristicVal = findHeuristic(searchNode.row, searchNode.column - 1, endNodes, 'Manhattan');
+          grid[searchNode.row][searchNode.column - 1].isDiscovered = true;
+          grid[searchNode.row][searchNode.column - 1].heuristic = heuristicVal;
           queue.push({
             row: searchNode.row,
             column: searchNode.column - 1,
             prevNode: searchNode,
-            heuristic: findHeuristic(searchNode.row, searchNode.column - 1, endNodes, 'Manhattan')
+            heuristic: heuristicVal
           });
           vid.push(generateFrame(grid, rows, cols, null, 'Visiting node to the left', []));
         }
@@ -90,14 +102,16 @@ function aStar(grid) {
           //Search Down
           searchNode.row + 1 < rows &&
           !grid[searchNode.row + 1][searchNode.column].isBlocked &&
-          !grid[searchNode.row + 1][searchNode.column].isExplored
+          !grid[searchNode.row + 1][searchNode.column].isDiscovered
         ) {
-          grid[searchNode.row + 1][searchNode.column].isExplored = true;
+          let heuristicVal = findHeuristic(searchNode.row + 1, searchNode.column, endNodes, 'Manhattan');
+          grid[searchNode.row + 1][searchNode.column].isDiscovered = true;
+          grid[searchNode.row + 1][searchNode.column].heuristic = heuristicVal;
           queue.push({
             row: searchNode.row + 1,
             column: searchNode.column,
             prevNode: searchNode,
-            heuristic: findHeuristic(searchNode.row + 1, searchNode.column, endNodes, 'Manhattan')
+            heuristic: heuristicVal
           });
           vid.push(generateFrame(grid, rows, cols, null, 'Visiting node below', []));
         }
@@ -105,14 +119,16 @@ function aStar(grid) {
           //Search Right
           searchNode.column + 1 < cols &&
           !grid[searchNode.row][searchNode.column + 1].isBlocked &&
-          !grid[searchNode.row][searchNode.column + 1].isExplored
+          !grid[searchNode.row][searchNode.column + 1].isDiscovered
         ) {
-          grid[searchNode.row][searchNode.column + 1].isExplored = true;
+          let heuristicVal = findHeuristic(searchNode.row, searchNode.column + 1, endNodes, 'Manhattan');
+          grid[searchNode.row][searchNode.column + 1].isDiscovered = true;
+          grid[searchNode.row][searchNode.column + 1].heuristic = heuristicVal;
           queue.push({
             row: searchNode.row,
             column: searchNode.column + 1,
             prevNode: searchNode,
-            heuristic: findHeuristic(searchNode.row, searchNode.column + 1, endNodes, 'Manhattan')
+            heuristic: heuristicVal
           });
           vid.push(generateFrame(grid, rows, cols, null, 'Visiting node to the right', []));
         }
@@ -121,17 +137,28 @@ function aStar(grid) {
     return vid;
   }
   function generateFrame(grid, rows, cols, path, message, highlightCode) {
-    let frame = {info: {rows: rows, cols: cols, path: path, message: message, highlightCode: highlightCode}, grid: []};
+    let frame = {info: {rows: rows, cols: cols, message: message, highlightCode: highlightCode}, grid: []};
     for (let i = 0; i < rows; i++) {
       let thisRow = [];
       for (let j = 0; j < cols; j++) {
+        let isOnPath = false;
+        if (path){
+          path.forEach(node => {
+            if (node.row == i && node.column == j){
+              isOnPath = true;
+            }
+          })
+        }
         thisRow.push({
           row: i,
           col: j,
           isStart: grid[i][j].isStart,
           isEnd: grid[i][j].isEnd,
           isBlocked: grid[i][j].isBlocked,
+          isDiscovered: grid[i][j].isDiscovered,
           isExplored: grid[i][j].isExplored,
+          heuristic: grid[i][j].heuristic,
+          isPath: isOnPath 
         });
       }
       frame.grid.push(thisRow);
@@ -264,6 +291,6 @@ let grid = [
 
 let grid2 = [[{"row":0,"col":0,"isStart":true,"isEnd":false,"isBlocked":false,"isExplored":false},{"row":0,"col":1,"isStart":false,"isEnd":false,"isBlocked":false,"isExplored":false},{"row":0,"col":2,"isStart":false,"isEnd":false,"isBlocked":false,"isExplored":false},{"row":0,"col":3,"isStart":false,"isEnd":false,"isBlocked":false,"isExplored":false}],[{"row":1,"col":0,"isStart":false,"isEnd":false,"isBlocked":false,"isExplored":false},{"row":1,"col":1,"isStart":false,"isEnd":false,"isBlocked":false,"isExplored":false},{"row":1,"col":2,"isStart":false,"isEnd":false,"isBlocked":false,"isExplored":false},{"row":1,"col":3,"isStart":false,"isEnd":false,"isBlocked":false,"isExplored":false}],[{"row":2,"col":0,"isStart":false,"isEnd":false,"isBlocked":false,"isExplored":false},{"row":2,"col":1,"isStart":false,"isEnd":false,"isBlocked":false,"isExplored":false},{"row":2,"col":2,"isStart":false,"isEnd":false,"isBlocked":false,"isExplored":false},{"row":2,"col":3,"isStart":false,"isEnd":false,"isBlocked":false,"isExplored":false}],[{"row":3,"col":0,"isStart":false,"isEnd":false,"isBlocked":false,"isExplored":false},{"row":3,"col":1,"isStart":false,"isEnd":false,"isBlocked":false,"isExplored":false},{"row":3,"col":2,"isStart":false,"isEnd":false,"isBlocked":false,"isExplored":false},{"row":3,"col":3,"isStart":false,"isEnd":true,"isBlocked":false,"isExplored":false}]];
 
-printVid(aStar(grid));
+// printVid(aStar(grid));
 
-// export default aStar;
+export default aStar;

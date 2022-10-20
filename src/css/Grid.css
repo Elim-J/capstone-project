@@ -1,13 +1,14 @@
-.grid-wrapper {
+/* .grid-wrapper {
     max-width: 80%;
     margin: auto;
-}
+} */
 .grid-with-nodes {
     width: fit-content;
     margin: auto;
 }
 
 .grid-container {
+    max-width: 80%;
     width: fit-content;
     margin: auto;
     text-align: center;
@@ -15,4 +16,14 @@
 }
 .row-container {
     display: flex;
+}
+
+.actionbar {
+    display: flex;
+    justify-content: center;
+    background-color: rgba(0,0,0, .2);
+    overflow: hidden;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
 }
