@@ -5,12 +5,14 @@ import 'bootstrap/dist/css/bootstrap.css';
 import 'bootstrap/dist/js/bootstrap.js';
 import reportWebVitals from './reportWebVitals';
 import SortWrapper from './components/visualizers/sorting/SortWrapper';
+import GridContainer from './components/visualizers/pathfinding/GridContainer';
+
 
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <SortWrapper/>
+    <GridContainer />
   </React.StrictMode>
 );
 

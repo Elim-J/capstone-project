@@ -1,0 +1,123 @@
+body {
+    margin: 0;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+      'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+      sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+  
+  code {
+    font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+      monospace;
+  }
+  
+  .headerContainer {
+    padding-top: 20px;
+    padding-bottom: 20px;
+  }
+  
+  .toolbarRow {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    margin: 0;
+  }
+  
+  .toolbarContainer {
+    margin: 20px 20px;
+    padding: 0 60px;
+    border-top: 1px solid #e6e6e6;
+    border-bottom: 1px solid #e6e6e6;
+    float: none;
+    clear: both;
+    justify-content: center;
+    background-color: whitesmoke;
+  }
+  
+  
+  .toolbarItem {
+    justify-items: center;
+    text-align: center;
+    padding: 10px 10px;
+    border-right: 1px solid #e6e6e6;
+    /* border-left: 1px solid #e6e6e6; */
+  }
+  
+  .toolbarItem:first-child{
+    border-left: 1px solid #e6e6e6;
+  }
+  a {
+    transition: all 0.3s ease-out 0s;
+    outline: none !important;
+    background-color: transparent;
+    text-decoration: none;
+  }
+  
+  ul {
+    margin-bottom: 0;
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    margin: 0 0;
+  }
+  
+  .checkBox {
+    position: relative;
+    display: inline-block;
+    align-content: center;
+    width: 70px;
+    height: 35px;
+    vertical-align: middle;
+  }
+  
+  .checkBox input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+  }
+  
+  .switch {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #bbb;
+    -webkit-transition: 0.4s;
+    transition: 0.4s;
+    border-radius: 25px;
+  }
+  
+  .switch:before {
+    position: absolute;
+    content: "";
+    height: 28px;
+    width: 28px;
+    left: 4px;
+    bottom: 4px;
+    background-color: white;
+    -webkit-transition: 0.4s;
+    transition: 0.4s;
+    border-radius: 50%;
+  }
+  
+  input:checked+.switch {
+    background-color: #51b5b1;
+  }
+  
+  input:focus+.switch {
+    box-shadow: 0 0 1px #51b5b1;
+  }
+  
+  input:checked+.switch:before {
+    -webkit-transform: translateX(34px);
+    -ms-transform: translateX(34px);
+    transform: translateX(34px);
+  }
+
+  .algorithm-dropdown-toggle:focus {
+    box-shadow: none !important;
+  }
