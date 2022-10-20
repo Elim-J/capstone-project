@@ -1,0 +1,16 @@
+
+.squareBoard{ 
+    background-color: red;
+    height: 300px;
+    width: 300px;
+    margin: 10px;
+}
+
+.squareBoard:hover {
+    filter: brightness(2);
+    transform: scale(1.01);
+}
+
+.text {
+    margin-top: 50px;
+}

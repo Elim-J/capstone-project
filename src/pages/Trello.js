@@ -3,6 +3,7 @@ import React, {useState} from 'react';
 import Navbar from '../components/GlobalNavBar';
 import Sidebar from '../components/Sidebar';
 import '../css/Trello.css';
+import MainContent from '../components/Trello/TrelloComponents/MainContent';
 
 
 export default function Trello(){
@@ -16,9 +17,7 @@ export default function Trello(){
     return(
         <>
             <Navbar toggle= {toggle}/>
-            <Sidebar isOpen={isOpen} toggle={toggle} />
-            {/* <Navbar /> */}
-            <h1>Hello World!</h1>
+            <MainContent />
         </>
     )
 }

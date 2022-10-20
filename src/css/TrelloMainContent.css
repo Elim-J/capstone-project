@@ -1,0 +1,59 @@
+body{
+ 
+}
+
+button {
+    margin: 80px auto 0;
+    /* margin: 0 auto; */
+    display: flex;
+}
+
+button:hover{
+    filter: brightness(2);
+    transform: scale(1.01);
+}
+
+.btnA {
+    background-color: red;
+    color: white;
+}
+
+.btnB{
+    background-color: blue;
+    color: white;
+}
+
+.formA {
+    display:none;
+    
+}
+.formB{
+    flex-direction: column;
+    gap: 5px;
+    position: absolute;
+    background-color:#6b7999;
+    border-radius: 6px;
+    padding: 1rem;
+    width: 15rem;
+
+    /* move top/left margin edge of element to middle of parent */
+    top: 30%;
+    left: 50%;
+
+    /* Percentage on translate is relative to width/height of element itself */
+    transform: translate(-50%, -50%);
+}
+
+input {
+    width: 10rem;
+}
+
+h2 {
+    text-align: center;
+}
+
+.allBoards {
+    display: grid;
+    grid-template: repeat(4, 1fr) / repeat(auto-fit, minmax(350px, 1fr));
+    margin-top: 200px;
+}
