@@ -49,6 +49,7 @@ function aStar(g) {
       searchNode = searchNode[0];
       searchNode.isExplored = true;
       grid[searchNode.row][searchNode.column].isExplored = true;
+      vid.push(generateFrame(grid, rows, cols, null, 'Chose node with lowest heuristic', []));
       delete grid[searchNode.row][searchNode.column].heuristic;
       if (grid[searchNode.row][searchNode.column].isEnd) {
         let path = [];
@@ -258,39 +259,50 @@ function findHeuristic(x, y, endNodes, type){
   return lowestHeuristicSoFar;
 }
 
+// let grid = [
+//   [
+//     { isStart: false, isEnd: false, isBlocked: false, isExplored: false },
+//     { isStart: false, isEnd: false, isBlocked: false, isExplored: false },
+//     { isStart: false, isEnd: false, isBlocked: false, isExplored: false },
+//     { isStart: false, isEnd: false, isBlocked: false, isExplored: false },
+//     { isStart: false, isEnd: false, isBlocked: false, isExplored: false },
+//     { isStart: false, isEnd: false, isBlocked: false, isExplored: false },
+//     { isStart: false, isEnd: false, isBlocked: false, isExplored: false },
+//   ],
+//   [
+//     { isStart: false, isEnd: false, isBlocked: false, isExplored: false },
+//     { isStart: false, isEnd: false, isBlocked: true, isExplored: false },
+//     { isStart: false, isEnd: false, isBlocked: true, isExplored: false },
+//     { isStart: false, isEnd: false, isBlocked: true, isExplored: false },
+//     { isStart: false, isEnd: false, isBlocked: true, isExplored: false },
+//     { isStart: false, isEnd: false, isBlocked: true, isExplored: false },
+//     { isStart: false, isEnd: false, isBlocked: false, isExplored: false },
+//   ],
+//   [
+//     { isStart: true, isEnd: false, isBlocked: false, isExplored: false },
+//     { isStart: false, isEnd: false, isBlocked: false, isExplored: false },
+//     { isStart: false, isEnd: false, isBlocked: false, isExplored: false },
+//     { isStart: false, isEnd: false, isBlocked: false, isExplored: false },
+//     { isStart: false, isEnd: false, isBlocked: false, isExplored: false },
+//     { isStart: false, isEnd: false, isBlocked: true, isExplored: false },
+//     { isStart: false, isEnd: true, isBlocked: false, isExplored: false },
+//   ]
+// ];
 
-let grid = [
-  [
-    { isStart: false, isEnd: false, isBlocked: false, isExplored: false },
-    { isStart: false, isEnd: false, isBlocked: false, isExplored: false },
-    { isStart: false, isEnd: false, isBlocked: false, isExplored: false },
-    { isStart: false, isEnd: false, isBlocked: false, isExplored: false },
-    { isStart: false, isEnd: false, isBlocked: false, isExplored: false },
-    { isStart: false, isEnd: false, isBlocked: false, isExplored: false },
-    { isStart: false, isEnd: false, isBlocked: false, isExplored: false },
-  ],
-  [
-    { isStart: false, isEnd: false, isBlocked: false, isExplored: false },
-    { isStart: false, isEnd: false, isBlocked: true, isExplored: false },
-    { isStart: false, isEnd: false, isBlocked: true, isExplored: false },
-    { isStart: false, isEnd: false, isBlocked: true, isExplored: false },
-    { isStart: false, isEnd: false, isBlocked: true, isExplored: false },
-    { isStart: false, isEnd: false, isBlocked: true, isExplored: false },
-    { isStart: false, isEnd: false, isBlocked: false, isExplored: false },
-  ],
-  [
-    { isStart: true, isEnd: false, isBlocked: false, isExplored: false },
-    { isStart: false, isEnd: false, isBlocked: false, isExplored: false },
-    { isStart: false, isEnd: false, isBlocked: false, isExplored: false },
-    { isStart: false, isEnd: false, isBlocked: false, isExplored: false },
-    { isStart: false, isEnd: false, isBlocked: false, isExplored: false },
-    { isStart: false, isEnd: false, isBlocked: true, isExplored: false },
-    { isStart: false, isEnd: true, isBlocked: false, isExplored: false },
-  ]
-];
+// function generateStartingGrid(rows, cols){
+//   let grid = [];
+//   for (let i = 0; i < rows; i++){
+//     let row = [];
+//     for (let j = 0; j < cols; j++){
+//       row.push({ isStart: false, isEnd: false, isBlocked: false, isExplored: false });
+//     }
+//     grid.push(row);
+//   }
+//   grid[0][0].isStart = true;
+//   grid[rows - 1][cols - 1].isEnd = true;
+//   return grid;
+// }
 
-let grid2 = [[{"row":0,"col":0,"isStart":true,"isEnd":false,"isBlocked":false,"isExplored":false},{"row":0,"col":1,"isStart":false,"isEnd":false,"isBlocked":false,"isExplored":false},{"row":0,"col":2,"isStart":false,"isEnd":false,"isBlocked":false,"isExplored":false},{"row":0,"col":3,"isStart":false,"isEnd":false,"isBlocked":false,"isExplored":false}],[{"row":1,"col":0,"isStart":false,"isEnd":false,"isBlocked":false,"isExplored":false},{"row":1,"col":1,"isStart":false,"isEnd":false,"isBlocked":false,"isExplored":false},{"row":1,"col":2,"isStart":false,"isEnd":false,"isBlocked":false,"isExplored":false},{"row":1,"col":3,"isStart":false,"isEnd":false,"isBlocked":false,"isExplored":false}],[{"row":2,"col":0,"isStart":false,"isEnd":false,"isBlocked":false,"isExplored":false},{"row":2,"col":1,"isStart":false,"isEnd":false,"isBlocked":false,"isExplored":false},{"row":2,"col":2,"isStart":false,"isEnd":false,"isBlocked":false,"isExplored":false},{"row":2,"col":3,"isStart":false,"isEnd":false,"isBlocked":false,"isExplored":false}],[{"row":3,"col":0,"isStart":false,"isEnd":false,"isBlocked":false,"isExplored":false},{"row":3,"col":1,"isStart":false,"isEnd":false,"isBlocked":false,"isExplored":false},{"row":3,"col":2,"isStart":false,"isEnd":false,"isBlocked":false,"isExplored":false},{"row":3,"col":3,"isStart":false,"isEnd":true,"isBlocked":false,"isExplored":false}]];
-
-// printVid(aStar(grid));
+// console.log(JSON.stringify(generateStartingGrid(15, 25)));
 
 export default aStar;

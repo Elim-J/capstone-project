@@ -17,7 +17,7 @@ const PathfindActionBar = ({grid, setGrid, currentFrame, setCurrentFrame, vid, s
         if(vid && currentFrame < vid.length - 1){
             console.log('stepping forward');
             // console.log(JSON.stringify(vid));
-            // console.log(vid[currentFrame + 1].grid);
+            console.log(vid[currentFrame + 1].grid);
             setGrid(vid[currentFrame + 1].grid);
             setCurrentFrame(currentFrame + 1);
         }
@@ -34,6 +34,16 @@ const PathfindActionBar = ({grid, setGrid, currentFrame, setCurrentFrame, vid, s
         }
     };
 
+    const handleReset = () => {
+        setCurrentFrame(0);
+        setGrid(vid[0].grid);
+    }
+
+    const handleSkipToEnd = () => {
+        setCurrentFrame(vid.length - 1);
+        setGrid(vid[vid.length - 1].grid);
+    }
+
     const { palette } = createTheme();
     const { augmentColor } = palette;
     const createColor = (mainColor) => augmentColor({ color: { main: mainColor } });
@@ -48,8 +58,7 @@ const PathfindActionBar = ({grid, setGrid, currentFrame, setCurrentFrame, vid, s
         <div className="actionbar">
             <ThemeProvider theme={btnTheme}>
                 <ButtonGroup size="large" color="black">
-                    <Button variant="text" > 
-                    {/* onClick={handleReset} */}
+                    <Button variant="text" onClick={handleReset}>
                         <SkipPreviousIcon/>
                     </Button>
                     <Button variant="text" onClick={handleStepBackward}>
@@ -63,8 +72,7 @@ const PathfindActionBar = ({grid, setGrid, currentFrame, setCurrentFrame, vid, s
                     <Button variant="text" onClick={handleStepForward}>
                         <NavigateNextIcon/>
                     </Button>
-                    <Button variant="text" >
-                    {/* onClick={handleSkipToEnd} */}
+                    <Button variant="text" onClick={handleSkipToEnd}>
                         <SkipNextIcon/>
                     </Button>
                     

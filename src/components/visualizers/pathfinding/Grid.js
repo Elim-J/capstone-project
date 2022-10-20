@@ -2,7 +2,7 @@ import React, {useState, useEffect, useRef} from "react";
 import Cell from "./Cell";
 import "../../../css/Grid.css";
 import GridToolbar from "./GridToolbar";
-import PathfindingAlgs from "../../../constants/PathfindingAlgs";
+import {PathfindingAlgs, StartingGrid} from "../../../constants/PathfindingAlgs";
 import aStar from "./aStar";
 import PathfindActionBar from "./PathfindActionBar";
 
@@ -18,12 +18,14 @@ const Grid = () => {
         END_CELL_ROW = row - 1,
         END_CELL_COL = col - 1;
 
-    const [grid, setGrid] = useState([]);
+    let startingVid = aStar(StartingGrid);
+
+    const [grid, setGrid] = useState(startingVid[0].grid);
     const [startCell, setStart] = useState(null);
     const [endCell, setEnd] = useState(null);
     const [alg, setAlg] = useState(0);
     const [currentFrame, setCurrentFrame] = useState(0);
-    const [vid, setVid] = useState(null);
+    const [vid, setVid] = useState(startingVid);
 
     //used as a lock
     const [isBusy, setIsBusy] = useState(false);
@@ -83,7 +85,10 @@ const Grid = () => {
                     g[i][j].isBlocked = Math.random() < .2 ? true : false;
             }
         }
-        setGrid(g);
+        let rndVid = aStar(g);
+        setVid(rndVid);
+        setGrid(rndVid[0].grid);
+        setCurrentFrame(0);
     };
 
     const clearGrid = () => {

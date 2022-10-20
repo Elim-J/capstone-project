@@ -1,6 +1,6 @@
 import React from 'react';
 import "../../../css/Cell.css";
-import PathfindingAlgs from '../../../constants/PathfindingAlgs';
+import {PathfindingAlgs} from '../../../constants/PathfindingAlgs';
 
 const Cell = ({row, col, alg, isStart, isEnd, isBlocked, isExplored, heuristic, isDiscovered, isPath, 
   onMouseLeave, onMouseEnter, onMouseDown, onMouseUp}) => {

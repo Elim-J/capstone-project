@@ -1,6 +1,6 @@
 import { Button, ButtonGroup, createTheme, ThemeProvider } from '@mui/material';
 import "../../../css/GridToolbar.css";
-import PathfindingAlgs from "../../../constants/PathfindingAlgs";
+import {PathfindingAlgs} from "../../../constants/PathfindingAlgs";
 
 const GridToolbar = ({ onSearch, setAlg, onClear, onRandomGrid, onClearWalls, onStepForward, onStepBackward }) => {
 
@@ -28,7 +28,7 @@ const GridToolbar = ({ onSearch, setAlg, onClear, onRandomGrid, onClearWalls, on
                                     // console.log(e.target.value);
                                     onSearch(e.target.value);
                                 }}
-                                defaultValue={PathfindingAlgs.None}>
+                                defaultValue={PathfindingAlgs.Astar}>
                                     {Object.values(PathfindingAlgs).map(val => (
                                         <option
                                             aria-selected="true"
