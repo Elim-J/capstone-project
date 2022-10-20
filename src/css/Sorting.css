@@ -1,9 +1,12 @@
-.sort-wrapper {
+.sorting-content {
     display: flex;
-    border-style: solid;
-    background-color: rgb(181, 159, 159);
+}
+.graph-wrapper {
+    display: flex;
+    /* border-style: solid;
+    background-color: rgb(181, 159, 159); */
     margin: 25px 25px;
-    width: 95%;
+    /* width: 70%; */
     align-items: flex-end;
     height: 600px
 }
@@ -25,9 +28,40 @@
     font-weight: bold;
 }
 
-.center-button {
-    /* margin: 0px;
-    position: absolute;
-    left: 50%; */
+.actionbar {
+    display: flex;
+    justify-content: center;
+    background-color: rgba(0,0,0, .2);
+    overflow: hidden;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
 }
 
+.code-content{
+    padding: 20px 20px;
+    padding-left: 50px;
+}
+
+
+/* TODO color scheme needs to change */
+.code-wrapper {
+    border: solid 3px rgb(187, 187, 187);
+    margin: 25px 50px;
+    position: fixed;
+    bottom: 75px;
+    right: 0;
+    border-radius: 5px;
+    background-color: rgba(112, 112, 112, 0.385);
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px, rgba(0, 0, 0, 0.22) 0px 10px 10px;
+}
+
+.code-content pre {
+    padding: 0;
+    margin: 0;
+}
+
+.highlight {
+    background-color: rgb(255, 255, 0.75);
+    transition: background-color .8s linear;
+}
