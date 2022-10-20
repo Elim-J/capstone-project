@@ -17,14 +17,28 @@
 }
 
 .cell-discovered {
-    animation-name: discoveredAnimation;
+    background: aqua;
+    background: repeating-linear-gradient(
+        -45deg,
+        transparent,
+        transparent 4px,
+        transparent 1px,
+        aqua 7px
+      ),
+      linear-gradient(
+        to bottom,
+        transparent,
+        transparent
+      );
+    
+    /* animation-name: discoveredAnimation;
     animation-duration: 1.5s;
     animation-timing-function: ease-out;
     animation-delay: 0;
     animation-direction: alternate;
     animation-iteration-count: 1;
     animation-fill-mode: forwards;
-    animation-play-state: running;
+    animation-play-state: running; */
 }
 
 .cell-explored {

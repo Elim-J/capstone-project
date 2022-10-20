@@ -50,7 +50,7 @@ const Grid = () => {
             END_CELL_ROW = Math.floor(Math.random() * row);
             END_CELL_COL = Math.floor(Math.random() * col);
         } while(START_CELL_ROW === END_CELL_ROW && START_CELL_COL === END_CELL_COL);
-        console.log(START_CELL_ROW + ' ' + START_CELL_COL + ' ' + END_CELL_ROW + ' ' + END_CELL_COL);
+        // console.log(START_CELL_ROW + ' ' + START_CELL_COL + ' ' + END_CELL_ROW + ' ' + END_CELL_COL);
     };
 
     const createCell = (row, col) => {

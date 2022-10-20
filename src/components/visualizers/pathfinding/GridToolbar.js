@@ -1,6 +1,7 @@
 import { Button, ButtonGroup, createTheme, ThemeProvider } from '@mui/material';
 import "../../../css/GridToolbar.css";
 import {PathfindingAlgs} from "../../../constants/PathfindingAlgs";
+import EditIcon from '@mui/icons-material/Edit';
 
 const GridToolbar = ({ onSearch, setAlg, onClear, onRandomGrid, onClearWalls, onStepForward, onStepBackward }) => {
 
@@ -42,6 +43,12 @@ const GridToolbar = ({ onSearch, setAlg, onClear, onRandomGrid, onClearWalls, on
                             </select>
                         </label>
                     </li>
+                    {/* <li className="toolbarItem d-flex flex-column flex-md-row">
+                        <Button variant="secondary" className="my-btn">
+                            <EditIcon />
+                            &nbsp;&nbsp;Edit board
+                        </Button>
+                    </li> */}
 
                     <li className="toolbarItem d-flex flex-column flex-md-row">
                         <Button variant="secondary" className="my-btn" onClick={onClear}>Clear Path</Button>
@@ -50,12 +57,6 @@ const GridToolbar = ({ onSearch, setAlg, onClear, onRandomGrid, onClearWalls, on
                     <li className="toolbarItem d-flex flex-column flex-md-row">
                         <Button className="my-btn" variant="dark" onClick={onRandomGrid}>Randomize Grid</Button>
                     </li>
-                    {/* <li className="toolbarItem d-flex flex-column flex-md-row">
-                        <Button className="my-btn" variant="dark" onClick={onStepForward}>Step Forward</Button>
-                    </li>
-                    <li className="toolbarItem d-flex flex-column flex-md-row">
-                        <Button className="my-btn" variant="dark" onClick={onStepBackward}>Step Backward</Button>
-                    </li> */}
                 </ul>
 
             </div>

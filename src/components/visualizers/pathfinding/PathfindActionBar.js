@@ -17,8 +17,8 @@ const PathfindActionBar = ({grid, setGrid, currentFrame, setCurrentFrame, vid, s
     const handleStepForward = () => {
         if(vid && currentFrame < vid.length - 1){
             console.log('stepping forward');
-            console.log('currentSpeed: ' + currentSpeed.current);
-            console.log('currentFrame: ' + frame.current);
+            // console.log('currentSpeed: ' + currentSpeed.current);
+            // console.log('currentFrame: ' + frame.current);
 
             // console.log(vid[frame.current++].grid);
             setGrid(vid[++frame.current].grid);
