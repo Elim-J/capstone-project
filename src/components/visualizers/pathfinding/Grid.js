@@ -22,12 +22,13 @@ const Grid = () => {
 
     const [grid, setGrid] = useState(startingVid[0].grid);
     const [startCell, setStart] = useState(null);
-    const [endCell, setEnd] = useState(null);
     const [alg, setAlg] = useState(PathfindingAlgs.Astar);
     const [currentFrame, setCurrentFrame] = useState(0);
     const [vid, setVid] = useState(startingVid);
     const [isPaused, setIsPaused] = useState(true);
     const [speed, setSpeed] = useState(250); //ms
+
+    const [editMode, setEditMode] = useState(false);
 
     //used as a lock
     const [isBusy, setIsBusy] = useState(false);
@@ -35,7 +36,7 @@ const Grid = () => {
     //mouse events
     const [mouseClicked, setMouseClicked] = useState(false);
     const [endMove, setEndMove] = useState(false);
-    const [startMove, setStartMove] = useState(false);
+    const [startMove, setStartMove] = useState(false);    
 
     useEffect(() => {
         setGrid(createGrid);
@@ -75,7 +76,7 @@ const Grid = () => {
             g.push(r);
         }
         setStart(g[START_CELL_ROW][START_CELL_COL]);
-        setEnd(g[END_CELL_ROW][END_CELL_COL]);
+        // setEnd(g[END_CELL_ROW][END_CELL_COL]);
         return g;
     };
 
@@ -135,7 +136,8 @@ const Grid = () => {
                                     onMouseLeave={(r, co) => mouseLeaveHandler(r, co)}
                                     onMouseEnter={(r, co) => mouseEnterHandler(r, co)}
                                     onMouseDown={(r, co) => mouseDownHandler(r, co)}
-                                    onMouseUp={(r, co) => mouseUpHandler(r, co)}>
+                                    onMouseUp={(r, co) => mouseUpHandler(r, co)}
+                                    onContextMenu={(r, co) => contextMenuHandler(r, co)}>
                                 </Cell>
                             );
                         })}
@@ -213,7 +215,7 @@ const Grid = () => {
         if (endMove) {
             grid[row][col].isWall = false;
             setGrid(grid.slice());
-            setEnd(grid[row][col]);
+            // setEnd(grid[row][col]);
         }
         if (startMove) {
             grid[row][col].isWall = false;
@@ -223,6 +225,12 @@ const Grid = () => {
         setMouseClicked(false);
         setEndMove(false);
         setStartMove(false);
+    };
+
+    const contextMenuHandler = (row, col) => {
+        console.log('in menu handler');
+        grid[row][col].isEnd = !grid[row][col].isEnd;
+        setGrid(grid.slice());
     };
     // end mouse handlers
 

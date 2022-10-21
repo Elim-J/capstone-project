@@ -43,12 +43,12 @@ const GridToolbar = ({ onSearch, setAlg, onClear, onRandomGrid, onClearWalls, on
                             </select>
                         </label>
                     </li>
-                    {/* <li className="toolbarItem d-flex flex-column flex-md-row">
+                    <li className="toolbarItem d-flex flex-column flex-md-row">
                         <Button variant="secondary" className="my-btn">
                             <EditIcon />
                             &nbsp;&nbsp;Edit board
                         </Button>
-                    </li> */}
+                    </li>
 
                     <li className="toolbarItem d-flex flex-column flex-md-row">
                         <Button variant="secondary" className="my-btn" onClick={onClear}>Clear Path</Button>
