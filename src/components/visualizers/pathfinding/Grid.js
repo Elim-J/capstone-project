@@ -18,16 +18,20 @@ const Grid = () => {
         END_CELL_ROW = row - 1,
         END_CELL_COL = col - 1;
 
+    let lastStartCellRow = 0,
+        lastStartCellCol = 0;
+
     let startingVid = aStar(StartingGrid);
 
     const [grid, setGrid] = useState(startingVid[0].grid);
-    const [startCell, setStart] = useState(null);
+    const [lastStartCell, setLastStartCell] = useState({row: 0, col: 0});
     const [alg, setAlg] = useState(PathfindingAlgs.Astar);
     const [currentFrame, setCurrentFrame] = useState(0);
     const [vid, setVid] = useState(startingVid);
     const [isPaused, setIsPaused] = useState(true);
     const [speed, setSpeed] = useState(250); //ms
     const [showAni, setShowAni] = useState(true);
+    const [mouseInGrid, setMouseInGrid] = useState(false);
 
     const [editMode, setEditMode] = useState(false);
 
@@ -76,7 +80,7 @@ const Grid = () => {
             }
             g.push(r);
         }
-        setStart(g[START_CELL_ROW][START_CELL_COL]);
+        // setStart(g[START_CELL_ROW][START_CELL_COL]);
         // setEnd(g[END_CELL_ROW][END_CELL_COL]);
         return g;
     };
@@ -101,9 +105,7 @@ const Grid = () => {
         console.log('Clearing grid');
         for(let i = 0; i < grid.length; i++){
             for(let j = 0; j < grid[i].length; j++){
-                let n = grid[i][j];
-                if(n.isBlocked)
-                    n.isBlocked = !n.isBlocked;
+                grid[i][j].isBlocked = false;
             }
         }
         setGrid(grid.slice());
@@ -152,52 +154,70 @@ const Grid = () => {
     //mouse handlers
     //only refreshing the dom if return a new object?
     const updateGridWall = (row, col) => {
-        console.log("wall");
+        console.log("updateGridWall", row, col);
         grid[row][col].isBlocked = !grid[row][col].isBlocked;
         setGrid(grid.slice());
     };
 
     //TODO running into issues where clicking quickly causes mouse up and down events to do weird things
 
-    const updateGridEndCell = (row, col) => {
-        // console.log("end");
-        grid[row][col].isEnd = !grid[row][col].isEnd;
+    const updateGridEndCell = (row, col, isEnter) => {
+        console.log("updateGridEndCell", row, col);
+        if (grid[row][col].isStart){
+            return;
+        }
+        if (endMove){
+            grid[row][col].isEnd = !grid[row][col].isEnd;
+            if (grid[row][col].wasEnd){
+                grid[row][col].isEnd = true;
+                delete grid[row][col].wasEnd
+            }
+            if (isEnter && !grid[row][col].isEnd){
+                grid[row][col].isEnd = true;
+                grid[row][col].wasEnd = true;
+            }
+        }
         setGrid(grid.slice());
     };
 
     const updateGridStartCell = (row, col) => {
-        // console.log("start");
-        grid[row][col].isStart = !grid[row][col].isStart;
-        setGrid(grid.slice());
+        console.log("updateGridStartCell", row, col);
+        if (mouseInGrid){
+            grid[row][col].isStart = !grid[row][col].isStart;
+            if (grid[row][col].isStart){
+                setLastStartCell({row: row, col: col});
+            }
+            setGrid(grid.slice());
+        }
     };
 
     const mouseLeaveHandler = (row, col) => {
+        console.log("mouseLeaveHandler", row, col)
         if (!mouseClicked)
             return;
         if (startMove) {
             updateGridStartCell(row, col);
         } else if (endMove) {
-            updateGridEndCell(row, col);
+            updateGridEndCell(row, col, false);
         }
     };
 
     const mouseEnterHandler = (row, col) => {
+        console.log("mouseEnterHandler", row, col);
         if (!mouseClicked)
             return;
-        // console.log("entering");
         if (startMove) {
             updateGridStartCell(row, col);
         } else if (endMove) {
-            updateGridEndCell(row, col);
+            updateGridEndCell(row, col, true);
         } else {
             updateGridWall(row, col);
         }
     };
 
     const mouseDownHandler = (row, col) => {
+        console.log('mouseDownHandler:', row, col)
         if (!editMode) {
-            // setError("Clear path before editing!");
-            console.log('edit mode');
             return;
         };
         setMouseClicked(true);
@@ -213,17 +233,17 @@ const Grid = () => {
     };
 
     const mouseUpHandler = (row, col) => {
-        // console.log(row, col);
-        // console.log("up");
+        console.log('mouseUpHandler', row, col)
+        delete grid[row][col].wasEnd;
         if (endMove) {
-            grid[row][col].isWall = false;
+            grid[row][col].isBlocked = false;
             setGrid(grid.slice());
-            // setEnd(grid[row][col]);
         }
         if (startMove) {
-            grid[row][col].isWall = false;
+            grid[row][col].isBlocked = false;
+            grid[row][col].isEnd = false;
             setGrid(grid.slice());
-            setStart(grid[row][col]);
+            // setStart(grid[row][col]);
         }
         setMouseClicked(false);
         setEndMove(false);
@@ -231,9 +251,11 @@ const Grid = () => {
     };
 
     const contextMenuHandler = (row, col) => {
-        if (!editMode)
+        console.log("contextMenuHandler", row, col)
+        if (!editMode || grid[row][col].isStart)
             return;
         console.log('in menu handler');
+        grid[row][col].isBlocked = false;
         grid[row][col].isEnd = !grid[row][col].isEnd;
         setGrid(grid.slice());
     };
@@ -252,6 +274,26 @@ const Grid = () => {
         setShowAni(e.target.checked);  
     };
 
+    const handleMouseLeaveGrid = () => {
+        console.log('handleMouseLeaveGrid');
+        if (startMove){
+            console.log('here', lastStartCell.row, lastStartCell.col);
+            grid[lastStartCell.row][lastStartCell.col].isBlocked = false;
+            grid[lastStartCell.row][lastStartCell.col].isEnd = false;
+            grid[lastStartCell.row][lastStartCell.col].isStart = true;
+            setGrid(grid.slice());
+            // setStart(grid[lastStartCell.row][lastStartCell.col]);
+        }
+        setMouseClicked(false);
+        setEndMove(false);
+        setStartMove(false);
+        setMouseInGrid(false);
+    }
+
+    const handleMouseEnterGrid = () => {
+        console.log('handleMouseEnterGrid');
+        setMouseInGrid(true);
+    }
 
 
     return (
@@ -262,7 +304,7 @@ const Grid = () => {
             handleReset={handleReset}
             setShowAni={handleAnimationToggle}
         />
-        <div className="grid-container">
+        <div onMouseEnter={handleMouseEnterGrid} onMouseLeave={handleMouseLeaveGrid} className="grid-container"> 
             {gridWithNodes}
         </div>
         {!editMode && 

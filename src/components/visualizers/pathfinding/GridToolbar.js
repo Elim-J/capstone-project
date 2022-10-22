@@ -65,7 +65,7 @@ const GridToolbar = ({ onSearch, setAlg, onClear, onRandomGrid, onClearWalls, ed
                             }
                             
                             editModeHandler();
-                            }} sx={{width: 150}}>
+                            }} sx={{width: 160}}>
                             {!edit ? 
                             <> <EditIcon /><span>&nbsp;&nbsp;Edit board</span>
                             </> : <><PlayCircleOutlineIcon /><span>&nbsp;&nbsp;Visualize</span></>}

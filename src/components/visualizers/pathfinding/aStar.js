@@ -136,6 +136,7 @@ function aStar(g) {
         }
       }
     }
+    vid.push(generateFrame(grid, rows, cols, null, 'Failed to find path', []))
     return vid;
   }
   function generateFrame(grid, rows, cols, path, message, highlightCode) {
