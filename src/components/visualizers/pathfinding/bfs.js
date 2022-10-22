@@ -27,14 +27,15 @@ export function bfs(grid) {
     return E;
   }
   let vid = [generateFrame(grid, rows, cols, null, 'Starting bfs algorithm...', [])];
-  grid[startPos.row][startPos.column].isExplored = true;
+  grid[startPos.row][startPos.column].isDiscovered = true;
   queue.push(startPos);
   let numberOfNodes = 1;
   while (queue.length > 0) {
     ++numberOfNodes;
     const searchNode = queue.shift();
+    grid[searchNode.row][searchNode.column].isExplored = true;
+    vid.push(generateFrame(grid, rows, cols, null, 'Removed node from queue', []));
     if (grid[searchNode.row][searchNode.column].isEnd) {
-      grid[searchNode.row][searchNode.column].isExplored = true;
       let path = [];
       let currentNode = searchNode;
       while (currentNode != null) {
@@ -42,16 +43,19 @@ export function bfs(grid) {
         currentNode = currentNode.prevNode;
       }
       path.reverse();
-      vid.push(generateFrame(grid, rows, cols, path, 'Returning path', []));
+      for (let i = 0; i < path.length; i++){
+        let currentPath = path.slice(0, i);
+        vid.push(generateFrame(grid, rows, cols, currentPath, 'Returning path', []));
+      }
       return vid;
     } else {
       if (
         //Search Up
         searchNode.row - 1 >= 0 &&
         !grid[searchNode.row - 1][searchNode.column].isBlocked &&
-        !grid[searchNode.row - 1][searchNode.column].isExplored
+        !grid[searchNode.row - 1][searchNode.column].isDiscovered
       ) {
-        grid[searchNode.row - 1][searchNode.column].isExplored = true;
+        grid[searchNode.row - 1][searchNode.column].isDiscovered = true;
         queue.push({
           row: searchNode.row - 1,
           column: searchNode.column,
@@ -63,9 +67,9 @@ export function bfs(grid) {
         //Search Left
         searchNode.column - 1 >= 0 &&
         !grid[searchNode.row][searchNode.column - 1].isBlocked &&
-        !grid[searchNode.row][searchNode.column - 1].isExplored
+        !grid[searchNode.row][searchNode.column - 1].isDiscovered
       ) {
-        grid[searchNode.row][searchNode.column - 1].isExplored = true;
+        grid[searchNode.row][searchNode.column - 1].isDiscovered = true;
         queue.push({
           row: searchNode.row,
           column: searchNode.column - 1,
@@ -77,9 +81,9 @@ export function bfs(grid) {
         //Search Down
         searchNode.row + 1 < rows &&
         !grid[searchNode.row + 1][searchNode.column].isBlocked &&
-        !grid[searchNode.row + 1][searchNode.column].isExplored
+        !grid[searchNode.row + 1][searchNode.column].isDiscovered
       ) {
-        grid[searchNode.row + 1][searchNode.column].isExplored = true;
+        grid[searchNode.row + 1][searchNode.column].isDiscovered = true;
         queue.push({
           row: searchNode.row + 1,
           column: searchNode.column,
@@ -91,9 +95,9 @@ export function bfs(grid) {
         //Search Right
         searchNode.column + 1 < cols &&
         !grid[searchNode.row][searchNode.column + 1].isBlocked &&
-        !grid[searchNode.row][searchNode.column + 1].isExplored
+        !grid[searchNode.row][searchNode.column + 1].isDiscovered
       ) {
-        grid[searchNode.row][searchNode.column + 1].isExplored = true;
+        grid[searchNode.row][searchNode.column + 1].isDiscovered = true;
         queue.push({
           row: searchNode.row,
           column: searchNode.column + 1,
@@ -106,19 +110,32 @@ export function bfs(grid) {
   console.log("Finished after searching " + numberOfNodes);
   return vid;
 }
+
 function generateFrame(grid, rows, cols, path, message, highlightCode) {
-  let frame = [{rows: rows, cols: cols, path: path, message: message, highlightCode: highlightCode}];
+  let frame = {info: {rows: rows, cols: cols, message: message, highlightCode: highlightCode}, grid: []};
   for (let i = 0; i < rows; i++) {
     let thisRow = [];
     for (let j = 0; j < cols; j++) {
+      let isOnPath = false;
+      if (path){
+        path.forEach(node => {
+          if (node.row == i && node.column == j){
+            isOnPath = true;
+          }
+        })
+      }
       thisRow.push({
+        row: i,
+        col: j,
         isStart: grid[i][j].isStart,
         isEnd: grid[i][j].isEnd,
         isBlocked: grid[i][j].isBlocked,
+        isDiscovered: grid[i][j].isDiscovered,
         isExplored: grid[i][j].isExplored,
+        isPath: isOnPath 
       });
     }
-    frame.push(thisRow);
+    frame.grid.push(thisRow);
   }
   return frame;
 }

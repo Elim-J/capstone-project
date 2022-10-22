@@ -4,6 +4,7 @@ import "../../../css/Grid.css";
 import GridToolbar from "./GridToolbar";
 import {PathfindingAlgs, StartingGrid} from "../../../constants/PathfindingAlgs";
 import aStar from "./aStar";
+import {bfs} from "./bfs";
 import PathfindActionBar from "./PathfindActionBar";
 
 
@@ -95,10 +96,10 @@ const Grid = () => {
             }
         }
         let rndVid = aStar(g);
-        setVid(rndVid);
+        // setVid(rndVid);
         setGrid(rndVid[0].grid);
-        setCurrentFrame(0);
-        console.log(JSON.stringify(rndVid[0].grid));
+        // setCurrentFrame(0);
+        // console.log(JSON.stringify(rndVid[0].grid));
     };
 
     const clearGrid = () => {
@@ -120,6 +121,11 @@ const Grid = () => {
             console.log('setting vid to astar');
             setVid(aStar(grid));
             // setAlg(targetAlg);
+        } else if (alg == PathfindingAlgs.Bfs){
+            let vid = bfs(grid);
+            setVid(vid);
+            setCurrentFrame(0);
+            setGrid(vid[0].grid);
         }
     };
 
