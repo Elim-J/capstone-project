@@ -27,6 +27,7 @@ const Grid = () => {
     const [vid, setVid] = useState(startingVid);
     const [isPaused, setIsPaused] = useState(true);
     const [speed, setSpeed] = useState(250); //ms
+    const [showAni, setShowAni] = useState(true);
 
     const [editMode, setEditMode] = useState(false);
 
@@ -108,15 +109,15 @@ const Grid = () => {
         setGrid(grid.slice());
     };
 
-    const searchHandler = (targetAlg) => {
+    const searchHandler = () => {
         //TODO add isBusy state to check if search can be ran
-        console.log('search handler targetAlg: ' + targetAlg);
-        if(targetAlg == PathfindingAlgs.None){
+        console.log('search handler targetAlg: ' + alg);
+        if(alg == PathfindingAlgs.None){
             //send error?
-        } else if (targetAlg == PathfindingAlgs.Astar){
+        } else if (alg == PathfindingAlgs.Astar){
             console.log('setting vid to astar');
             setVid(aStar(grid));
-            setAlg(targetAlg);
+            // setAlg(targetAlg);
         }
     };
 
@@ -137,7 +138,8 @@ const Grid = () => {
                                     onMouseEnter={(r, co) => mouseEnterHandler(r, co)}
                                     onMouseDown={(r, co) => mouseDownHandler(r, co)}
                                     onMouseUp={(r, co) => mouseUpHandler(r, co)}
-                                    onContextMenu={(r, co) => contextMenuHandler(r, co)}>
+                                    onContextMenu={(r, co) => contextMenuHandler(r, co)}
+                                    showAni={showAni}>
                                 </Cell>
                             );
                         })}
@@ -193,8 +195,9 @@ const Grid = () => {
     };
 
     const mouseDownHandler = (row, col) => {
-        if (isBusy) {
+        if (!editMode) {
             // setError("Clear path before editing!");
+            console.log('edit mode');
             return;
         };
         setMouseClicked(true);
@@ -228,26 +231,47 @@ const Grid = () => {
     };
 
     const contextMenuHandler = (row, col) => {
+        if (!editMode)
+            return;
         console.log('in menu handler');
         grid[row][col].isEnd = !grid[row][col].isEnd;
         setGrid(grid.slice());
     };
     // end mouse handlers
 
+    
+    const handleReset = () => {
+        setCurrentFrame(0);
+        setGrid(vid[0].grid);
+        setIsPaused(true);
+        clearTimeout(childStateRef.current.getTimeoutId());
+    };
+    const childStateRef = useRef();
+    const handleAnimationToggle = (e) => {
+        console.log('handle animation toggle' + e.target.checked);
+        setShowAni(e.target.checked);  
+    };
+
+
 
     return (
         <>
         <GridToolbar onSearch={searchHandler} setAlg={setAlg} 
             onClearWalls={clearGrid} onRandomGrid={randomizeGrid} 
-            // onStepForward={handleStepForward} onStepBackward={handleStepBackward}
+            edit={editMode} setEditMode={setEditMode}
+            handleReset={handleReset}
+            setShowAni={handleAnimationToggle}
         />
         <div className="grid-container">
             {gridWithNodes}
         </div>
-        <PathfindActionBar grid={grid} setGrid={setGrid} 
-            currentFrame={currentFrame} setCurrentFrame={setCurrentFrame} vid={vid} setVid={setVid}
-            speed={speed} setSpeed={setSpeed}
-            isPaused={isPaused} setIsPaused={setIsPaused}/>
+        {!editMode && 
+        <PathfindActionBar ref={childStateRef} grid={grid} setGrid={setGrid} 
+        currentFrame={currentFrame} setCurrentFrame={setCurrentFrame} vid={vid} setVid={setVid}
+        speed={speed} setSpeed={setSpeed}
+        isPaused={isPaused} setIsPaused={setIsPaused}
+        handleReset={handleReset}/>}
+        
         </>
     );
 }

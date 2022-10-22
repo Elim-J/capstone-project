@@ -1,21 +1,18 @@
-import React from 'react';
+import React, {useRef} from 'react';
 import "../../../css/Cell.css";
 import {PathfindingAlgs} from '../../../constants/PathfindingAlgs';
 
 const Cell = ({row, col, alg, isStart, isEnd, isBlocked, isExplored, heuristic, isDiscovered, isPath, 
-  onMouseLeave, onMouseEnter, onMouseDown, onMouseUp, onContextMenu}) => {
+  onMouseLeave, onMouseEnter, onMouseDown, onMouseUp, onContextMenu, showAni}) => {
 
   const nodeType = isStart ? "cell-start" : isEnd ? "cell-end" : isPath ? "cell-path" : isExplored ? 
   "cell-explored" : isDiscovered ? "cell-discovered" : isBlocked ? "cell-wall" : "";
-
-//   document.addEventListener("contextmenu", (event) => {
-//     event.preventDefault();
-//     console.log('context menu');
-// });
+  
+  const showAnimation = showAni ? "" : "no-animation";
 
   return (
     <div 
-      className={`cell ${nodeType} prevent-select`} 
+      className={`cell ${nodeType} ${showAnimation} prevent-select`} 
       id={`cell-${row}-${col}`}
       onContextMenu={(e) =>{
         e.preventDefault();

@@ -16,8 +16,7 @@
     background-color: black;
 }
 
-.cell-discovered {
-    background: aqua;
+.cell-discovered {   
     background: repeating-linear-gradient(
         -45deg,
         transparent,
@@ -30,9 +29,10 @@
         transparent,
         transparent
       );
+      background-color: rgba(0, 255, 255, 0.304);
     
     animation-name: discoveredAnimation;
-    animation-duration: 1.5s;
+    animation-duration: 1s;
     animation-timing-function: ease-out;
     animation-delay: 0;
     animation-direction: alternate;
@@ -42,8 +42,9 @@
 }
 
 .cell-explored {
+    background-color: aqua;
     animation-name: visitedAnimation;
-    animation-duration: 1.5s;
+    animation-duration: 1s;
     animation-timing-function: ease-out;
     animation-delay: 0;
     animation-direction: alternate;
@@ -53,8 +54,9 @@
 }
 
 .cell-path {
+    background-color: yellow;
     animation-name: shortestPath;
-    animation-duration: 2s;
+    animation-duration: 1.5s;
     animation-timing-function: ease-out;
     animation-delay: 0;
     animation-direction: normal;
@@ -67,6 +69,13 @@
     -webkit-user-select: none; /* Safari */
     -ms-user-select: none; /* IE 10 and IE 11 */
     user-select: none; /* Standard syntax */
+}
+
+.no-animation {
+    -webkit-animation: none !important;
+    -moz-animation: none !important;
+    -o-animation: none !important;
+    animation: none !important;
 }
 
 @keyframes discoveredAnimation {
