@@ -1,4 +1,4 @@
-function quickSort(arr, pivotType) {
+export function quickSort(arr, pivotType) {
     let isDonePartitioning = false;
     let rootOfTree = { elements: [], leftSubTree: null, rightSubTree: null, highlight: false };
     for (let i = 0; i < arr.length; i++) {
@@ -31,7 +31,7 @@ function quickSort(arr, pivotType) {
                 pivotVal = nodeToPartition.elements[pivotPos].val;
             }
             nodeToPartition.elements[pivotPos].color = 'green';
-            vid.push(generateFrame(JSON.parse(JSON.stringify(rootOfTree)), 'Picking Pivot', '[Highlight code]', []));
+            // vid.push(generateFrame(JSON.parse(JSON.stringify(rootOfTree)), 'Picking Pivot', '[Highlight code]', []));
 
             let leftSubTree = { elements: [], leftSubTree: null, rightSubTree: null, highlight: false };
             let rightSubTree = { elements: [], leftSubTree: null, rightSubTree: null, highlight: false };
@@ -74,7 +74,7 @@ function quickSort(arr, pivotType) {
             let nodeToMerge = findNextNodeToMerge(rootOfTree);
             nodeToMerge.highlight = true;
 
-            vid.push(generateFrame(JSON.parse(JSON.stringify(rootOfTree)), 'Merging this tree...', '[Highlight ending code]', []));
+            // vid.push(generateFrame(JSON.parse(JSON.stringify(rootOfTree)), 'Merging this tree...', '[Highlight ending code]', []));
 
             let newElements = [];
             if (nodeToMerge?.leftSubTree) { //gather left subtree elements
@@ -217,16 +217,16 @@ function fixTree(rootOfTree){
     while (prevNodes.length != 0){
         let newNodes = [];
         let newFixedNodes = [];
-        prevNodes.forEach(node => {
+        prevNodes.forEach((node, i) => {
             if (node.leftSubTree != null){
                 let fixedNode = {data: fixData(node.leftSubTree.elements), children: [], attributes: null};
-                prevFixedNodes[0].children.push(fixedNode);
+                prevFixedNodes[i].children.push(fixedNode);
                 newNodes.push(node.leftSubTree);
                 newFixedNodes.push(fixedNode);
             }
             if (node.rightSubTree != null){
                 let fixedNode = {data: fixData(node.rightSubTree.elements), children: [], attributes: null};
-                prevFixedNodes[0].children.push(fixedNode);
+                prevFixedNodes[i].children.push(fixedNode);
                 newNodes.push(node.rightSubTree);
                 newFixedNodes.push(fixedNode);
             }
@@ -251,4 +251,4 @@ function fixData(elements){
 //middle
 //first
 //otherwise, random
-console.log(JSON.stringify(quickSort([9, 8, 7, 6, 5, 4, 3, 2, 1], 'random')));
+// console.log(JSON.stringify(quickSort([9, 8, 7, 6, 5, 4, 3, 2, 1], 'random')));

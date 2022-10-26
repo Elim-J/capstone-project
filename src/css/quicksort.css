@@ -1,4 +1,12 @@
-.node__root > circle {
+/* .node__root > circle {
     fill: red;
     border: none;
+  } */
+
+  .tree-container {
+    display: flex;
+    align-items: flex-end;
+    margin: 40px 60px;
+    border: 2px solid black;
+    height: 65vh;
   }
