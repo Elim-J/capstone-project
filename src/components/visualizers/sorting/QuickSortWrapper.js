@@ -51,11 +51,12 @@ export default function App() {
 
   useEffect(() => {
     // handleRandomArr();
-    setVid(quickSort([13, 0, 29, 21, 2, 25, 10, 19, 3, 10], 'last'));
+    setVid(quickSort([13, 0, 29, 21, 2, 25, 10, 19, 3, 10], 'random'));
   }, []);
 
   const handleRandomArr = () => {
-    setVid(quickSort(Array.from({length: 10}, () => Math.floor(Math.random() * 100)), 'last'));
+    setCurrentFrame(0);
+    setVid(quickSort(Array.from({length: 10}, () => Math.floor(Math.random() * 100)), 'random'));
   };
 
   const handleStepForward = () => {
@@ -146,7 +147,7 @@ const handlePause = () => {
           <Button onClick={handleStepBackward}>Step back</Button>
           <Button onClick={handlePlayAndPause}>Play/Pause</Button>
           <Button onClick={handleStepForward}>Step forward</Button>
-          <Button onClick={handleRandomArr}>Random</Button>
+          <Button onClick={handleRandomArr}>Generate Random Data</Button>
           
       </>
     );

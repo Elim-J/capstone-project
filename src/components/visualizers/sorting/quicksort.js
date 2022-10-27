@@ -48,7 +48,7 @@ export function quickSort(arr, pivotType) {
             }
             nodeToPartition.elements = [{ val: pivotVal, color: 'green' }];
 
-            vid.push(generateFrame(JSON.parse(JSON.stringify(rootOfTree)), 'Created left sub tree...', '[Highlight ending code]', []));
+            // vid.push(generateFrame(JSON.parse(JSON.stringify(rootOfTree)), 'Created left sub tree...', '[Highlight ending code]', []));
 
             for (let i = 0; i < partitioningElements.length; i++) {
                 if (i != pivotPos && partitioningElements[i].val >= pivotVal) {
