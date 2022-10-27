@@ -101,6 +101,10 @@ const handlePause = () => {
   }
 };
 
+const handlePivot = () => {
+
+}
+
   const renderRectSvgNode = ({ nodeDatum, toggleNode }) => (
     <g className="r3dt-node">
       
@@ -148,7 +152,18 @@ const handlePause = () => {
           <Button onClick={handlePlayAndPause}>Play/Pause</Button>
           <Button onClick={handleStepForward}>Step forward</Button>
           <Button onClick={handleRandomArr}>Generate Random Data</Button>
-          
+          <label className="dropdown">
+                            <select id="alg-select"
+                                onChange={(e) => {
+                                    handlePivot(e.target.value);
+                                }}
+                            >
+                              <option value='First'>First</option>
+                              <option value='Middle'>Middle</option>
+                              <option value='Last'>Last</option>
+                              <option value='Random'>Random</option>
+                            </select>
+                        </label>
       </>
     );
   }
