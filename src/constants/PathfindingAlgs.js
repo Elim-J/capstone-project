@@ -1,7 +1,8 @@
 export const PathfindingAlgs = {
     None: "--",
     Astar: "A*",
-    Bfs: "Bfs",
+    Bfs: "BFS",
+    MitmBfs: "MitM BFS",
     Dijkstra: "Dijkstra",
 }
 

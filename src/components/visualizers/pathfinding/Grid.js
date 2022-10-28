@@ -6,6 +6,7 @@ import {PathfindingAlgs, StartingGrid} from "../../../constants/PathfindingAlgs"
 import aStar from "./aStar";
 import {bfs} from "./bfs";
 import PathfindActionBar from "./PathfindActionBar";
+import { mitmbfs } from "./mitmbfs";
 
 
 const Grid = () => {
@@ -126,6 +127,12 @@ const Grid = () => {
             setVid(vid);
             setCurrentFrame(0);
             setGrid(vid[0].grid);
+        } else if (alg == PathfindingAlgs.MitmBfs){
+            let vid = mitmbfs(grid);
+            setVid(vid);
+            setCurrentFrame(0);
+            setGrid(vid[0].grid);
+            console.log('line 135');
         }
     };
 
@@ -198,7 +205,7 @@ const Grid = () => {
     };
 
     const mouseLeaveHandler = (row, col) => {
-        console.log("mouseLeaveHandler", row, col)
+        // console.log("mouseLeaveHandler", row, col)
         if (!mouseClicked)
             return;
         if (startMove) {
@@ -209,7 +216,7 @@ const Grid = () => {
     };
 
     const mouseEnterHandler = (row, col) => {
-        console.log("mouseEnterHandler", row, col);
+        // console.log("mouseEnterHandler", row, col);
         if (!mouseClicked)
             return;
         if (startMove) {
@@ -222,7 +229,7 @@ const Grid = () => {
     };
 
     const mouseDownHandler = (row, col) => {
-        console.log('mouseDownHandler:', row, col)
+        // console.log('mouseDownHandler:', row, col)
         if (!editMode) {
             return;
         };
@@ -239,7 +246,7 @@ const Grid = () => {
     };
 
     const mouseUpHandler = (row, col) => {
-        console.log('mouseUpHandler', row, col)
+        // console.log('mouseUpHandler', row, col)
         delete grid[row][col].wasEnd;
         if (endMove) {
             grid[row][col].isBlocked = false;
@@ -281,7 +288,7 @@ const Grid = () => {
     };
 
     const handleMouseLeaveGrid = () => {
-        console.log('handleMouseLeaveGrid');
+        // console.log('handleMouseLeaveGrid');
         if (startMove){
             console.log('here', lastStartCell.row, lastStartCell.col);
             grid[lastStartCell.row][lastStartCell.col].isBlocked = false;
@@ -297,7 +304,7 @@ const Grid = () => {
     }
 
     const handleMouseEnterGrid = () => {
-        console.log('handleMouseEnterGrid');
+        // console.log('handleMouseEnterGrid');
         setMouseInGrid(true);
     }
 

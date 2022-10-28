@@ -29,10 +29,21 @@ export function bfs(grid) {
   let vid = [generateFrame(grid, rows, cols, null, 'Starting bfs algorithm...', [])];
   grid[startPos.row][startPos.column].isDiscovered = true;
   queue.push(startPos);
-  let numberOfNodes = 1;
   while (queue.length > 0) {
-    ++numberOfNodes;
-    const searchNode = queue.shift();
+    let searchNode;
+    let endPos;
+    queue.forEach((node, i) => {
+      if (grid[node.row][node.column].isEnd){
+        endPos = i;
+      }
+    })
+    if (endPos){
+      searchNode = queue.splice(endPos, 1);
+      searchNode = searchNode[0];
+    }
+    else {
+      searchNode = queue.shift();
+    }
     grid[searchNode.row][searchNode.column].isExplored = true;
     vid.push(generateFrame(grid, rows, cols, null, 'Removed node from queue', []));
     if (grid[searchNode.row][searchNode.column].isEnd) {
@@ -43,7 +54,7 @@ export function bfs(grid) {
         currentNode = currentNode.prevNode;
       }
       path.reverse();
-      for (let i = 0; i < path.length; i++){
+      for (let i = 1; i < path.length; i++){
         let currentPath = path.slice(0, i);
         vid.push(generateFrame(grid, rows, cols, currentPath, 'Returning path', []));
       }
@@ -107,7 +118,6 @@ export function bfs(grid) {
       }
     }
   }
-  console.log("Finished after searching " + numberOfNodes);
   return vid;
 }
 
