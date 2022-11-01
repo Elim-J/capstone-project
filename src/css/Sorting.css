@@ -46,7 +46,7 @@
 
 /* TODO color scheme needs to change */
 .code-wrapper {
-    border: solid 3px rgb(187, 187, 187);
+    /* border: solid 3px rgb(187, 187, 187); */
     margin: 25px 50px;
     position: fixed;
     bottom: 75px;

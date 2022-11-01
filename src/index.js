@@ -12,8 +12,8 @@ import GridContainer from './components/visualizers/pathfinding/GridContainer';
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <GridContainer />
-    {/* <SortWrapper/> */}
+    {/* <GridContainer /> */}
+    <SortWrapper/>
   </React.StrictMode>
 );
 
