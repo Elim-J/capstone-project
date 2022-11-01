@@ -1,0 +1,116 @@
+:root {
+    --darkmd--bg: black;
+    --darkmd--accent: #f1c058;
+    --darkmd--txt: white;
+    --darkmd--input-border: rgb(77,77,77,1);
+    --darkmd--label-txt: rgb(95,95,95,1);
+    --lightmd--txt: rgb(95,95,95,1);
+    /* figure out color scheme later */
+}
+
+body {
+    /* should have default settings of App */
+}
+
+/* Default for both dark and light modes */
+
+.form-img-container {
+    display: flex;
+}
+
+.text-container {
+    margin-top: 40%;
+}
+
+ul {
+    list-style: none;
+}
+
+img {
+    width: 50%;
+    height: 100vh;
+}
+
+form {
+    margin: auto;
+    width: 50%;
+    height: 100vh; 
+}
+
+.form-el {
+    margin-left: 10%;
+}
+
+.firstName, .email{
+    margin-right: 1rem;
+}
+
+.first--last {
+    margin-bottom: 1rem;
+}
+
+.label--pass, .email--username {
+    margin-bottom: 1rem;
+}
+
+input {
+    width: 40%;
+    height: 1.5rem;
+    border-radius: 3px;
+    text-indent: 1rem;
+    font-size: 1rem;
+}
+
+input:focus {
+    outline: none; 
+}
+
+button {
+    color: var(--lightmd--txt);
+    background-color: var(--darkmd--accent);
+    font-weight: bolder;
+    font-size: 20px;
+    width: 250px;
+    height: 50px;
+    border: 2px solid var(--darkmd--accent);
+    border-radius: 3px;
+    margin-top: 40px;
+}
+
+
+/* Should I change these so light and dark mode are different? */
+label {
+    color: grey;
+}
+
+input {
+   border: 1px solid var(--darkmd--input-border);
+   color: var(rgb(95,95,95,1));
+}
+
+input:focus {
+    border: 2px solid var(--darkmd--accent);
+}
+
+/* Dark Mode */
+div.dark form {
+    background-color: var(--darkmd--bg);
+}
+
+div.dark h2, div.dark p {
+    color: var(--darkmd--txt);
+}
+
+div.dark input {
+   background-color: var(--darkmd--bg);  
+}
+
+div.dark button {
+    color: var(--darkmd--txt);
+}
+
+/* Light Mode */
+h2, p {
+    color: grey;
+}
+
