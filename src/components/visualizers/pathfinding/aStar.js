@@ -136,6 +136,7 @@ function aStar(g) {
         }
       }
     }
+    vid.push(generateFrame(grid, rows, cols, null, 'Failed to find path', []))
     return vid;
   }
   function generateFrame(grid, rows, cols, path, message, highlightCode) {
@@ -239,14 +240,19 @@ function aStar(g) {
 
 function findHeuristic(x, y, endNodes, type){
   let lowestHeuristicSoFar;
-  if (type == 'Manhattan'){
+  endNodes.forEach(endNode => {
+    if (endNode.row == x && endNode.column == y){
+      lowestHeuristicSoFar = 0;
+    }
+  })
+  if (type == 'Manhattan' && lowestHeuristicSoFar != 0){
     endNodes.forEach(node => {
       let thisHeuristic = Math.abs(node.row - x) + Math.abs(node.column - y);
       if (!lowestHeuristicSoFar || lowestHeuristicSoFar > thisHeuristic){
         lowestHeuristicSoFar = thisHeuristic;
       }
     })
-  } else if (type == 'Euclidean'){
+  } else if (type == 'Euclidean' && lowestHeuristicSoFar != 0){
     endNodes.forEach(node => {
       let thisHeuristic = Math.sqrt(Math.pow(node.row - x, 2) + Math.pow(node.column - y, 2));
       if (!lowestHeuristicSoFar || lowestHeuristicSoFar > thisHeuristic){

@@ -1,4 +1,4 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, forwardRef, useImperativeHandle } from "react";
 import { Button, ButtonGroup, createTheme, ThemeProvider } from '@mui/material';
 import PlayArrowIcon from '@mui/icons-material/PlayArrow';
 import PauseIcon from '@mui/icons-material/Pause';
@@ -7,22 +7,26 @@ import NavigateNextIcon from '@mui/icons-material/NavigateNext';
 import SkipNextIcon from '@mui/icons-material/SkipNext';
 import SkipPreviousIcon from '@mui/icons-material/SkipPrevious';
 
-const PathfindActionBar = ({grid, setGrid, currentFrame, setCurrentFrame, vid, setVid, speed, setSpeed, isPaused, setIsPaused}) => {
+const PathfindActionBar = forwardRef(({grid, setGrid, currentFrame, setCurrentFrame, vid, setVid, speed, setSpeed, isPaused, setIsPaused, handleReset}, _ref) => {
 
     const [timeoutId, setTimeoutId] = useState(null);
 
     const currentSpeed = useRef(speed);
     let frame = useRef(currentFrame);
+
+
+    useImperativeHandle(_ref, () => ({
+        getTimeoutId: () => {
+            return timeoutId;
+        }
+    }));
     
     const handleStepForward = () => {
         if(vid && currentFrame < vid.length - 1){
-            console.log('stepping forward');
-            // console.log('currentSpeed: ' + currentSpeed.current);
-            // console.log('currentFrame: ' + frame.current);
-
-            // console.log(vid[frame.current++].grid);
+            // console.log('stepping forward');
             setGrid(vid[++frame.current].grid);
             setCurrentFrame(frame.current);
+            handlePause();
         }
         
     };
@@ -30,24 +34,19 @@ const PathfindActionBar = ({grid, setGrid, currentFrame, setCurrentFrame, vid, s
 
     const handleStepBackward = () => {
         if(vid && currentFrame > 0){
-            //pause here
-            console.log('stepping backward');
+            // console.log('stepping backward');
             setGrid(vid[--frame.current].grid);
             setCurrentFrame(frame.current);
+            handlePause();
         }
     };
-
-    const handleReset = () => {
-        frame.current = 0;
-        setCurrentFrame(frame.current);
-        setGrid(vid[frame.current].grid);
-    }
 
     const handleSkipToEnd = () => {
         frame.current = vid.length - 1;
         setCurrentFrame(frame.current);
         setGrid(vid[frame.current]  .grid);
-    }
+        handlePause();
+    };
 
     const handlePlayAndPause = () => {
         
@@ -64,11 +63,19 @@ const PathfindActionBar = ({grid, setGrid, currentFrame, setCurrentFrame, vid, s
             const timeoutId = setTimeout(stepForward, currentSpeed.current);
             setTimeoutId(timeoutId);
         } else {
+            handlePause();
+            // setTimeoutId(null);
+        }
+    };
+
+    const handlePause = () => {
+        if(!isPaused){
             setIsPaused(true);
             clearTimeout(timeoutId);
             setTimeoutId(null);
         }
-    };
+        
+    }
 
     const { palette } = createTheme();
     const { augmentColor } = palette;
@@ -84,7 +91,11 @@ const PathfindActionBar = ({grid, setGrid, currentFrame, setCurrentFrame, vid, s
         <div className="actionbar">
             <ThemeProvider theme={btnTheme}>
                 <ButtonGroup size="large" color="black">
-                    <Button variant="text" onClick={handleReset}>
+                    <Button variant="text" onClick={() => {
+                        handleReset();
+                        handlePause();
+                        frame.current= 0;
+                    }}>
                         <SkipPreviousIcon/>
                     </Button>
                     <Button variant="text" onClick={handleStepBackward}>
@@ -113,6 +124,6 @@ const PathfindActionBar = ({grid, setGrid, currentFrame, setCurrentFrame, vid, s
         </div>
 
     );
-};
+});
 
 export default PathfindActionBar;
