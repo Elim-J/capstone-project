@@ -1,12 +1,20 @@
+.sort-wrapper {
+    height: 100vh;
+    width: 100%;
+    background: linear-gradient(
+        to bottom,
+        #09203F, #537895); 
+}
+
 .sorting-content {
     display: flex;
 }
 .graph-wrapper {
     display: flex;
-    /* border-style: solid;
-    background-color: rgb(181, 159, 159); */
+    border: 5px;
+    /* background: radial-gradient(rgba(0, 0, 0, 0.637) 0.5px, inherit 0.5px);
+    background-size: 10px 20px;  */
     margin: 25px 25px;
-    /* width: 70%; */
     align-items: flex-end;
     height: 600px
 }
@@ -38,11 +46,20 @@
     width: 100%;
 }
 
-.code-content{
+.code-modal{
     padding: 20px 20px;
     padding-left: 50px;
 }
 
+.code-title {
+    text-align: center;
+}
+
+.code-message {
+    text-align: center;
+    padding: 15px 15px;
+    height: 15px;
+}
 
 /* TODO color scheme needs to change */
 .code-wrapper {
@@ -51,11 +68,15 @@
     position: fixed;
     bottom: 75px;
     right: 0;
-    border-radius: 5px;
-    background-color: rgba(112, 112, 112, 0.385);
-    box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px, rgba(0, 0, 0, 0.22) 0px 10px 10px;
+    /* border-radius: 5px; */
+    /* background-color: rgba(112, 112, 112, 1); */
+    background-color: rgb(173, 216, 230);
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 7px 14px, rgba(0, 0, 0, 0.22) 0px 5px 5px;
 }
 
+.code-content {
+    padding: 15px 0;
+}
 .code-content pre {
     padding: 0;
     margin: 0;
@@ -65,3 +86,4 @@
     background-color: rgb(255, 255, 0.75);
     transition: background-color .8s linear;
 }
+

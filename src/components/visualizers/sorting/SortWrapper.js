@@ -30,6 +30,14 @@ const SortWrapper = () => {
         lines.forEach((element, i) => {
             document.getElementById(`code-${element}`).className ='highlight';
         });
+    };
+
+    const getMessage = () => {
+        if (vid && vid[currentFrame] && vid[currentFrame][0]){
+            return vid[currentFrame][0].message;
+        } else {
+            return "";
+        }
     }
 
     return (
@@ -52,7 +60,11 @@ const SortWrapper = () => {
                 
                 {/* pass in const of alg probably from enum */}
                 <div className="code-wrapper">
-                    <CodeContent alg="BubbleSort" open={openCode} setOpen={setOpenCode}/>
+                    <CodeContent 
+                    alg="BubbleSort" 
+                    open={openCode} 
+                    setOpen={setOpenCode}
+                    getMessage={getMessage}/>
                 </div>
 
 
@@ -61,10 +73,10 @@ const SortWrapper = () => {
             </div>
 
             {/* Remove this eventually */}
-            <div>Delay (ms): {speed}</div>
+            {/* <div>Delay (ms): {speed}</div>
             <div>{isPaused && 'Paused'}{!isPaused && 'Playing'}</div>
             <div>{vid && vid[currentFrame] && vid[currentFrame][0].message}</div>
-            <div>{vid && vid[currentFrame] && vid[currentFrame][0].code}</div>
+            <div>{vid && vid[currentFrame] && vid[currentFrame][0].code}</div> */}
             
             
             <ActionBar 

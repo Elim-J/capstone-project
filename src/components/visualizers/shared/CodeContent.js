@@ -5,7 +5,7 @@ import { DialogTitle, Box, Button, createTheme, ThemeProvider } from "@mui/mater
 import CloseIcon from '@mui/icons-material/Close';
 
 
-const CodeContent = ({alg, open, setOpen}) => {
+const CodeContent = ({alg, open, setOpen, getMessage}) => {
 
     //copy and pasted from actionbar. refactor later
     const { palette } = createTheme();
@@ -31,6 +31,7 @@ const CodeContent = ({alg, open, setOpen}) => {
         }
         return code;
     }
+    // console.log(message);
 
     const BubbleSort = (
         <div className="code-content">
@@ -49,10 +50,11 @@ const CodeContent = ({alg, open, setOpen}) => {
             <pre id="code-12">{'} while(hasSwapped)'}</pre>
         </div>
     );
+
+    console.log(getMessage());
     return (
         <Collapse in={open}>
-            <Container>
-                <DialogTitle>
+            <DialogTitle>
                     <Box display="flex" flexDirection="column" justify="flex-end" alignItems="flex-end">
                         <ThemeProvider theme={btnTheme}>
                         <Button 
@@ -64,8 +66,22 @@ const CodeContent = ({alg, open, setOpen}) => {
                         </ThemeProvider>
                     </Box>
                 </DialogTitle>
+            <div className="code-modal">
+            <Container>
+                <div className="code-title">
+                    <h2>{alg}</h2>
+                </div>
+                </Container>
+            <Container>
+                <div className="code-message">
+                    {getMessage()}
+                </div>
+            </Container>
+            <Container>
+                
                 {codePicker()}
             </Container>
+            </div>
         </Collapse>
     );
 

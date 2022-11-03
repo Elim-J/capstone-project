@@ -4,6 +4,7 @@ import Box from '@mui/material/Box';
 import Modal from '@mui/material/Modal';
 import Fade from '@mui/material/Fade';
 import Typography from '@mui/material/Typography';
+import { Button } from "@mui/material";
 
 const boxSX = {
     position: "absolute",
@@ -21,6 +22,7 @@ const boxSX = {
 const InfoModal = ({open, setOpen}) => {
     return(
         <div className="info-modal-container">
+            
             <Modal
                 aria-labelledby="transition-modal-title"
                 aria-describedby="transition-modal-description"
@@ -30,7 +32,8 @@ const InfoModal = ({open, setOpen}) => {
                 BackdropComponent={Backdrop}
                 BackdropProps={{
                     timeout: 500,
-                }}>                
+                }}>       
+                         
                     <Fade in={open}>
                         <Box sx={boxSX}>
                             <Typography id="transition-modal-title" variant="h6" component="h2" >
