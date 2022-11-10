@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import Navbar from '../components/GlobalNavBar';
 import Sidebar from '../components/Sidebar';
 import Footer from '../components/Footer';
-import HeroSection from '../components/HeroSection';
+import AlgoInfoSection from '../components/AlgoInfoSection/index'
 
 function AlgorithmsHomePage() {
 
@@ -15,11 +15,8 @@ function AlgorithmsHomePage() {
     <>
       <Sidebar isOpen={isOpen} toggle={toggle} />
       <Navbar toggle={toggle} />
-      <HeroSection />
-      <div>
-        Algorithms Page
-      </div>
-
+      <br></br>
+      <AlgoInfoSection />
       <Footer />
     </>
 )

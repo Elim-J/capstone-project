@@ -25,10 +25,6 @@ const BubblesortPage = () => {
             <br></br>
             <br></br>
             <SortWrapper />
-            <br></br>
-            <br></br>
-            <br></br>
-            <br></br>
             <Footer />
         </>
     )
