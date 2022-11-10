@@ -23,6 +23,8 @@
     "selenium-webdriver": "^4.6.0",
     "styled-components": "^5.3.6",
     "uuid": "^9.0.0",
+    "bootstrap": "^5.2.2",
+    "npm-check-updates": "^16.2.1",
     "web-vitals": "^3.0.4"
   },
   "devDependencies": {
