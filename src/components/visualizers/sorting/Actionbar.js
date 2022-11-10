@@ -2,6 +2,7 @@ import React, { useState, useRef } from "react";
 import { Button, ButtonGroup, createTheme, ThemeProvider } from '@mui/material';
 import { bubbleSort } from './bubblesort';
 import { insertSort } from "./insertsort";
+import { randomsort } from "./randomsort";
 import PlayArrowIcon from '@mui/icons-material/PlayArrow';
 import PauseIcon from '@mui/icons-material/Pause';
 import NavigateBeforeIcon from '@mui/icons-material/NavigateBefore';
@@ -94,6 +95,8 @@ const ActionBar = ({currentFrame, setCurrentFrame, vid, setVid, speed, setSpeed,
             vid = bubbleSort(randomArr);
         } else if (alg == SortingAlgs.InsertSort){
             vid = insertSort(randomArr);
+        } else if (alg == SortingAlgs.RandomSort){
+            vid = randomsort(randomArr);
         }
         setVid(vid);
         setCurrentFrame(0);
@@ -106,6 +109,8 @@ const ActionBar = ({currentFrame, setCurrentFrame, vid, setVid, speed, setSpeed,
             vid = bubbleSort(randomArr);
         } else if (alg == SortingAlgs.InsertSort){
             vid = insertSort(randomArr);
+        } else if (alg == SortingAlgs.RandomSort){
+            vid = randomsort(randomArr);
         }
         setVid(vid);
         setCurrentFrame(0);
