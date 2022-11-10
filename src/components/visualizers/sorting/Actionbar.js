@@ -3,6 +3,7 @@ import { Button, ButtonGroup, createTheme, ThemeProvider } from '@mui/material';
 import { bubbleSort } from './bubblesort';
 import { insertSort } from "./insertsort";
 import { randomsort } from "./randomsort";
+import { selectionsort } from "./selectionsort";
 import PlayArrowIcon from '@mui/icons-material/PlayArrow';
 import PauseIcon from '@mui/icons-material/Pause';
 import NavigateBeforeIcon from '@mui/icons-material/NavigateBefore';
@@ -97,6 +98,8 @@ const ActionBar = ({currentFrame, setCurrentFrame, vid, setVid, speed, setSpeed,
             vid = insertSort(randomArr);
         } else if (alg == SortingAlgs.RandomSort){
             vid = randomsort(randomArr);
+        } else if (alg == SortingAlgs.SelectionSort){
+            vid = selectionsort(randomArr);
         }
         setVid(vid);
         setCurrentFrame(0);
@@ -111,6 +114,8 @@ const ActionBar = ({currentFrame, setCurrentFrame, vid, setVid, speed, setSpeed,
             vid = insertSort(randomArr);
         } else if (alg == SortingAlgs.RandomSort){
             vid = randomsort(randomArr);
+        } else if (alg == SortingAlgs.SelectionSort){
+            vid = selectionsort(randomArr);
         }
         setVid(vid);
         setCurrentFrame(0);
