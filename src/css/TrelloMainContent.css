@@ -1,11 +1,27 @@
 body{
- 
+   background-color: #1e1e2b;
+   box-sizing: border-box;
 }
 
 button {
-    margin: 80px auto 0;
-    /* margin: 0 auto; */
     display: flex;
+    width: 10rem;
+    height: 2rem;
+    border-radius: 4px;
+    font-weight: 600;
+    background-color: #252636;
+    border: 1px solid red;  
+    color: white;
+    text-transform: uppercase;
+    
+}
+
+.submit--btn {
+    margin-top: 2rem;
+}
+
+.text {
+    margin: auto;
 }
 
 button:hover{
@@ -13,14 +29,16 @@ button:hover{
     transform: scale(1.01);
 }
 
-.btnA {
-    background-color: red;
-    color: white;
+.btnA, .btnB {
+    margin: 150px auto 0;
 }
 
 .btnB{
-    background-color: blue;
-    color: white;
+    border: 1px solid #0076bf;
+}
+
+.btnA {
+    border: 1px solid red;   
 }
 
 .formA {
@@ -31,11 +49,15 @@ button:hover{
     flex-direction: column;
     gap: 5px;
     position: absolute;
-    background-color:#6b7999;
+    /* background-color:#1e1e2b; */
+    background-color: #202124;
     border-radius: 6px;
-    padding: 1rem;
-    width: 15rem;
-
+    margin-top: 4rem;
+    padding: 3rem;
+    z-index: 1;
+    border: 1px solid red;
+    width: 20%;
+    
     /* move top/left margin edge of element to middle of parent */
     top: 30%;
     left: 50%;
@@ -45,7 +67,21 @@ button:hover{
 }
 
 input {
-    width: 10rem;
+    width: 90%;
+    padding: .3rem;
+    margin: 2px;
+    
+}
+
+div.inputs {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+input:focus {
+    outline: none;
+    border: 1px solid red;
 }
 
 h2 {
@@ -54,6 +90,11 @@ h2 {
 
 .allBoards {
     display: grid;
-    grid-template: repeat(4, 1fr) / repeat(auto-fit, minmax(350px, 1fr));
+    grid-template: repeat(4, 1fr) / repeat(auto-fit, minmax(30%, 1fr));
     margin-top: 200px;
+    background-color: #252636;
+    max-width: 70%;
+    margin: 100px auto;
+    padding: 4rem;
+    border-radius: 12px;
 }

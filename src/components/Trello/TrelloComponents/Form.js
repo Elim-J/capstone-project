@@ -2,8 +2,8 @@ import React, {useState} from "react";
 import Board from '../TrelloComponents/Board'
 import uuid from 'react-uuid'
 import { FaPray } from "react-icons/fa";
+import imgArr from './Data'
 export default function Form({isActive, newBoard, setNewBoard, updateBoard}) {
-
 
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -13,13 +13,18 @@ export default function Form({isActive, newBoard, setNewBoard, updateBoard}) {
     }
 
     const onChange = (e) => {
-        setNewBoard({...newBoard, id:uuid(), [e.target.name]: e.target.value})
+        setNewBoard({...newBoard, image: imgArr[randomImg()], id:this.uuid(), [e.target.name]: e.target.value})
+    }
+
+    const randomImg = () => {
+        let x = Math.floor(Math.random() * imgArr.length)
+        return x;
     }
     
     return(
         <div>
             <form className={isActive? 'formB' : 'formA'}  onSubmit={handleSubmit}>
-                <div>
+                <div className='inputs'>
                     <input
                         className='input--title'
                         type='text' 
@@ -27,6 +32,7 @@ export default function Form({isActive, newBoard, setNewBoard, updateBoard}) {
                         placeholder="Title"
                         label= 'Title'
                         onChange={onChange}
+                        required
                     />
                     <input 
                         className='input--description'
@@ -35,6 +41,7 @@ export default function Form({isActive, newBoard, setNewBoard, updateBoard}) {
                         placeholder="Description" 
                         label='Description'
                         onChange={onChange}
+                        required
                      />
                     <input
                         className='input--members'
@@ -43,8 +50,9 @@ export default function Form({isActive, newBoard, setNewBoard, updateBoard}) {
                         placeholder="Members"
                         label='Description'
                         onChange={onChange}
+                        required
                     />
-                    <button type="submit">Submit</button>
+                    <button className='submit--btn' type="submit"><span className='text'>Submit</span></button>
                 </div>
             </form>
         </div>

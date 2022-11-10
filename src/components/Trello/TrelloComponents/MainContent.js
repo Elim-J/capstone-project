@@ -1,8 +1,9 @@
 import React, {useState} from "react";
-import Board from "./Board.js";
 import '../../../css/TrelloMainContent.css';
-import Form from './Form'
-import uuid from 'react-uuid'
+import Form from './Form';
+import uuid from 'react-uuid';
+import Board from './Board';
+import imgArr from './Data';
 
 
 export default function MainContent(){
@@ -13,48 +14,63 @@ export default function MainContent(){
         description: '',
         members: ''
     })
-
+    
     const [boards, setBoards] = useState([
         {
-            id: uuid(),
-            title:'test', 
+            id: 1111111110,
+            title:'Test Board', 
             description: 'test description', 
-            members:'cool kids'},
-        {
-            id: uuid(),
-            title: '1',
-            description: '2',
-            members: '3'
+            members:'Sabrina, Waj, Zach, Vince, Erik',
+            image: imgArr[0]
         },
         {
             id: uuid(),
-            title: 'a',
-            description: 'b',
-            members: 'c'
+            title:'Board One', 
+            description: 'test description', 
+            members:'Sabrina, Waj, Zach, Vince, Erik',
+            image: imgArr[0]
         },
         {
             id: uuid(),
-            title: '1',
-            description: '2',
-            members: '3'
+            title: 'Board Two',
+            description: 'Another test description',
+            members: 'Sabrina',
+            image: imgArr[1]
         },
         {
             id: uuid(),
-            title: 'a',
-            description: 'b',
-            members: 'c'
+            title: 'Board Three',
+            description: 'Another test description',
+            members: 'Weird people I don\'t want to work with',
+            image: imgArr[2]
         },
         {
             id: uuid(),
-            title: '1',
-            description: '2',
-            members: '3'
+            title: 'Board Four',
+            description: 'Another test description',
+            members: 'Also Sabrina',
+            image: imgArr[3]
         },
         {
             id: uuid(),
-            title: 'a',
-            description: 'b',
-            members: 'c'
+            title: 'Board Five',
+            description: 'Another test description',
+            members: 'Another Sabrina',
+            image: imgArr[9]
+        },
+        {
+            id: uuid(),
+            title: 'Board Six',
+            description: 'Another test description',
+            members: 'Also me',
+            image: imgArr[8]
+        },
+        {
+            id: uuid(),
+            title: 'Board Seven',
+            description: 'Another test description',
+            members: 'Imaginary Friends',
+            image: imgArr[7]
         }
     ]);
 
@@ -71,8 +87,7 @@ export default function MainContent(){
    
     return(
         <>
-            <h2 id='test'>Your Boards</h2>
-            <button className={isActive? 'btnA' : 'btnB'} onClick={openMenuOverlay}>{isActive? 'Close Menu' : 'Add Board'}</button>
+            <button className={isActive? 'btnA' : 'btnB'} onClick={openMenuOverlay}>{isActive? <span className='text'>Close Menu</span> : <span className='text'>Add Board</span>}</button>
             <Form 
                 isActive = {isActive}
                 newBoard = {newBoard}
@@ -82,9 +97,9 @@ export default function MainContent(){
         
             <div className='allBoards'>
             {boards.map(board => (
-                <Board key={board.id} title={board.title} description={board.description} members={board.members}/>
+                <Board key={board.id} title={board.title} description={board.description} members={board.members} image={board.image}/>
             ))}
-            </div>     
+            </div>   
         </>
     )
 
