@@ -98,7 +98,7 @@ const ActionBar = ({currentFrame, setCurrentFrame, vid, setVid, speed, setSpeed,
     return (
         <div className="actionbar">
             <ThemeProvider theme={btnTheme}>
-                TEST
+                
                 <ButtonGroup size="large" color="black">
                     <Button variant="text" onClick={handleReset}>
                         <SkipPreviousIcon/>
