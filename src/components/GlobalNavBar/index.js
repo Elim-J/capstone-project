@@ -74,14 +74,26 @@ const Navbar = ({ toggle }) => {
               
             <NavItem>
                 <NavLinksPages
-                  to='/bubblesort'
+                  to='/sorting'
                   smooth={true}
                   duration={500}
                   spy={true}
                   exact='false'
                   offset={-80}
                   activeClass='active'
-                >Bubble Sort</NavLinksPages>
+                >Sorting</NavLinksPages>
+              </NavItem>
+
+              <NavItem>
+                <NavLinksPages
+                  to='/pathfind'
+                  smooth={true}
+                  duration={500}
+                  spy={true}
+                  exact='false'
+                  offset={-80}
+                  activeClass='active'
+                >Pathfinding</NavLinksPages>
               </NavItem>
               
             </NavMenu>

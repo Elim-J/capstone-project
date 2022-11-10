@@ -1,9 +1,8 @@
 import React, { useState } from 'react'
 import ScrollToTop from '../components/ScrollToTop'
 import Navbar from '../components/GlobalNavBar';
-import Sidebar from '../components/Sidebar';
+import Sidebar from '../components/Sidebar/globalSidebarIndex';
 import Footer from '../components/Footer';
-import HeroSection from '../components/HeroSection';
 import SortWrapper from '../components/visualizers/sorting/SortWrapper'
 
 const BubblesortPage = () => {
@@ -22,10 +21,8 @@ const BubblesortPage = () => {
             <br></br>
             <br></br>
             <br></br>
-            <br></br>
-            <br></br>
             <SortWrapper />
-            <Footer />
+            {/* <Footer /> */}
         </>
     )
 }

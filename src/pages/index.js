@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import Navbar from '../components/HomePageNavbar';
 import InfoSection from '../components/InfoSection';
 import { homeObjOne, homeObjTwo, homeObjThree } from '../components/InfoSection/Data';
-import Sidebar from '../components/Sidebar';
+import Sidebar from '../components/Sidebar/index';
 import HeroSection from '../components/HeroSection';
 import Tools from '../components/Tools';
 import Footer from '../components/Footer';

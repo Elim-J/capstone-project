@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import Navbar from '../components/GlobalNavBar';
-import Sidebar from '../components/Sidebar';
+import Sidebar from '../components/Sidebar/globalSidebarIndex';
 import Footer from '../components/Footer';
 import AlgoInfoSection from '../components/AlgoInfoSection/index'
 

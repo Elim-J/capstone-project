@@ -9,7 +9,6 @@ export const homeObjOne = {
     buttonLabel: 'Get started',
     imgStart: false,
     image: require('../../images/svg-5.svg'),
-    alt: 'Car', 
     dark: true,
     primary: true,
     darkText: false
@@ -27,7 +26,6 @@ export const homeObjTwo = {
     buttonLabel: 'Learn More',
     imgStart: true,
     image: require('../../images/svg-5.svg'),
-    alt: 'Piggybank', 
     dark: false,
     primary: false,
     darkText: true
@@ -45,7 +43,6 @@ export const homeObjThree = {
     buttonLabel: 'Start Now',
     imgStart: false,
     image: require('../../images/svg-4.svg'),
-    alt: 'Paper', 
     dark: false,
     primary: false,
     darkText: true

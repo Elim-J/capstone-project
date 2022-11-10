@@ -6,6 +6,8 @@ import SignIn from './pages/signin'
 import AlgorithmsHomePage from './pages/AlgorithmsHomePage';
 import Trello from './pages/Trello';
 import SortWrapper from './pages/BubblesortPage';
+import GridContainer from './components/visualizers/pathfinding/GridContainer';
+
 
 function App() {
   return (
@@ -14,7 +16,8 @@ function App() {
       <Route path="/signin" element={<SignIn/>}/>
       <Route path="/algorithms" element={<AlgorithmsHomePage/>}/>ß
       <Route path="/trello" element={<Trello/>}/>
-      <Route path="/bubblesort" element={<SortWrapper/>}/>
+      <Route path="/sorting" element={<SortWrapper/>}/>
+      <Route path="/pathfind" element={<GridContainer/>}/>
       </Routes>
   );
 }

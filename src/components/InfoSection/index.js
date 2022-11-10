@@ -23,15 +23,12 @@ const InfoSection = ({
   darkText,
   buttonLabel ,
   image ,
-  alt ,
   description,
   headline,
   primary,
   dark,
   dark2
   }) => {
-  
-  console.log(image.default)
 
   return (
     <>
@@ -60,7 +57,7 @@ const InfoSection = ({
             </Column1>
             <Column2>
               <ImgWrap>
-                <Img src={image.default} alt={alt} />
+                <Img src={image.default} />
               </ImgWrap>
             </Column2>
           </InfoRow>
