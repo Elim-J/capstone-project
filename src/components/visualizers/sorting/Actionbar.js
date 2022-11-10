@@ -8,6 +8,7 @@ import NavigateNextIcon from '@mui/icons-material/NavigateNext';
 import SkipNextIcon from '@mui/icons-material/SkipNext';
 import SkipPreviousIcon from '@mui/icons-material/SkipPrevious';
 import ShuffleIcon from '@mui/icons-material/Shuffle';
+import { SortingAlgs } from "../../../constants/SortingAlgs";
 
 const ActionBar = ({currentFrame, setCurrentFrame, vid, setVid, speed, setSpeed, isPaused, setIsPaused}) => {
 
@@ -84,6 +85,10 @@ const ActionBar = ({currentFrame, setCurrentFrame, vid, setVid, speed, setSpeed,
         });
     }
 
+    function setAlg(event){
+        
+    }
+
 
     const { palette } = createTheme();
     const { augmentColor } = palette;
@@ -98,7 +103,26 @@ const ActionBar = ({currentFrame, setCurrentFrame, vid, setVid, speed, setSpeed,
     return (
         <div className="actionbar">
             <ThemeProvider theme={btnTheme}>
-                
+                    <label className="dropdown">
+                        <select className="form-select algorithm-dropdown-toggle" id="alg-select"
+                            onChange={(e) => {
+                                // console.log(e.target.value);
+                                // onSearch(e.target.value);
+                                setAlg(e.target.value);
+                            }}
+                            defaultValue={SortingAlgs.BubbleSort}>
+                                {Object.values(SortingAlgs).map(val => (
+                                    <option
+                                        aria-selected="true"
+                                        key={val}
+                                        value={val}
+                                        >
+                                        {val}
+                                    </option>
+                                    )
+                                )}
+                        </select>
+                    </label>
                 <ButtonGroup size="large" color="black">
                     <Button variant="text" onClick={handleReset}>
                         <SkipPreviousIcon/>
