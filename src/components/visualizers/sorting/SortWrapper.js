@@ -4,12 +4,14 @@ import '../../../css/Sorting.css';
 import { bubbleSort } from './bubblesort';
 import CodeContent from './CodeContent';
 import ActionBar from './Actionbar';
+import { SortingAlgs } from '../../../constants/SortingAlgs';
 
 const SortWrapper = () => {
     const [currentFrame, setCurrentFrame] = useState(0);
     const [vid, setVid] = useState([]);
     const [speed, setSpeed] = useState(500); //initial play speed in ms
     const [isPaused, setIsPaused] = useState(true);
+    const [alg, setAlg] = useState(SortingAlgs.BubbleSort);
     
     useEffect(() => {
         const randomArr = Array.from({length: 20}, () => Math.floor(Math.random() * 30));
@@ -21,10 +23,10 @@ const SortWrapper = () => {
 
     const highlightCodeLine = (lines) => {
         const prevHighlight = document.querySelectorAll('.highlight');
-        prevHighlight.forEach((element, i) => {
+        prevHighlight?.forEach((element, i) => {
             element.className = '';
         });
-        lines.forEach((element, i) => {
+        lines?.forEach((element, i) => {
             document.getElementById(`code-${element}`).className ='highlight';
         });
     }
@@ -69,7 +71,10 @@ const SortWrapper = () => {
                 speed={speed}
                 setSpeed={setSpeed}
                 isPaused={isPaused}
-                setIsPaused={setIsPaused}/>
+                setIsPaused={setIsPaused}
+                alg={alg}
+                setAlg={setAlg}
+                />
         </div> 
     )
 }

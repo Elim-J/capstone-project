@@ -1,6 +1,7 @@
 import React, { useState, useRef } from "react";
 import { Button, ButtonGroup, createTheme, ThemeProvider } from '@mui/material';
 import { bubbleSort } from './bubblesort';
+import { insertSort } from "./insertsort";
 import PlayArrowIcon from '@mui/icons-material/PlayArrow';
 import PauseIcon from '@mui/icons-material/Pause';
 import NavigateBeforeIcon from '@mui/icons-material/NavigateBefore';
@@ -10,7 +11,7 @@ import SkipPreviousIcon from '@mui/icons-material/SkipPrevious';
 import ShuffleIcon from '@mui/icons-material/Shuffle';
 import { SortingAlgs } from "../../../constants/SortingAlgs";
 
-const ActionBar = ({currentFrame, setCurrentFrame, vid, setVid, speed, setSpeed, isPaused, setIsPaused}) => {
+const ActionBar = ({currentFrame, setCurrentFrame, vid, setVid, speed, setSpeed, isPaused, setIsPaused, alg, setAlg}) => {
 
     const [timeoutId, setTimeoutId] = useState(null);
 
@@ -85,10 +86,30 @@ const ActionBar = ({currentFrame, setCurrentFrame, vid, setVid, speed, setSpeed,
         });
     }
 
-    function setAlg(event){
-        
+    function handlePickAlg(alg){
+        setAlg(alg);
+        const randomArr = Array.from({length: 20}, () => Math.floor(Math.random() * 30));
+        let vid;
+        if (alg == SortingAlgs.BubbleSort){
+            vid = bubbleSort(randomArr);
+        } else if (alg == SortingAlgs.InsertSort){
+            vid = insertSort(randomArr);
+        }
+        setVid(vid);
+        setCurrentFrame(0);
     }
 
+    function handleShuffle(){
+        let vid;
+        const randomArr = Array.from({length: 20}, () => Math.floor(Math.random() * 30));        
+        if (alg == SortingAlgs.BubbleSort){
+            vid = bubbleSort(randomArr);
+        } else if (alg == SortingAlgs.InsertSort){
+            vid = insertSort(randomArr);
+        }
+        setVid(vid);
+        setCurrentFrame(0);
+    }
 
     const { palette } = createTheme();
     const { augmentColor } = palette;
@@ -108,7 +129,7 @@ const ActionBar = ({currentFrame, setCurrentFrame, vid, setVid, speed, setSpeed,
                             onChange={(e) => {
                                 // console.log(e.target.value);
                                 // onSearch(e.target.value);
-                                setAlg(e.target.value);
+                                handlePickAlg(e.target.value);
                             }}
                             defaultValue={SortingAlgs.BubbleSort}>
                                 {Object.values(SortingAlgs).map(val => (
@@ -139,11 +160,7 @@ const ActionBar = ({currentFrame, setCurrentFrame, vid, setVid, speed, setSpeed,
                     <Button variant="text" onClick={handleSkipToEnd}>
                         <SkipNextIcon/>
                     </Button>
-                    <Button variant="text" onClick={() =>{
-                        const randomArr = Array.from({length: 20}, () => Math.floor(Math.random() * 30));
-                        setVid(bubbleSort(randomArr));
-                        setCurrentFrame(0);
-                    }}> 
+                    <Button variant="text" onClick={handleShuffle}> 
                         <ShuffleIcon/>
                     </Button>
                     <Button variant="text" onClick={handleIncreaseSpeed}>
