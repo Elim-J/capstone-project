@@ -2,9 +2,11 @@ import React, { useState } from 'react'
 import ScrollToTop from '../components/ScrollToTop'
 import Navbar from '../components/GlobalNavBar';
 import Sidebar from '../components/Sidebar/globalSidebarIndex';
-import SortWrapper from '../components/visualizers/sorting/SortWrapper'
+import Footer from '../components/Footer';
+import QuickSortWrapper from '../components/visualizers/sorting/QuickSortWrapper';
 
-const BubblesortPage = () => {
+
+const QuickSortPage = () => {
 
     const [isOpen, setIsOpen] = useState(false)
 
@@ -20,9 +22,10 @@ const BubblesortPage = () => {
             <br></br>
             <br></br>
             <br></br>
-            <SortWrapper />
+            <QuickSortWrapper />
+            {/* <Footer /> */}
         </>
     )
 }
 
-export default BubblesortPage
+export default QuickSortPage

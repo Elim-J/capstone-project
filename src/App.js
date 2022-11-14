@@ -7,7 +7,7 @@ import AlgorithmsHomePage from './pages/AlgorithmsHomePage';
 import Trello from './pages/Trello';
 import SortWrapper from './pages/BubblesortPage';
 import GridContainer from './components/visualizers/pathfinding/GridContainer';
-
+import QuickSortPage from './pages/QuickSortPage';
 
 function App() {
   return (
@@ -17,6 +17,7 @@ function App() {
       <Route path="/algorithms" element={<AlgorithmsHomePage/>}/>ß
       <Route path="/trello" element={<Trello/>}/>
       <Route path="/sorting" element={<SortWrapper/>}/>
+      <Route path="/quicksort" element={<QuickSortPage/>}/>
       <Route path="/pathfind" element={<GridContainer/>}/>
       </Routes>
   );

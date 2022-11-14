@@ -12,6 +12,7 @@ import SkipNextIcon from '@mui/icons-material/SkipNext';
 import SkipPreviousIcon from '@mui/icons-material/SkipPrevious';
 import ShuffleIcon from '@mui/icons-material/Shuffle';
 import { SortingAlgs } from "../../../constants/SortingAlgs";
+import { useNavigate } from 'react-router-dom';
 
 const ActionBar = ({currentFrame, setCurrentFrame, vid, setVid, speed, setSpeed, isPaused, setIsPaused, alg, setAlg}) => {
 
@@ -131,6 +132,8 @@ const ActionBar = ({currentFrame, setCurrentFrame, vid, setVid, speed, setSpeed,
         },
     });
 
+    let navigate = useNavigate();
+
     return (
         <div className="actionbar">
             <ThemeProvider theme={btnTheme}>
@@ -139,6 +142,10 @@ const ActionBar = ({currentFrame, setCurrentFrame, vid, setVid, speed, setSpeed,
                             onChange={(e) => {
                                 // console.log(e.target.value);
                                 // onSearch(e.target.value);
+                                if(e.target.value == SortingAlgs.QuickSort)
+                                {
+                                    navigate('/quicksort');
+                                }
                                 handlePickAlg(e.target.value);
                             }}
                             defaultValue={SortingAlgs.BubbleSort}>

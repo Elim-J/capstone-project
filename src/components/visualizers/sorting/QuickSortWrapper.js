@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useRef } from 'react';
 import Tree from 'react-d3-tree';
 import { Button } from '@mui/material'; 
 import { useCallback, useState } from "react";
@@ -41,13 +41,14 @@ const qsTree = {
 };
 
 //style={containerStyles}
-export default function App() {
+export default function QuickSortWrapper() {
 
   const [vid, setVid] = useState([]);
   const [currentFrame, setCurrentFrame] = useState(0);
   const [isPaused, setIsPaused] = useState(true);
   const [currentSpeed, setCurrentSpeed] = useState(500);
   const [timeoutId, setTimeoutId] = useState(null);
+  let frame = useRef(currentFrame);
 
   useEffect(() => {
     // handleRandomArr();
@@ -56,20 +57,23 @@ export default function App() {
 
   const handleRandomArr = () => {
     setCurrentFrame(0);
+    frame.current = 0;
     setVid(quickSort(Array.from({length: 10}, () => Math.floor(Math.random() * 100)), 'random'));
   };
 
   const handleStepForward = () => {
-    if(vid && currentFrame < vid.length - 1){
-      console.log("stepping forward " + currentFrame);
-      setCurrentFrame(currentFrame + 1);
+    if(vid && frame.current < vid.length - 1){
+      console.log("stepping forward " + frame.current);
+      setCurrentFrame(frame.current + 1);
+      frame.current++;
     }
   };
   
   const handleStepBackward = () => {
-    if(vid && currentFrame > 0){
+    if(vid && frame.current > 0){
       console.log("stepping back");
-      setCurrentFrame(currentFrame - 1);
+      setCurrentFrame(frame.current - 1);
+      frame.current--;
     }
   };
 
@@ -77,12 +81,19 @@ export default function App() {
         
     if (isPaused) {
         setIsPaused(false);
+        console.log("In Play/Pause rnnnnnn")
 
         const stepForward = () => {
+          if(frame.current < vid.length - 2){
             handleStepForward();
             console.log("in play" );
             const timeoutId = setTimeout(stepForward, currentSpeed);
             setTimeoutId(timeoutId);
+          }
+          else
+          {
+            handlePause();
+          }
         }
 
         const timeoutId = setTimeout(stepForward, currentSpeed);
@@ -136,9 +147,9 @@ const handlePivot = () => {
       {console.log('rerender')}
       <div className="tree-container" ref={containerRef}>
 
-        {vid[currentFrame]?.rootTree &&
+        {vid[frame.current]?.rootTree &&
         <Tree
-          data={vid[currentFrame].rootTree}
+          data={vid[frame.current].rootTree}
           dimensions={dimensions}
           translate={translate}
           renderCustomNodeElement={renderRectSvgNode}
