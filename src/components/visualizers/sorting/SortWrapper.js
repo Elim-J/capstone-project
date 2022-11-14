@@ -5,6 +5,7 @@ import { bubbleSort } from './bubblesort';
 import CodeContent from '../shared/CodeContent';
 import InfoModal from "../shared/InfoModal";
 import ActionBar from './Actionbar';
+import { SortingAlgs } from '../../../constants/SortingAlgs';
 
 const SortWrapper = () => {
     const [currentFrame, setCurrentFrame] = useState(0);
@@ -13,7 +14,8 @@ const SortWrapper = () => {
     const [isPaused, setIsPaused] = useState(true);
     const [openCode, setOpenCode] = useState(true);
     const [openInfo, setOpenInfo] = useState(true);
-    
+    const [alg, setAlg] = useState(SortingAlgs.BubbleSort);
+
     useEffect(() => {
         const randomArr = Array.from({length: 20}, () => Math.floor(Math.random() * 30));
         let sortedArrFrames = bubbleSort(randomArr);
@@ -24,10 +26,10 @@ const SortWrapper = () => {
 
     const highlightCodeLine = (lines) => {
         const prevHighlight = document.querySelectorAll('.highlight');
-        prevHighlight.forEach((element, i) => {
+        prevHighlight?.forEach((element, i) => {
             element.className = '';
         });
-        lines.forEach((element, i) => {
+        lines?.forEach((element, i) => {
             document.getElementById(`code-${element}`).className ='highlight';
         });
     };
@@ -91,7 +93,10 @@ const SortWrapper = () => {
                 openCode={openCode}
                 setOpenCode={setOpenCode}
                 openInfo={openInfo}
-                setOpenInfo={setOpenInfo}/>
+                setOpenInfo={setOpenInfo}
+                alg={alg}
+                setAlg={setAlg}
+                />
         </div> 
     )
 }

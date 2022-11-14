@@ -1,0 +1,100 @@
+body{
+   background-color: #1e1e2b;
+   box-sizing: border-box;
+}
+
+button {
+    display: flex;
+    width: 10rem;
+    height: 2rem;
+    border-radius: 4px;
+    font-weight: 600;
+    background-color: #252636;
+    border: 1px solid red;  
+    color: white;
+    text-transform: uppercase;
+    
+}
+
+.submit--btn {
+    margin-top: 2rem;
+}
+
+.text {
+    margin: auto;
+}
+
+button:hover{
+    filter: brightness(2);
+    transform: scale(1.01);
+}
+
+.btnA, .btnB {
+    margin: 150px auto 0;
+}
+
+.btnB{
+    border: 1px solid #0076bf;
+}
+
+.btnA {
+    border: 1px solid red;   
+}
+
+.formA {
+    display:none;
+    
+}
+.formB{
+    flex-direction: column;
+    gap: 5px;
+    position: absolute;
+    /* background-color:#1e1e2b; */
+    background-color: #202124;
+    border-radius: 6px;
+    margin-top: 4rem;
+    padding: 3rem;
+    z-index: 1;
+    border: 1px solid red;
+    width: 20%;
+    
+    /* move top/left margin edge of element to middle of parent */
+    top: 30%;
+    left: 50%;
+
+    /* Percentage on translate is relative to width/height of element itself */
+    transform: translate(-50%, -50%);
+}
+
+input {
+    width: 90%;
+    padding: .3rem;
+    margin: 2px;
+    
+}
+
+div.inputs {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+input:focus {
+    outline: none;
+    border: 1px solid red;
+}
+
+h2 {
+    text-align: center;
+}
+
+.allBoards {
+    display: grid;
+    grid-template: repeat(4, 1fr) / repeat(auto-fit, minmax(30%, 1fr));
+    margin-top: 200px;
+    background-color: #252636;
+    max-width: 70%;
+    margin: 100px auto;
+    padding: 4rem;
+    border-radius: 12px;
+}
