@@ -1,24 +1,25 @@
-import logo from './logo.svg';
 import './css/App.css';
+import React from 'react';
+import { Routes, Route } from "react-router-dom";
+import Home from './pages/index'
+import SignIn from './pages/signin'
+import AlgorithmsHomePage from './pages/AlgorithmsHomePage';
+import Trello from './pages/Trello';
+import SortWrapper from './pages/BubblesortPage';
+import GridContainer from './components/visualizers/pathfinding/GridContainer';
+import QuickSortPage from './pages/QuickSortPage';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+      <Routes>
+      <Route path="/" element={<Home/>}/>
+      <Route path="/signin" element={<SignIn/>}/>
+      <Route path="/algorithms" element={<AlgorithmsHomePage/>}/>ß
+      <Route path="/trello" element={<Trello/>}/>
+      <Route path="/sorting" element={<SortWrapper/>}/>
+      <Route path="/quicksort" element={<QuickSortPage/>}/>
+      <Route path="/pathfind" element={<GridContainer/>}/>
+      </Routes>
   );
 }
 
