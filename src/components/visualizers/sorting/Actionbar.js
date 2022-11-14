@@ -11,10 +11,13 @@ import NavigateNextIcon from '@mui/icons-material/NavigateNext';
 import SkipNextIcon from '@mui/icons-material/SkipNext';
 import SkipPreviousIcon from '@mui/icons-material/SkipPrevious';
 import ShuffleIcon from '@mui/icons-material/Shuffle';
+import CodeIcon from '@mui/icons-material/Code';
+import CodeOffIcon from '@mui/icons-material/CodeOff';
+import HelpIcon from '@mui/icons-material/Help';
 import { SortingAlgs } from "../../../constants/SortingAlgs";
 import { useNavigate } from 'react-router-dom';
 
-const ActionBar = ({currentFrame, setCurrentFrame, vid, setVid, speed, setSpeed, isPaused, setIsPaused, alg, setAlg}) => {
+const ActionBar = ({currentFrame, setCurrentFrame, vid, setVid, speed, setSpeed, isPaused, setIsPaused, openCode, setOpenCode, openInfo, setOpenInfo, alg, setAlg}) => {
 
     const [timeoutId, setTimeoutId] = useState(null);
 
@@ -162,30 +165,41 @@ const ActionBar = ({currentFrame, setCurrentFrame, vid, setVid, speed, setSpeed,
                         </select>
                     </label>
                 <ButtonGroup size="large" color="black">
-                    <Button variant="text" onClick={handleReset}>
+                    <Button variant="text" title="Skip to beginning" onClick={handleReset}>
                         <SkipPreviousIcon/>
                     </Button>
-                    <Button variant="text" onClick={handleStepBackward}>
+                    <Button variant="text" title="Step Backward"  onClick={handleStepBackward}>
                         <NavigateBeforeIcon/>
                     </Button>
-                    <Button size="large" variant="text" onClick={handlePlayAndPause}>
+                    <Button size="large" variant="text" title={isPaused ? "Play" : "Pause"} onClick={handlePlayAndPause}>
                         {isPaused ? <PlayArrowIcon/> : <PauseIcon/>}
                     </Button>
-                    <Button variant="text" onClick={handleStepForward}>
+                    <Button variant="text" title="Step Forward" onClick={handleStepForward}>
                         <NavigateNextIcon/>
                     </Button>
-                    <Button variant="text" onClick={handleSkipToEnd}>
+                    <Button variant="text" title="Skip to end" onClick={handleSkipToEnd}>
                         <SkipNextIcon/>
                     </Button>
-                    <Button variant="text" onClick={handleShuffle}> 
+                    <Button variant="text" title="Randomize" onClick={() =>{
+                        const randomArr = Array.from({length: 20}, () => Math.floor(Math.random() * 30));
+                        setVid(bubbleSort(randomArr));
+                        setCurrentFrame(0);
+                    }}> 
                         <ShuffleIcon/>
                     </Button>
-                    <Button variant="text" onClick={handleIncreaseSpeed}>
+                    <Button variant="text" title="Increase speed" onClick={handleIncreaseSpeed}>
                         Increase Speed
                     </Button>
-                    <Button variant="text" onClick={handleDecreaseSpeed}>
+                    <Button variant="text" title="Decrease speed" onClick={handleDecreaseSpeed}>
                         Decrease Speed
                     </Button>    
+                    <Button variant="text" title={openCode ? "Hide Code" : "Show code"} onClick={() => setOpenCode(!openCode)}>
+                        {openCode ? <CodeOffIcon/> : <CodeIcon/>}
+                    </Button>
+
+                    <Button variant="text" title="Info" onClick={() => setOpenInfo(!openInfo)}>
+                        <HelpIcon/>
+                    </Button>
                 </ButtonGroup>
                 
             </ThemeProvider>
