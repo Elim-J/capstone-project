@@ -95,18 +95,6 @@ const Navbar = ({ toggle }) => {
                   activeClass='active'
                 >Pathfinding</NavLinksPages>
               </NavItem>
-
-              <NavItem>
-                <NavLinksPages
-                  to='/quicksort'
-                  smooth={true}
-                  duration={500}
-                  spy={true}
-                  exact='false'
-                  offset={-80}
-                  activeClass='active'
-                >QuickSort</NavLinksPages>
-              </NavItem>
               
             </NavMenu>
 
