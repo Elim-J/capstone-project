@@ -17,7 +17,7 @@ import HelpIcon from '@mui/icons-material/Help';
 import { SortingAlgs } from "../../../constants/SortingAlgs";
 import { useNavigate } from 'react-router-dom';
 
-const ActionBar = ({currentFrame, setCurrentFrame, vid, setVid, speed, setSpeed, isPaused, setIsPaused, openCode, setOpenCode, openInfo, setOpenInfo}) => {
+const ActionBar = ({currentFrame, setCurrentFrame, vid, setVid, speed, setSpeed, isPaused, setIsPaused, openCode, setOpenCode, openInfo, setOpenInfo, alg, setAlg}) => {
 
     const [timeoutId, setTimeoutId] = useState(null);
 
