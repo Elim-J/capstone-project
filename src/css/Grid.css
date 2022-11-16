@@ -1,10 +1,10 @@
-/* .grid-wrapper {
-    max-width: 80%;
-    margin: auto;
-} */
+.grid-wrapper {
+    background-color: rgb(38, 133, 51);
+} 
 .grid-with-nodes {
     width: fit-content;
     margin: auto;
+    
 }
 
 .grid-container {
@@ -12,10 +12,12 @@
     width: fit-content;
     margin: auto;
     text-align: center;
-
+    background-color: rgb(255, 255, 255);
+    
 }
 .row-container {
     display: flex;
+    
 }
 
 .actionbar {
@@ -26,4 +28,5 @@
     position: fixed;
     bottom: 0;
     width: 100%;
+    background-color: rgba(41, 153, 19, 0.822);
 }

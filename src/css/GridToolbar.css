@@ -15,6 +15,7 @@ body {
   .headerContainer {
     padding-top: 20px;
     padding-bottom: 20px;
+    
   }
   
   .toolbarRow {
@@ -23,6 +24,7 @@ body {
     align-items: center;
     justify-content: center;
     margin: 0;
+    
   }
   
   .toolbarContainer {
@@ -33,7 +35,8 @@ body {
     float: none;
     clear: both;
     justify-content: center;
-    background-color: whitesmoke;
+    background-color:rgb(156, 48, 48);
+    border: 5px solid rgb(0, 0, 0);
   }
   
   
@@ -47,6 +50,7 @@ body {
   
   .toolbarItem:first-child{
     border-left: 1px solid #e6e6e6;
+    
   }
   a {
     transition: all 0.3s ease-out 0s;
@@ -57,10 +61,13 @@ body {
   
   ul {
     margin-bottom: 0;
+    
   }
   
   h1, h2, h3, h4, h5, h6 {
     margin: 0 0;
+    font-weight: bolder;
+    background-color: rgb(156, 48, 48)
   }
   
   .checkBox {
@@ -70,12 +77,15 @@ body {
     width: 70px;
     height: 35px;
     vertical-align: middle;
+   
+    
   }
   
   .checkBox input {
     opacity: 0;
     width: 0;
     height: 0;
+    
   }
   
   .switch {
@@ -89,6 +99,7 @@ body {
     -webkit-transition: 0.4s;
     transition: 0.4s;
     border-radius: 25px;
+    
   }
   
   .switch:before {
