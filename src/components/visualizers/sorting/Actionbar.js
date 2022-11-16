@@ -14,6 +14,8 @@ import ShuffleIcon from '@mui/icons-material/Shuffle';
 import CodeIcon from '@mui/icons-material/Code';
 import CodeOffIcon from '@mui/icons-material/CodeOff';
 import HelpIcon from '@mui/icons-material/Help';
+import KeyboardDoubleArrowDownIcon from '@mui/icons-material/KeyboardDoubleArrowDown';
+import KeyboardDoubleArrowUpIcon from '@mui/icons-material/KeyboardDoubleArrowUp';
 import { SortingAlgs } from "../../../constants/SortingAlgs";
 import { useNavigate } from 'react-router-dom';
 
@@ -187,12 +189,14 @@ const ActionBar = ({currentFrame, setCurrentFrame, vid, setVid, speed, setSpeed,
                     }}> 
                         <ShuffleIcon/>
                     </Button>
-                    <Button variant="text" title="Increase speed" onClick={handleIncreaseSpeed}>
-                        Increase Speed
-                    </Button>
                     <Button variant="text" title="Decrease speed" onClick={handleDecreaseSpeed}>
-                        Decrease Speed
-                    </Button>    
+                        <KeyboardDoubleArrowDownIcon/>
+                    </Button>   
+
+                    <Button variant="text" title="Increase speed" onClick={handleIncreaseSpeed}>   
+                        <KeyboardDoubleArrowUpIcon/>
+                    </Button>
+                    
                     <Button variant="text" title={openCode ? "Hide Code" : "Show code"} onClick={() => setOpenCode(!openCode)}>
                         {openCode ? <CodeOffIcon/> : <CodeIcon/>}
                     </Button>
