@@ -115,17 +115,33 @@
         left: 0;
     }
 }
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 767px) {
 
     /* code display box needs to be under the .sorting-content */
     .code-wrapper {
-        margin: 25px 50px;
         position: absolute;
         height: fit-content;
         top: 650px;
         right: auto;
-        bottom: 90px;
         left: 0;
+    }
+
+    .graph-wrapper{
+        justify-content: flex-start;
+        overflow: visible;
+        margin-left: auto;
+        padding-left: 50px;
+        padding-right: 50px;
+    }
+    .sorting-content
+    {
+        justify-content: flex-start;
+        overflow: visible;
+        
+    }
+    .sort-wrapper{
+        padding-bottom: 500px;
+        zoom: 60%;
     }
 
 }

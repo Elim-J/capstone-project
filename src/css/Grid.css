@@ -31,7 +31,6 @@
 @media screen and (max-width: 1618px) {
     .actionbar{
         /* sorting actionbar make the buttons into a sidebar like button */
-        background-color: red;
         justify-content:flex-start;
         overflow: auto;
     }
