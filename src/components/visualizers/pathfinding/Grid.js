@@ -323,7 +323,7 @@ const Grid = () => {
 
     return (
         <>
-        <GridToolbar onSearch={searchHandler} setAlg={setAlg} 
+        <GridToolbar onSearch={searchHandler} alg={alg} setAlg={setAlg} 
             onClearWalls={clearGrid} onRandomGrid={randomizeGrid} 
             edit={editMode} setEditMode={setEditMode}
             handleReset={handleReset}

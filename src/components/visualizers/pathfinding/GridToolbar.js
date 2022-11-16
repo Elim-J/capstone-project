@@ -1,11 +1,11 @@
 import { Button, ButtonGroup, createTheme, ThemeProvider } from '@mui/material';
 import "../../../css/GridToolbar.css";
-import {PathfindingAlgs} from "../../../constants/PathfindingAlgs";
+import {PathfindingAlgs, AStarHeuristics} from "../../../constants/PathfindingAlgs";
 import EditIcon from '@mui/icons-material/Edit';
 import PlayCircleOutlineIcon from '@mui/icons-material/PlayCircleOutline';
 import { useRef } from 'react';
 
-const GridToolbar = ({ onSearch, setAlg, onClear, onRandomGrid, onClearWalls, edit, setEditMode, handleReset, setShowAni}) => {
+const GridToolbar = ({ onSearch, alg, setAlg, onClear, onRandomGrid, onClearWalls, edit, setEditMode, handleReset, setShowAni, setHeuristic}) => {
     let editMode = useRef(edit);
 
     
@@ -35,8 +35,6 @@ const GridToolbar = ({ onSearch, setAlg, onClear, onRandomGrid, onClearWalls, ed
                         <label className="dropdown">
                             <select className="form-select algorithm-dropdown-toggle" id="alg-select" disabled
                                 onChange={(e) => {
-                                    // console.log(e.target.value);
-                                    // onSearch(e.target.value);
                                     setAlg(e.target.value);
                                 }}
                                 defaultValue={PathfindingAlgs.Astar}>
@@ -86,6 +84,28 @@ const GridToolbar = ({ onSearch, setAlg, onClear, onRandomGrid, onClearWalls, ed
                                 onRandomGrid();
                             }}>Randomize Grid</Button>
                     </li>
+                    {alg == PathfindingAlgs.Astar && 
+                        <li className="toolbarItem d-flex flex-column flex-md-row">
+                        <h5>Heuristic&nbsp;&nbsp;</h5>
+                        <label className="dropdown">
+                            <select className="form-select algorithm-dropdown-toggle" id="alg-select" disabled={!edit}
+                                onChange={(e) => {
+                                    setHeuristic(e.target.value);
+                                }}
+                                defaultValue={AStarHeuristics.Manhattan}>
+                                    {Object.values(AStarHeuristics).map(val => (
+                                        <option
+                                            aria-selected="true"
+                                            key={val}
+                                            value={val}
+                                            >
+                                            {val}
+                                        </option>
+                                        )
+                                    )}
+                            </select>
+                        </label>
+                    </li>}
                 </ul>             
             </div>
         </div>
