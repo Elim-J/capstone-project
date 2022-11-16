@@ -1,14 +1,20 @@
 .sort-wrapper {
-    height: 100vh;
+    height: calc(100% - 100px);
     width: 100%;
-    background: linear-gradient(
-        to bottom,
-        #09203F, #537895); 
+    overflow: auto;
+    position: fixed;
+    display: flex;
+    flex-direction: column;
+    background: linear-gradient(to bottom,
+            #09203F, #537895);
 }
 
 .sorting-content {
+    height: 800px;
     display: flex;
+    flex-direction: column;
 }
+
 .graph-wrapper {
     display: flex;
     border: 5px;
@@ -39,14 +45,13 @@
 .actionbar {
     display: flex;
     justify-content: center;
-    background-color: rgba(0,0,0, .2);
-    overflow: hidden;
+    background-color: rgba(0, 0, 0, .2);
     position: fixed;
     bottom: 0;
     width: 100%;
 }
 
-.code-modal{
+.code-modal {
     padding: 20px 20px;
     padding-left: 50px;
 }
@@ -77,6 +82,7 @@
 .code-content {
     padding: 15px 0;
 }
+
 .code-content pre {
     padding: 0;
     margin: 0;
@@ -87,3 +93,39 @@
     transition: background-color .8s linear;
 }
 
+@media screen and (max-width: 1618px) {
+
+    /* the action bar for pathfinding needs to be responsive, still need ideas on how to do so */
+    .actionbar {
+        background: red;
+
+    }
+}
+
+@media screen and (max-width: 1462px) {
+
+    /* code display box needs to be under the .sorting-content */
+    .code-wrapper {
+        margin: 25px 50px;
+        position: absolute;
+        height: fit-content;
+        top: 650px;
+        right: auto;
+        bottom: 75px;
+        left: 0;
+    }
+}
+@media screen and (max-width: 768px) {
+
+    /* code display box needs to be under the .sorting-content */
+    .code-wrapper {
+        margin: 25px 50px;
+        position: absolute;
+        height: fit-content;
+        top: 650px;
+        right: auto;
+        bottom: 90px;
+        left: 0;
+    }
+
+}
