@@ -344,7 +344,9 @@ const Grid = () => {
         currentFrame={currentFrame} setCurrentFrame={setCurrentFrame} vid={vid} setVid={setVid}
         speed={speed} setSpeed={setSpeed}
         isPaused={isPaused} setIsPaused={setIsPaused}
-        handleReset={handleReset}/>}
+        handleReset={handleReset} openCode={openCode}
+        setOpenCode={setOpenCode}
+        />}
         
         </>
     );
