@@ -3,7 +3,7 @@ import Collapse from '@mui/material/Collapse';
 import Container from "@mui/material/Container";
 import { DialogTitle, Box, Button, createTheme, ThemeProvider } from "@mui/material";
 import CloseIcon from '@mui/icons-material/Close';
-import {SortingAlgs} from "../../../constants/SortingAlgs";
+import { SortingAlgs, PathfindingAlgs } from "../../../constants/SortingAlgs";
 
 
 const CodeContent = ({alg, open, setOpen, getMessage}) => {

@@ -7,6 +7,8 @@ import aStar from "./aStar";
 import {bfs} from "./bfs";
 import PathfindActionBar from "./PathfindActionBar";
 import { mitmbfs } from "./mitmbfs";
+import CodeContent from '../shared/CodeContent';
+
 
 
 const Grid = () => {
@@ -34,6 +36,8 @@ const Grid = () => {
     const [speed, setSpeed] = useState(250); //ms
     const [showAni, setShowAni] = useState(true);
     const [mouseInGrid, setMouseInGrid] = useState(false);
+    const [openCode, setOpenCode] = useState(true);
+    const [openInfo, setOpenInfo] = useState(true);
 
     const [editMode, setEditMode] = useState(false);
 
@@ -135,6 +139,14 @@ const Grid = () => {
             console.log('line 135');
         }
     };
+
+    const getMessage = () => {
+        if (vid && vid[currentFrame] && vid[currentFrame][0]){
+            return vid[currentFrame][0].message;
+        } else {
+            return "";
+        }
+    }
 
     const gridWithNodes = (
         <div className="grid-with-nodes">
@@ -320,6 +332,13 @@ const Grid = () => {
         <div onMouseEnter={handleMouseEnterGrid} onMouseLeave={handleMouseLeaveGrid} className="grid-container"> 
             {gridWithNodes}
         </div>
+        <div className="code-wrapper">
+                    <CodeContent 
+                    alg={alg} 
+                    open={openCode} 
+                    setOpen={setOpenCode}
+                    getMessage={getMessage}/>
+                </div>
         {!editMode && 
         <PathfindActionBar ref={childStateRef} grid={grid} setGrid={setGrid} 
         currentFrame={currentFrame} setCurrentFrame={setCurrentFrame} vid={vid} setVid={setVid}
