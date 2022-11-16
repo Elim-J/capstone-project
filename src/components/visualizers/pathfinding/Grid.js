@@ -108,7 +108,7 @@ const Grid = () => {
     };
 
     const clearGrid = () => {
-        console.log('Clearing grid');
+        // console.log('Clearing grid');
         for(let i = 0; i < grid.length; i++){
             for(let j = 0; j < grid[i].length; j++){
                 grid[i][j].isBlocked = false;
@@ -119,11 +119,11 @@ const Grid = () => {
 
     const searchHandler = () => {
         //TODO add isBusy state to check if search can be ran
-        console.log('search handler targetAlg: ' + alg);
+        // console.log('search handler targetAlg: ' + alg);
         if(alg == PathfindingAlgs.None){
             //send error?
         } else if (alg == PathfindingAlgs.Astar){
-            console.log('setting vid to astar');
+            // console.log('setting vid to astar');
             setVid(aStar(grid));
             // setAlg(targetAlg);
         } else if (alg == PathfindingAlgs.Bfs){
@@ -136,7 +136,7 @@ const Grid = () => {
             setVid(vid);
             setCurrentFrame(0);
             setGrid(vid[0].grid);
-            console.log('line 135');
+            // console.log('line 135');
         }
     };
 
@@ -179,7 +179,7 @@ const Grid = () => {
     //mouse handlers
     //only refreshing the dom if return a new object?
     const updateGridWall = (row, col) => {
-        console.log("updateGridWall", row, col);
+        // console.log("updateGridWall", row, col);
         grid[row][col].isBlocked = !grid[row][col].isBlocked;
         setGrid(grid.slice());
     };
@@ -187,7 +187,7 @@ const Grid = () => {
     //TODO running into issues where clicking quickly causes mouse up and down events to do weird things
 
     const updateGridEndCell = (row, col, isEnter) => {
-        console.log("updateGridEndCell", row, col);
+        // console.log("updateGridEndCell", row, col);
         if (grid[row][col].isStart){
             return;
         }
@@ -206,7 +206,7 @@ const Grid = () => {
     };
 
     const updateGridStartCell = (row, col) => {
-        console.log("updateGridStartCell", row, col);
+        // console.log("updateGridStartCell", row, col);
         if (mouseInGrid){
             grid[row][col].isStart = !grid[row][col].isStart;
             if (grid[row][col].isStart){
@@ -276,10 +276,10 @@ const Grid = () => {
     };
 
     const contextMenuHandler = (row, col) => {
-        console.log("contextMenuHandler", row, col)
+        // console.log("contextMenuHandler", row, col)
         if (!editMode || grid[row][col].isStart)
             return;
-        console.log('in menu handler');
+        // console.log('in menu handler');
         grid[row][col].isBlocked = false;
         grid[row][col].isEnd = !grid[row][col].isEnd;
         setGrid(grid.slice());
@@ -295,14 +295,14 @@ const Grid = () => {
     };
     const childStateRef = useRef();
     const handleAnimationToggle = (e) => {
-        console.log('handle animation toggle' + e.target.checked);
+        // console.log('handle animation toggle' + e.target.checked);
         setShowAni(e.target.checked);  
     };
 
     const handleMouseLeaveGrid = () => {
         // console.log('handleMouseLeaveGrid');
         if (startMove){
-            console.log('here', lastStartCell.row, lastStartCell.col);
+            // console.log('here', lastStartCell.row, lastStartCell.col);
             grid[lastStartCell.row][lastStartCell.col].isBlocked = false;
             grid[lastStartCell.row][lastStartCell.col].isEnd = false;
             grid[lastStartCell.row][lastStartCell.col].isStart = true;

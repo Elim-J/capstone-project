@@ -73,7 +73,7 @@ const CodeContent = ({alg, open, setOpen, getMessage}) => {
         </div>
     );
 
-    console.log(getMessage());
+    // console.log(getMessage());
     return (
         <Collapse in={open}>
             <DialogTitle>
