@@ -63,7 +63,7 @@ const SortWrapper = () => {
                 {/* pass in const of alg probably from enum */}
                 <div className="code-wrapper">
                     <CodeContent 
-                    alg="BubbleSort" 
+                    alg={alg} 
                     open={openCode} 
                     setOpen={setOpenCode}
                     getMessage={getMessage}/>

@@ -3,6 +3,7 @@ import Collapse from '@mui/material/Collapse';
 import Container from "@mui/material/Container";
 import { DialogTitle, Box, Button, createTheme, ThemeProvider } from "@mui/material";
 import CloseIcon from '@mui/icons-material/Close';
+import {SortingAlgs} from "../../../constants/SortingAlgs";
 
 
 const CodeContent = ({alg, open, setOpen, getMessage}) => {
@@ -22,8 +23,11 @@ const CodeContent = ({alg, open, setOpen, getMessage}) => {
         //TODO eventually use enum
         let code;
         switch(alg){
-            case "BubbleSort":
+            case SortingAlgs.BubbleSort:
                 code = BubbleSort;
+                break;
+            case SortingAlgs.InsertSort:
+                code = InsertSort;
                 break;
             default:
                 code = "Nothing selected";
@@ -34,6 +38,24 @@ const CodeContent = ({alg, open, setOpen, getMessage}) => {
     // console.log(message);
 
     const BubbleSort = (
+        <div className="code-content">
+            <pre id="code-0">{'passes = 0'}</pre>
+            <pre id="code-1">{'hasSwapped = false'}</pre>
+            <pre id="code-2">{'do {'}</pre>
+            <pre id="code-3">{'   ++passes;'}</pre>
+            <pre id="code-4">{'   for (i = 0; i < arr.length - passes; i++){'}</pre>
+            <pre id="code-5">{'     if (arr[i] > arr[i+1]){'}</pre>
+            <pre id="code-6">{'          const swap = arr[i]'}</pre>
+            <pre id="code-7">{'          arr[i] = arr[i+1]'}</pre>
+            <pre id="code-8">{'          arr[i+1] = swap'}</pre>
+            <pre id="code-9">{'          hasSwapped = true'}</pre>
+            <pre id="code-10">{'     }'}</pre>
+            <pre id="code-11">{'   }'}</pre>
+            <pre id="code-12">{'} while(hasSwapped)'}</pre>
+        </div>
+    );
+
+    const InsertSort = (
         <div className="code-content">
             <pre id="code-0">{'passes = 0'}</pre>
             <pre id="code-1">{'hasSwapped = false'}</pre>
