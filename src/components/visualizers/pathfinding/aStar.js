@@ -1,4 +1,6 @@
-function aStar(g) {
+import {AStarHeuristics} from "../../../constants/PathfindingAlgs";
+
+function aStar(g, heuristic) {
     //grid must be a rectangle
     let grid = structuredClone(g);
     let rows = grid.length;
@@ -30,7 +32,7 @@ function aStar(g) {
       return E;
     }
 
-    startPos.heuristic = findHeuristic(startPos.row, startPos.column, endNodes, 'Euclidean');
+    startPos.heuristic = findHeuristic(startPos.row, startPos.column, endNodes, heuristic);
     let vid = [generateFrame(grid, rows, cols, null, 'Starting A* algorithm...', [])];
     grid[startPos.row][startPos.column].isExplored = true;
     grid[startPos.row][startPos.column].isDiscovered = true;
@@ -72,7 +74,7 @@ function aStar(g) {
           !grid[searchNode.row - 1][searchNode.column].isBlocked &&
           !grid[searchNode.row - 1][searchNode.column].isDiscovered
         ) {
-          let heuristicVal = findHeuristic(searchNode.row - 1, searchNode.column, endNodes, 'Euclidean');
+          let heuristicVal = findHeuristic(searchNode.row - 1, searchNode.column, endNodes, heuristic);
           grid[searchNode.row - 1][searchNode.column].isDiscovered = true;
           grid[searchNode.row - 1][searchNode.column].heuristic = heuristicVal;
           queue.push({
@@ -89,7 +91,7 @@ function aStar(g) {
           !grid[searchNode.row][searchNode.column - 1].isBlocked &&
           !grid[searchNode.row][searchNode.column - 1].isDiscovered
         ) {
-          let heuristicVal = findHeuristic(searchNode.row, searchNode.column - 1, endNodes, 'Euclidean');
+          let heuristicVal = findHeuristic(searchNode.row, searchNode.column - 1, endNodes, heuristic);
           grid[searchNode.row][searchNode.column - 1].isDiscovered = true;
           grid[searchNode.row][searchNode.column - 1].heuristic = heuristicVal;
           queue.push({
@@ -106,7 +108,7 @@ function aStar(g) {
           !grid[searchNode.row + 1][searchNode.column].isBlocked &&
           !grid[searchNode.row + 1][searchNode.column].isDiscovered
         ) {
-          let heuristicVal = findHeuristic(searchNode.row + 1, searchNode.column, endNodes, 'Euclidean');
+          let heuristicVal = findHeuristic(searchNode.row + 1, searchNode.column, endNodes, heuristic);
           grid[searchNode.row + 1][searchNode.column].isDiscovered = true;
           grid[searchNode.row + 1][searchNode.column].heuristic = heuristicVal;
           queue.push({
@@ -123,7 +125,7 @@ function aStar(g) {
           !grid[searchNode.row][searchNode.column + 1].isBlocked &&
           !grid[searchNode.row][searchNode.column + 1].isDiscovered
         ) {
-          let heuristicVal = findHeuristic(searchNode.row, searchNode.column + 1, endNodes, 'Euclidean');
+          let heuristicVal = findHeuristic(searchNode.row, searchNode.column + 1, endNodes, heuristic);
           grid[searchNode.row][searchNode.column + 1].isDiscovered = true;
           grid[searchNode.row][searchNode.column + 1].heuristic = heuristicVal;
           queue.push({
@@ -245,14 +247,14 @@ function findHeuristic(x, y, endNodes, type){
       lowestHeuristicSoFar = 0;
     }
   })
-  if (type == 'Manhattan' && lowestHeuristicSoFar != 0){
+  if (type == AStarHeuristics.Manhattan && lowestHeuristicSoFar != 0){
     endNodes.forEach(node => {
       let thisHeuristic = Math.abs(node.row - x) + Math.abs(node.column - y);
       if (!lowestHeuristicSoFar || lowestHeuristicSoFar > thisHeuristic){
         lowestHeuristicSoFar = thisHeuristic;
       }
     })
-  } else if (type == 'Euclidean' && lowestHeuristicSoFar != 0){
+  } else if (type == AStarHeuristics.Euclidean && lowestHeuristicSoFar != 0){
     endNodes.forEach(node => {
       let thisHeuristic = Math.sqrt(Math.pow(node.row - x, 2) + Math.pow(node.column - y, 2));
       thisHeuristic = Math.round(thisHeuristic * 10) / 10;

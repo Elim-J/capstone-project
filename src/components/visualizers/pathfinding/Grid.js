@@ -2,7 +2,7 @@ import React, {useState, useEffect, useRef} from "react";
 import Cell from "./Cell";
 import "../../../css/Grid.css";
 import GridToolbar from "./GridToolbar";
-import {PathfindingAlgs, StartingGrid} from "../../../constants/PathfindingAlgs";
+import {PathfindingAlgs, StartingGrid, AStarHeuristics} from "../../../constants/PathfindingAlgs";
 import aStar from "./aStar";
 import {bfs} from "./bfs";
 import PathfindActionBar from "./PathfindActionBar";
@@ -38,6 +38,7 @@ const Grid = () => {
     const [mouseInGrid, setMouseInGrid] = useState(false);
     const [openCode, setOpenCode] = useState(true);
     const [openInfo, setOpenInfo] = useState(true);
+    const [heuristic, setHeuristic] = useState(AStarHeuristics.Manhattan);
 
     const [editMode, setEditMode] = useState(false);
 
@@ -124,7 +125,7 @@ const Grid = () => {
             //send error?
         } else if (alg == PathfindingAlgs.Astar){
             // console.log('setting vid to astar');
-            setVid(aStar(grid));
+            setVid(aStar(grid, heuristic));
             // setAlg(targetAlg);
         } else if (alg == PathfindingAlgs.Bfs){
             let vid = bfs(grid);
@@ -328,6 +329,7 @@ const Grid = () => {
             edit={editMode} setEditMode={setEditMode}
             handleReset={handleReset}
             setShowAni={handleAnimationToggle}
+            setHeuristic={setHeuristic}
         />
         <div onMouseEnter={handleMouseEnterGrid} onMouseLeave={handleMouseLeaveGrid} className="grid-container"> 
             {gridWithNodes}
