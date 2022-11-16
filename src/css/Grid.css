@@ -1,5 +1,5 @@
 .grid-wrapper {
-    background-color: rgb(38, 133, 51);
+    background-color: rgba(19, 53, 99, 0.74);
 } 
 .grid-with-nodes {
     width: fit-content;
@@ -14,9 +14,11 @@
     text-align: center;
     background-color: rgb(255, 255, 255);
     
+    
 }
 .row-container {
     display: flex;
+    
     
 }
 
@@ -28,5 +30,5 @@
     position: fixed;
     bottom: 0;
     width: 100%;
-    background-color: rgba(41, 153, 19, 0.822);
+    background-color: rgba(8, 66, 73, 0.822);
 }

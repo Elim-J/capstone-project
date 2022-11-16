@@ -5,11 +5,13 @@ body {
       sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    
   }
   
   code {
     font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
       monospace;
+      
   }
   
   .headerContainer {
@@ -35,7 +37,7 @@ body {
     float: none;
     clear: both;
     justify-content: center;
-    background-color:rgb(156, 48, 48);
+    background-color:rgba(56, 12, 92, 0.726);
     border: 5px solid rgb(0, 0, 0);
   }
   
@@ -44,12 +46,12 @@ body {
     justify-items: center;
     text-align: center;
     padding: 10px 10px;
-    border-right: 1px solid #e6e6e6;
+    border-right: 1px solid rgba(0, 0, 0, 0.726);
     /* border-left: 1px solid #e6e6e6; */
   }
   
   .toolbarItem:first-child{
-    border-left: 1px solid #e6e6e6;
+    border-left: 1px solid #000000;
     
   }
   a {
@@ -67,7 +69,8 @@ body {
   h1, h2, h3, h4, h5, h6 {
     margin: 0 0;
     font-weight: bolder;
-    background-color: rgb(156, 48, 48)
+    /*background-color: rgb(156, 48, 48)
+    */
   }
   
   .checkBox {
