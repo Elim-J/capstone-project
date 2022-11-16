@@ -9,8 +9,8 @@
 .sorting-content {
     display: flex;
     justify-content: center;
-    border: 15px solid rgb(0, 0, 0);
-    background-color: rgb(0, 0, 0);
+    /*border: 15px solid rgb(0, 0, 0);
+    /*background-color: rgb(0, 0, 0);*/
 }
 .graph-wrapper {
     display: flex;
@@ -57,13 +57,19 @@
 
 .code-title {
     text-align: center;
+    font-weight: bold;
+    
 }
 
 .code-message {
     text-align: center;
     padding: 15px 15px;
-    height: 15px;
-    font-weight: bold;
+    height: 50px;
+    color:  rgb(0, 0, 0);
+    background-color: rgba(255, 255, 0.75);
+    font-weight: bolder;
+    font-size: large;
+    
 }
 
 /* TODO color scheme needs to change */
@@ -81,6 +87,7 @@
 
 .code-content {
     padding: 15px 0;
+    
 }
 .code-content pre {
     padding: 0;
