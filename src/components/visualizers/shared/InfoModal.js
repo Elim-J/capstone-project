@@ -17,7 +17,9 @@ const boxSX = {
     boxShadow: 24,
     p: 4,
 };
-
+function sayHello() {
+    alert('You clicked me!');
+}
 
 const InfoModal = ({open, setOpen}) => {
     return(
@@ -43,7 +45,7 @@ const InfoModal = ({open, setOpen}) => {
                             <Typography id="transition-modal-description" sx={{mt: 2}}> 
                                 Welcome to our sorting visualizer. Click off this to exit this. Otherwise press next to see all the features! 
                             </Typography>
-                            
+                            <button onClick={sayHello}>Next</button>
                         </Box>
                     </Fade>
 
