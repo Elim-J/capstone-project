@@ -121,6 +121,30 @@ const CodeContent = ({alg, open, setOpen, getMessage}) => {
         </div>
     )
 
+    const QuickSortLastPivot = (
+        <div className="code-content">
+            <pre id="code-0">{'function quickSort(ints) {'}</pre>
+            <pre id="code-1">{'   let smaller = []; larger = [];'}</pre>
+            <pre id="code-2">{'   if (ints.length <= 1) {'}</pre>
+            <pre id="code-3">{'      return ints;'}</pre>
+            <pre id="code-4">{'   }'}</pre>
+            <pre id="code-5">{'   let pivot = ints.length - 1;'}</pre>
+            <pre id="code-6">{'   for (let i = 0; i < ints.length; i++) {'}</pre>
+            <pre id="code-7">{'      if (i == pivot) {'}</pre>
+            <pre id="code-8">{'         break;'}</pre>
+            <pre id="code-9">{'      }'}</pre>
+            <pre id="code-10">{'      if (ints[i] < ints[pivot]) {'}</pre>
+            <pre id="code-11">{'         smaller.push(ints[i]);'}</pre>
+            <pre id="code-12">{'      }'}</pre>
+            <pre id="code-13">{'      if (ints[i] >= ints[pivot]) {'}</pre>
+            <pre id="code-14">{'         larger.push(ints[i]);'}</pre>
+            <pre id="code-15">{'      }'}</pre>
+            <pre id="code-16">{'  }'}</pre>
+            <pre id="code-17">{'  return quickSort(smaller).concat(ints[pivot], quickSort(larger));'}</pre>
+            <pre id="code-18">{'}'}</pre>
+        </div>
+    )
+
     const AStarManhattan = (
         <div className="code-content">
             <pre id="code-0">{'//priorityQueue is a queue sorted by the heuristic of each node'}</pre>
