@@ -1,3 +1,5 @@
+import { QuickSortPivots } from "../../../constants/SortingAlgs";
+
 export function quickSort(arr, pivotType) {
     let isDonePartitioning = false;
     let rootOfTree = { elements: [], leftSubTree: null, rightSubTree: null, highlight: false };
@@ -14,15 +16,15 @@ export function quickSort(arr, pivotType) {
             let nodeToPartition = findNextNodeToPartition(rootOfTree);
             let pivotVal;
             let pivotPos;
-            if (pivotType == 'last'){
+            if (pivotType == QuickSortPivots.Last){
                 pivotPos = nodeToPartition.elements.length - 1;
                 pivotVal = nodeToPartition.elements[pivotPos].val;
             }
-            else if (pivotType == 'middle'){
+            else if (pivotType == QuickSortPivots.Middle){
                 pivotPos = Math.floor(nodeToPartition.elements.length / 2);
                 pivotVal = nodeToPartition.elements[pivotPos].val;
             }
-            else if (pivotType == 'first'){
+            else if (pivotType == QuickSortPivots.First){
                 pivotPos = 0;
                 pivotVal = nodeToPartition.elements[pivotPos].val;
             }

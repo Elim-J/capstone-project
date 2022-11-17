@@ -21,13 +21,15 @@ export default function QuickSortWrapper() {
 
   useEffect(() => {
     // handleRandomArr();
-    setVid(quickSort(Array.from({length: 10}, () => Math.floor(Math.random() * 100)), QuickSortPivots.Random));
+    setInts(Array.from({length: 10}, () => Math.floor(Math.random() * 100)));
+    setVid(quickSort(ints, QuickSortPivots.Random));
   }, []);
 
   const handleRandomArr = () => {
     setCurrentFrame(0);
+    setInts(Array.from({length: 10}, () => Math.floor(Math.random() * 100)));
     frame.current = 0;
-    setVid(quickSort(Array.from({length: 10}, () => Math.floor(Math.random() * 100)), QuickSortPivots.Random));
+    setVid(quickSort(ints, QuickSortPivots.Random));
   };
 
   const handleStepForward = () => {
@@ -85,7 +87,7 @@ const handlePivot = (e) => {
   setPivot(e);
   setCurrentFrame(0);
   frame.current = 0;
-  setVid()
+  setVid(quickSort(ints, e));
 }
 
   const renderRectSvgNode = ({ nodeDatum, toggleNode }) => (
