@@ -6,3 +6,5 @@ export const Speed = {
     QuarterX: "0.25"
     // Dijkstra: "Dijkstra",
 }
+
+export const DefaultSpeed = 1000;

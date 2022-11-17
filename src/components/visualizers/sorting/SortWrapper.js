@@ -49,7 +49,6 @@ const SortWrapper = () => {
             {/* This should probably be its own component */}
             <div className="sorting-content">
                 <div className='graph-wrapper'>
-                    {console.log('Current frame: ' + currentFrame + "vid.length:" + vid.length)}
                     {currentFrame > vid.length - 1 && setCurrentFrame(vid.length - 1)}
                     {vid && vid[currentFrame] && vid[currentFrame].map((element, i) => {
                         if (i !== 0){
