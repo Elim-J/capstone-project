@@ -37,7 +37,7 @@ body {
     float: none;
     clear: both;
     justify-content: center;
-    background-color:rgba(56, 12, 92, 0.726);
+    background-color:rgba(57, 83, 131, 0.795);
     border: 5px solid rgb(0, 0, 0);
   }
   
@@ -52,7 +52,7 @@ body {
   
   .toolbarItem:first-child{
     border-left: 1px solid #000000;
-    
+    font-weight: bold;
   }
   a {
     transition: all 0.3s ease-out 0s;
@@ -80,7 +80,7 @@ body {
     width: 70px;
     height: 35px;
     vertical-align: middle;
-   
+    
     
   }
   

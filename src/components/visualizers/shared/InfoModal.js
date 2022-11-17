@@ -37,12 +37,13 @@ const InfoModal = ({open, setOpen}) => {
                     <Fade in={open}>
                         <Box sx={boxSX}>
                             <Typography id="transition-modal-title" variant="h6" component="h2" >
-                                Teestststastigajngj;a
+                                Sorting Tutorial 
                             </Typography>
                             {/* style={{color: "whitesmoke"}} */}
                             <Typography id="transition-modal-description" sx={{mt: 2}}> 
-                                lorem ipsum nakg;ang;kla gk ;angl; agnjkabgajgnla 
+                                Welcome to our sorting visualizer. Click off this to exit this. Otherwise press next to see all the features! 
                             </Typography>
+                            
                         </Box>
                     </Fade>
 
