@@ -7,8 +7,8 @@ export const SortingAlgs = {
 }
 
 export const QuickSortPivots = {
+    Random: "Random",
     First: "First",
     Middle: "Middle",
-    Last: "Last",
-    Random: "Random"
+    Last: "Last"
 }

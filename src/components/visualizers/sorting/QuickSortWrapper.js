@@ -6,55 +6,22 @@ import { quickSort } from './quicksort.js';
 import { QuickSortPivots } from '../../../constants/SortingAlgs.js';
 import '../../../css/quicksort.css';
 
-
-const qsTree = {
-    elements: [1,2,3,4],
-    attributes: {
-        highlightRed: '0-3',
-    },
-    children: [
-        {
-            elements: [1,2],
-            attributes: {
-                highlight: ''
-            },
-            children: [
-                {
-                    elements: [8,2],
-                    attributes: {
-                        hightlight: 'blue',
-                    }
-                }
-                
-            ]
-        },
-        {
-            elements: [1,2,5,7],
-            attributes: {
-                highlight: 'red',
-            },
-            children: [
-
-            ]
-        }
-    ]
-
-};
-
-//style={containerStyles}
 export default function QuickSortWrapper() {
+
+  let tempInts = Array.from({length: 10}, () => Math.floor(Math.random() * 100));
 
   const [vid, setVid] = useState([]);
   const [currentFrame, setCurrentFrame] = useState(0);
   const [isPaused, setIsPaused] = useState(true);
   const [currentSpeed, setCurrentSpeed] = useState(500);
   const [timeoutId, setTimeoutId] = useState(null);
-  const [pivot, setPivot] = useState()
+  const [pivot, setPivot] = useState('random');
+  const [ints, setInts] = useState(tempInts);
   let frame = useRef(currentFrame);
 
   useEffect(() => {
     // handleRandomArr();
-    setVid(quickSort([13, 0, 29, 21, 2, 25, 10, 19, 3, 10], QuickSortPivots.Random));
+    setVid(quickSort(Array.from({length: 10}, () => Math.floor(Math.random() * 100)), QuickSortPivots.Random));
   }, []);
 
   const handleRandomArr = () => {
@@ -114,8 +81,11 @@ const handlePause = () => {
   }
 };
 
-const handlePivot = () => {
-
+const handlePivot = (e) => {
+  setPivot(e);
+  setCurrentFrame(0);
+  frame.current = 0;
+  setVid()
 }
 
   const renderRectSvgNode = ({ nodeDatum, toggleNode }) => (
@@ -166,17 +136,23 @@ const handlePivot = () => {
           <Button onClick={handleStepForward}>Step forward</Button>
           <Button onClick={handleRandomArr}>Generate Random Data</Button>
           <label className="dropdown">
-                            <select id="alg-select"
-                                onChange={(e) => {
-                                    handlePivot(e.target.value);
-                                }}
-                            >
-                              <option value='First'>First</option>
-                              <option value='Middle'>Middle</option>
-                              <option value='Last'>Last</option>
-                              <option value='Random'>Random</option>
-                            </select>
-                        </label>
+                        <select className="form-select algorithm-dropdown-toggle" id="alg-select"
+                            onChange={(e) => {
+                                handlePivot(e.target.value);
+                            }}
+                            defaultValue={QuickSortPivots.Random}>
+                                {Object.values(QuickSortPivots).map(val => (
+                                    <option
+                                        aria-selected="true"
+                                        key={val}
+                                        value={val}
+                                        >
+                                        {val}
+                                    </option>
+                                    )
+                                )}
+                        </select>
+                    </label>
       </>
     );
   }
