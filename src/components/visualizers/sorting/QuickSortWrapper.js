@@ -4,6 +4,7 @@ import { Button } from '@mui/material';
 import { useCallback, useState } from "react";
 import { quickSort } from './quicksort.js';
 import { QuickSortPivots } from '../../../constants/SortingAlgs.js';
+import { Speed, DefaultSpeed } from "../../../constants/SharedConstants";
 import '../../../css/quicksort.css';
 
 export default function QuickSortWrapper() {
@@ -13,11 +14,14 @@ export default function QuickSortWrapper() {
   const [vid, setVid] = useState([]);
   const [currentFrame, setCurrentFrame] = useState(0);
   const [isPaused, setIsPaused] = useState(true);
-  const [currentSpeed, setCurrentSpeed] = useState(500);
+  // const [currentSpeed, setCurrentSpeed] = useState(500);
   const [timeoutId, setTimeoutId] = useState(null);
   const [pivot, setPivot] = useState('random');
   const [ints, setInts] = useState(tempInts);
+  const [speed, setSpeed] = useState(DefaultSpeed);
   let frame = useRef(currentFrame);
+
+  const currentSpeed = useRef(speed);
 
   useEffect(() => {
     // handleRandomArr();
@@ -47,6 +51,39 @@ export default function QuickSortWrapper() {
       frame.current--;
     }
   };
+
+  function handleChangeSpeed(e){
+    if (e == Speed.FourX){
+        setSpeed(speed => {
+                        currentSpeed.current = DefaultSpeed / 4;
+                        return DefaultSpeed / 4;
+                    });
+    }
+    else if (e == Speed.TwoX){
+        setSpeed(speed => {
+            currentSpeed.current = DefaultSpeed / 2;
+            return DefaultSpeed / 2;
+        });
+    }
+    else if (e == Speed.OneX){
+        setSpeed(speed => {
+            currentSpeed.current = DefaultSpeed;
+            return DefaultSpeed;
+        });
+    }
+    else if (e == Speed.HalfX){
+        setSpeed(speed => {
+            currentSpeed.current = DefaultSpeed * 2;
+            return DefaultSpeed * 2;
+        });
+    }
+    else if (e == Speed.QuarterX){
+        setSpeed(speed => {
+            currentSpeed.current = DefaultSpeed * 4;
+            return DefaultSpeed * 4;
+        });
+    }
+}
 
   const handlePlayAndPause = () => {
         
@@ -155,6 +192,24 @@ const handlePivot = (e) => {
                                 )}
                         </select>
                     </label>
+            <label className="dropdown">
+                        <select className="form-select algorithm-dropdown-toggle" id="alg-select"
+                            onChange={(e) => {
+                                handleChangeSpeed(e.target.value);
+                            }}
+                            defaultValue={Speed.OneX}>
+                                {Object.values(Speed).map(val => (
+                                    <option
+                                        aria-selected="true"
+                                        key={val}
+                                        value={val}
+                                        >
+                                        {val}
+                                    </option>
+                                    )
+                                )}
+                        </select>
+                    </label>   
       </>
     );
   }
