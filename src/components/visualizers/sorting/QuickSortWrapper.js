@@ -3,6 +3,7 @@ import Tree from 'react-d3-tree';
 import { Button } from '@mui/material'; 
 import { useCallback, useState } from "react";
 import { quickSort } from './quicksort.js';
+import { QuickSortPivots } from '../../../constants/SortingAlgs.js';
 import '../../../css/quicksort.css';
 
 
@@ -48,17 +49,18 @@ export default function QuickSortWrapper() {
   const [isPaused, setIsPaused] = useState(true);
   const [currentSpeed, setCurrentSpeed] = useState(500);
   const [timeoutId, setTimeoutId] = useState(null);
+  const [pivot, setPivot] = useState()
   let frame = useRef(currentFrame);
 
   useEffect(() => {
     // handleRandomArr();
-    setVid(quickSort([13, 0, 29, 21, 2, 25, 10, 19, 3, 10], 'random'));
+    setVid(quickSort([13, 0, 29, 21, 2, 25, 10, 19, 3, 10], QuickSortPivots.Random));
   }, []);
 
   const handleRandomArr = () => {
     setCurrentFrame(0);
     frame.current = 0;
-    setVid(quickSort(Array.from({length: 10}, () => Math.floor(Math.random() * 100)), 'random'));
+    setVid(quickSort(Array.from({length: 10}, () => Math.floor(Math.random() * 100)), QuickSortPivots.Random));
   };
 
   const handleStepForward = () => {
