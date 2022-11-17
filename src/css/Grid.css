@@ -23,7 +23,8 @@
     justify-content: center;
     background-color: rgba(0,0,0, .2);
     position: fixed;
-    overflow: auto;
+    overflow-x: auto;
+    overflow-y: hidden;
     bottom: 0;
     width: 100%;
 }
@@ -32,6 +33,7 @@
     .actionbar{
         /* sorting actionbar make the buttons into a sidebar like button */
         justify-content:flex-start;
-        overflow: auto;
+        overflow-x: auto;
+        overflow-y: hidden;
     }
   }

@@ -1,7 +1,7 @@
 .sort-wrapper {
-    height: calc(100% - 100px);
+    height: 1800px;
     width: 100%;
-    overflow: auto;
+    overflow: hidden;
     position: fixed;
     display: flex;
     flex-direction: column;
@@ -93,6 +93,34 @@
     transition: background-color .8s linear;
 }
 
+/* 2k monitor styles */
+@media  screen and (min-width: 2560px) {
+    .sort-wrapper{
+     height: -webkit-fill-available;
+    }
+ 
+    .sorting-content{
+     zoom: 1.4;
+    }
+    .actionbar{
+     zoom: 1.4;
+    }
+ }
+
+ /* 4k monitor styles */
+@media  screen and (min-width: 4096px) {
+    .sort-wrapper{
+     height: -webkit-fill-available;
+    }
+    .sorting-content{
+     zoom: 2;
+    }
+    .actionbar{
+     zoom: 2;
+    }
+ }
+
+
 @media screen and (max-width: 1618px) {
 
     /* the action bar for pathfinding needs to be responsive, still need ideas on how to do so */
@@ -102,7 +130,7 @@
     }
 }
 
-@media screen and (max-width: 1462px) {
+@media screen and (max-width: 1441px) {
 
     /* code display box needs to be under the .sorting-content */
     .code-wrapper {
@@ -114,14 +142,19 @@
         bottom: 75px;
         left: 0;
     }
+    .sort-wrapper{
+        overflow: scroll;
+        height: -webkit-fill-available;
+        padding-bottom: 600px;
+    }
 }
-@media screen and (max-width: 767px) {
+@media screen and (max-width: 780px) and (max-height: 1100px) {
 
     /* code display box needs to be under the .sorting-content */
     .code-wrapper {
         position: absolute;
         height: fit-content;
-        top: 650px;
+        top: 626px;
         right: auto;
         left: 0;
     }
@@ -142,6 +175,7 @@
     .sort-wrapper{
         padding-bottom: 500px;
         zoom: 60%;
+        overflow: auto;
     }
 
 }
