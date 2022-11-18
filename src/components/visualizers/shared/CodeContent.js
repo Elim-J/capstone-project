@@ -73,6 +73,26 @@ const CodeContent = ({alg, open, setOpen, getMessage}) => {
         </div>
     );
 
+    const SelectionSort = (
+        <div className="code-content">
+            <pre id="code-0">{'function selectionSort(ints) {'}</pre>
+            <pre id="code-1">{'   let minIndex;'}</pre>
+            <pre id="code-2">{'   for (let i = 0; i < ints.length - 1; i++) {'}</pre>
+            <pre id="code-3">{'      minIndex = i;'}</pre>
+            <pre id="code-4">{'      for (let j = i + 1; j < ints.length - 1; j++) {'}</pre>
+            <pre id="code-5">{'          if (ints[j] < ints[minIndex]) {'}</pre>
+            <pre id="code-6">{'              min_idx = j;'}</pre>
+            <pre id="code-7">{'          }'}</pre>
+            <pre id="code-9">{'      }'}</pre>
+            <pre id="code-9">{'      let temp = ints[minIndex];'}</pre>
+            <pre id="code-9">{'      ints[minIndex] = ints[i];'}</pre>
+            <pre id="code-9">{'      ints[i] = temp;'}</pre>
+            <pre id="code-10">{'   }'}</pre>
+            <pre id="code-11">{'   return ints'}</pre>
+            <pre id="code-12">{'}'}</pre>
+        </div>
+    );
+
     const RandomSort = (
         <div className="code-content">
             <pre id="code-0">{'function randomSort(ints) {'}</pre>
