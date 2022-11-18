@@ -57,19 +57,19 @@ const CodeContent = ({alg, open, setOpen, getMessage}) => {
 
     const InsertSort = (
         <div className="code-content">
-            <pre id="code-0">{'passes = 0'}</pre>
-            <pre id="code-1">{'hasSwapped = false'}</pre>
-            <pre id="code-2">{'do {'}</pre>
-            <pre id="code-3">{'   ++passes;'}</pre>
-            <pre id="code-4">{'   for (i = 0; i < arr.length - passes; i++){'}</pre>
-            <pre id="code-5">{'     if (arr[i] > arr[i+1]){'}</pre>
-            <pre id="code-6">{'          const swap = arr[i]'}</pre>
-            <pre id="code-7">{'          arr[i] = arr[i+1]'}</pre>
-            <pre id="code-8">{'          arr[i+1] = swap'}</pre>
-            <pre id="code-9">{'          hasSwapped = true'}</pre>
-            <pre id="code-10">{'     }'}</pre>
-            <pre id="code-11">{'   }'}</pre>
-            <pre id="code-12">{'} while(hasSwapped)'}</pre>
+            <pre id="code-0">{'function insertionSort(ints) {'}</pre>
+            <pre id="code-1">{'   for (let i = 1; i < ints.length; i++) {'}</pre>
+            <pre id="code-2">{'      let current = ints[i];'}</pre>
+            <pre id="code-3">{'      let j = i-1;'}</pre>
+            <pre id="code-4">{'         while ((j > -1) && (current < ints[j])) {'}</pre>
+            <pre id="code-5">{'            ints[j+1] = ints[j];'}</pre>
+            <pre id="code-6">{'            j--;'}</pre>
+            <pre id="code-7">{'         }'}</pre>
+            <pre id="code-8">{'         ints[j + 1] = current;'}</pre>
+            <pre id="code-9">{'      }'}</pre>
+            <pre id="code-10">{'   }'}</pre>
+            <pre id="code-11">{'   return ints'}</pre>
+            <pre id="code-12">{'}'}</pre>
         </div>
     );
 
@@ -254,11 +254,9 @@ const CodeContent = ({alg, open, setOpen, getMessage}) => {
             <pre id="code-37">{'   }'}</pre>
             <pre id="code-38">{'   return minHeuristic;'}</pre>
             <pre id="code-39">{'}'}</pre>
-
         </div>
     );
 
-    // console.log(getMessage());
     return (
         <Collapse in={open}>
             <DialogTitle>
