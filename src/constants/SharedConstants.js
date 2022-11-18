@@ -3,7 +3,7 @@ export const Speed = {
     TwoX: "2x",
     OneX: "1x",
     HalfX: "0.5x",
-    QuarterX: "0.25"
+    QuarterX: "0.25x"
     // Dijkstra: "Dijkstra",
 }
 
