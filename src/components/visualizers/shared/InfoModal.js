@@ -45,7 +45,10 @@ const InfoModal = ({open, setOpen}) => {
                             <Typography id="transition-modal-description" sx={{mt: 2}}> 
                                 Welcome to our sorting visualizer. Click off this to exit this. Otherwise press next to see all the features! 
                             </Typography>
-                            <button onClick={sayHello}>Next</button>
+                            <Button variant="secondary" className="Next-Btn" onClick={() => {
+                           
+                            }}>Next</Button>
+                            
                         </Box>
                     </Fade>
 
