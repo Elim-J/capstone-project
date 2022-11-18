@@ -73,6 +73,39 @@ const CodeContent = ({alg, open, setOpen, getMessage}) => {
         </div>
     );
 
+    const RandomSort = (
+        <div className="code-content">
+            <pre id="code-0">{'function randomSort(ints) {'}</pre>
+            <pre id="code-1">{'   while(!isSorted(ints)) {'}</pre>
+            <pre id="code-2">{'      ints = shuffle(ints);'}</pre>
+            <pre id="code-3">{'   }'}</pre>
+            <pre id="code-4">{'   return ints;'}</pre>
+            <pre id="code-5">{'}'}</pre>
+            <pre id="code-6">{''}</pre>
+            <pre id="code-7">{'function isSorted(ints) {'}</pre>
+            <pre id="code-8">{'   let currentMax;'}</pre>
+            <pre id="code-8">{'   ints.forEach(int => {'}</pre>
+            <pre id="code-9">{'      if (int < currentMax) {'}</pre>
+            <pre id="code-9">{'         return false;'}</pre>
+            <pre id="code-9">{'      }'}</pre>
+            <pre id="code-9">{'      currentMax = int;'}</pre>
+            <pre id="code-10">{'   }'}</pre>
+            <pre id="code-11">{'   return true;'}</pre>
+            <pre id="code-12">{'}'}</pre>
+            <pre id="code-6">{''}</pre>
+            <pre id="code-7">{'function shuffle(ints) {'}</pre>
+            <pre id="code-7">{'   let currentIndex = ints.length;'}</pre>
+            <pre id="code-7">{'   let randomIndex;'}</pre>
+            <pre id="code-7">{'   while (currentIndex != 0) {'}</pre>
+            <pre id="code-7">{'      randomIndex = Math.floor(Math.random() * currentIndex);'}</pre>
+            <pre id="code-7">{'      currentIndex--;'}</pre>
+            <pre id="code-7">{'      [ints[currentIndex], ints[randomIndex]] = [array[randomIndex], array[currentIndex]];'}</pre>
+            <pre id="code-10">{'   }'}</pre>
+            <pre id="code-11">{'   return ints;'}</pre>
+            <pre id="code-12">{'}'}</pre>
+        </div>
+    );
+
     const QuickSortFirstPivot = (
         <div className="code-content">
             <pre id="code-0">{'function quickSort(ints) {'}</pre>
