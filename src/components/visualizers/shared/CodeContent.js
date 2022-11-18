@@ -224,12 +224,10 @@ const CodeContent = ({alg, open, setOpen, getMessage}) => {
 
     const BFS = (
         <div className="code-content">
-            <pre id="code-1">{'function AStarManhattan(startNode, endNodes){'}</pre>
-            <pre id="code-2">{'   startNode.heuristic = calcHeuristic(node, endNodes);'}</pre>
+            <pre id="code-1">{'function BFS(startNode){'}</pre>
             <pre id="code-3">{'   startNode.prev = NULL'}</pre>
-            <pre id="code-4">{'   priorityQueue.offer(startNode)'}</pre>
-            <pre id="code-5">{'   hasSwapped = false'}</pre>
-            <pre id="code-6">{'   while(!priorityQueue.isEmpty()){'}</pre>
+            <pre id="code-4">{'   queue.offer(startNode)'}</pre>
+            <pre id="code-6">{'   while(!queue.isEmpty()){'}</pre>
             <pre id="code-7">{'      let node = priorityQueue.poll();'}</pre>
             <pre id="code-8">{'      if (node.isEnd) {'}</pre>
             <pre id="code-9">{'         let path = [];'}</pre>
@@ -271,39 +269,38 @@ const CodeContent = ({alg, open, setOpen, getMessage}) => {
             <pre id="code-2">{'   startNode.heuristic = calcHeuristic(node, endNodes);'}</pre>
             <pre id="code-3">{'   startNode.prev = NULL'}</pre>
             <pre id="code-4">{'   priorityQueue.offer(startNode)'}</pre>
-            <pre id="code-5">{'   hasSwapped = false'}</pre>
-            <pre id="code-6">{'   while(!priorityQueue.isEmpty()){'}</pre>
-            <pre id="code-7">{'      let node = priorityQueue.poll();'}</pre>
-            <pre id="code-8">{'      if (node.isEnd) {'}</pre>
-            <pre id="code-9">{'         let path = [];'}</pre>
-            <pre id="code-10">{'         while (node){'}</pre>
-            <pre id="code-11">{'            path.insert(node);'}</pre>
-            <pre id="code-12">{'            node = node.prev;'}</pre>
-            <pre id="code-13">{'         }'}</pre>
-            <pre id="code-14">{'      }'}</pre>
-            <pre id="code-15">{'      node.above.heuristic = calcHeuristic(node.above, endNodes);'}</pre>
-            <pre id="code-16">{'      node.above.prev = node;'}</pre>
-            <pre id="code-17">{'      priorityQueue.offer(node.above'}</pre>
-            <pre id="code-18">{'      node.right.heuristic = calcHeuristic(node.right, endNodes);'}</pre>
-            <pre id="code-19">{'      node.right.prev = node;'}</pre>
-            <pre id="code-20">{'      priorityQueue.offer(node.right'}</pre>
-            <pre id="code-21">{'      node.below.heuristic = calcHeuristic(node.below, endNodes);'}</pre>
-            <pre id="code-22">{'      node.below.prev = node;'}</pre>
-            <pre id="code-23">{'      priorityQueue.offer(node.below'}</pre>
-            <pre id="code-24">{'      node.left.heuristic = calcHeuristic(node.left, endNodes);'}</pre>
-            <pre id="code-25">{'      node.left.prev = node;'}</pre>
-            <pre id="code-26">{'      priorityQueue.offer(node.left'}</pre>
-            <pre id="code-27">{'   }'}</pre>
-            <pre id="code-28">{'}'}</pre>
-            <pre id="code-29">{''}</pre>
-            <pre id="code-30">{'function calcHeuristic(node, endNodes[]){'}</pre>
-            <pre id="code-31">{'   let minHeuristic;'}</pre>
-            <pre id="code-32">{'   endNodes.forEach(endNode => {'}</pre>
-            <pre id="code-33">{'      let distance = Math.abs(node.x - endNode.x) + Math.abs(node.y - endNode.y);'}</pre>
-            <pre id="code-34">{'      minHeuristic = Math.min(minHeuristic, distance);'}</pre>
-            <pre id="code-35">{'   }'}</pre>
-            <pre id="code-36">{'   return minHeuristic;'}</pre>
-            <pre id="code-37">{'}'}</pre>
+            <pre id="code-7">{'   while(!priorityQueue.isEmpty()){'}</pre>
+            <pre id="code-8">{'      let node = priorityQueue.poll();'}</pre>
+            <pre id="code-9">{'      if (node.isEnd) {'}</pre>
+            <pre id="code-10">{'         let path = [];'}</pre>
+            <pre id="code-11">{'         while (node){'}</pre>
+            <pre id="code-12">{'            path.insert(node);'}</pre>
+            <pre id="code-13">{'            node = node.prev;'}</pre>
+            <pre id="code-14">{'         }'}</pre>
+            <pre id="code-15">{'      }'}</pre>
+            <pre id="code-16">{'      node.above.heuristic = calcHeuristic(node.above, endNodes);'}</pre>
+            <pre id="code-17">{'      node.above.prev = node;'}</pre>
+            <pre id="code-18">{'      priorityQueue.offer(node.above'}</pre>
+            <pre id="code-19">{'      node.right.heuristic = calcHeuristic(node.right, endNodes);'}</pre>
+            <pre id="code-20">{'      node.right.prev = node;'}</pre>
+            <pre id="code-21">{'      priorityQueue.offer(node.right'}</pre>
+            <pre id="code-22">{'      node.below.heuristic = calcHeuristic(node.below, endNodes);'}</pre>
+            <pre id="code-23">{'      node.below.prev = node;'}</pre>
+            <pre id="code-24">{'      priorityQueue.offer(node.below'}</pre>
+            <pre id="code-25">{'      node.left.heuristic = calcHeuristic(node.left, endNodes);'}</pre>
+            <pre id="code-26">{'      node.left.prev = node;'}</pre>
+            <pre id="code-27">{'      priorityQueue.offer(node.left'}</pre>
+            <pre id="code-28">{'   }'}</pre>
+            <pre id="code-29">{'}'}</pre>
+            <pre id="code-30">{''}</pre>
+            <pre id="code-31">{'function calcHeuristic(node, endNodes[]){'}</pre>
+            <pre id="code-32">{'   let minHeuristic;'}</pre>
+            <pre id="code-33">{'   endNodes.forEach(endNode => {'}</pre>
+            <pre id="code-34">{'      let distance = Math.abs(node.x - endNode.x) + Math.abs(node.y - endNode.y);'}</pre>
+            <pre id="code-35">{'      minHeuristic = Math.min(minHeuristic, distance);'}</pre>
+            <pre id="code-36">{'   }'}</pre>
+            <pre id="code-37">{'   return minHeuristic;'}</pre>
+            <pre id="code-38">{'}'}</pre>
         </div>
     );
 
@@ -314,41 +311,40 @@ const CodeContent = ({alg, open, setOpen, getMessage}) => {
             <pre id="code-2">{'   startNode.heuristic = calcHeuristic(node, endNodes);'}</pre>
             <pre id="code-3">{'   startNode.prev = NULL'}</pre>
             <pre id="code-4">{'   priorityQueue.offer(startNode)'}</pre>
-            <pre id="code-5">{'   hasSwapped = false'}</pre>
-            <pre id="code-6">{'   while(!priorityQueue.isEmpty()){'}</pre>
-            <pre id="code-7">{'      let node = priorityQueue.poll();'}</pre>
-            <pre id="code-8">{'      if (node.isEnd) {'}</pre>
-            <pre id="code-9">{'         let path = [];'}</pre>
-            <pre id="code-10">{'         while (node){'}</pre>
-            <pre id="code-11">{'            path.insert(node);'}</pre>
-            <pre id="code-12">{'            node = node.prev;'}</pre>
-            <pre id="code-13">{'         }'}</pre>
-            <pre id="code-14">{'      }'}</pre>
-            <pre id="code-15">{'      node.above.heuristic = calcHeuristic(node.above, endNodes);'}</pre>
-            <pre id="code-16">{'      node.above.prev = node;'}</pre>
-            <pre id="code-17">{'      priorityQueue.offer(node.above'}</pre>
-            <pre id="code-18">{'      node.right.heuristic = calcHeuristic(node.right, endNodes);'}</pre>
-            <pre id="code-19">{'      node.right.prev = node;'}</pre>
-            <pre id="code-20">{'      priorityQueue.offer(node.right'}</pre>
-            <pre id="code-21">{'      node.below.heuristic = calcHeuristic(node.below, endNodes);'}</pre>
-            <pre id="code-22">{'      node.below.prev = node;'}</pre>
-            <pre id="code-23">{'      priorityQueue.offer(node.below'}</pre>
-            <pre id="code-24">{'      node.left.heuristic = calcHeuristic(node.left, endNodes);'}</pre>
-            <pre id="code-25">{'      node.left.prev = node;'}</pre>
-            <pre id="code-26">{'      priorityQueue.offer(node.left'}</pre>
-            <pre id="code-27">{'   }'}</pre>
-            <pre id="code-28">{'}'}</pre>
-            <pre id="code-29">{''}</pre>
-            <pre id="code-30">{'function calcHeuristic(node, endNodes[]){'}</pre>
-            <pre id="code-31">{'   let minHeuristic;'}</pre>
-            <pre id="code-32">{'   endNodes.forEach(endNode => {'}</pre>
-            <pre id="code-33">{'      let x = Math.pow(Math.abs(node.x - endNode.x), 2);'}</pre>
-            <pre id="code-34">{'      let y = Math.pow(Math.abs(node.y - endNode.y), 2);'}</pre>
-            <pre id="code-35">{'      let distance = Math.pow(x + y, 0.5);'}</pre>
-            <pre id="code-36">{'      minHeuristic = Math.min(minHeuristic, distance);'}</pre>
-            <pre id="code-37">{'   }'}</pre>
-            <pre id="code-38">{'   return minHeuristic;'}</pre>
-            <pre id="code-39">{'}'}</pre>
+            <pre id="code-5">{'   while(!priorityQueue.isEmpty()){'}</pre>
+            <pre id="code-6">{'      let node = priorityQueue.poll();'}</pre>
+            <pre id="code-7">{'      if (node.isEnd) {'}</pre>
+            <pre id="code-8">{'         let path = [];'}</pre>
+            <pre id="code-9">{'         while (node){'}</pre>
+            <pre id="code-10">{'            path.insert(node);'}</pre>
+            <pre id="code-11">{'            node = node.prev;'}</pre>
+            <pre id="code-12">{'         }'}</pre>
+            <pre id="code-13">{'      }'}</pre>
+            <pre id="code-14">{'      node.above.heuristic = calcHeuristic(node.above, endNodes);'}</pre>
+            <pre id="code-15">{'      node.above.prev = node;'}</pre>
+            <pre id="code-16">{'      priorityQueue.offer(node.above'}</pre>
+            <pre id="code-17">{'      node.right.heuristic = calcHeuristic(node.right, endNodes);'}</pre>
+            <pre id="code-18">{'      node.right.prev = node;'}</pre>
+            <pre id="code-19">{'      priorityQueue.offer(node.right'}</pre>
+            <pre id="code-20">{'      node.below.heuristic = calcHeuristic(node.below, endNodes);'}</pre>
+            <pre id="code-21">{'      node.below.prev = node;'}</pre>
+            <pre id="code-22">{'      priorityQueue.offer(node.below'}</pre>
+            <pre id="code-23">{'      node.left.heuristic = calcHeuristic(node.left, endNodes);'}</pre>
+            <pre id="code-24">{'      node.left.prev = node;'}</pre>
+            <pre id="code-25">{'      priorityQueue.offer(node.left'}</pre>
+            <pre id="code-26">{'   }'}</pre>
+            <pre id="code-27">{'}'}</pre>
+            <pre id="code-28">{''}</pre>
+            <pre id="code-29">{'function calcHeuristic(node, endNodes[]){'}</pre>
+            <pre id="code-30">{'   let minHeuristic;'}</pre>
+            <pre id="code-31">{'   endNodes.forEach(endNode => {'}</pre>
+            <pre id="code-32">{'      let x = Math.pow(Math.abs(node.x - endNode.x), 2);'}</pre>
+            <pre id="code-33">{'      let y = Math.pow(Math.abs(node.y - endNode.y), 2);'}</pre>
+            <pre id="code-34">{'      let distance = Math.pow(x + y, 0.5);'}</pre>
+            <pre id="code-35">{'      minHeuristic = Math.min(minHeuristic, distance);'}</pre>
+            <pre id="code-36">{'   }'}</pre>
+            <pre id="code-37">{'   return minHeuristic;'}</pre>
+            <pre id="code-38">{'}'}</pre>
         </div>
     );
 
