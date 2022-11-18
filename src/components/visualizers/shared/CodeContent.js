@@ -84,25 +84,25 @@ const CodeContent = ({alg, open, setOpen, getMessage}) => {
             <pre id="code-6">{''}</pre>
             <pre id="code-7">{'function isSorted(ints) {'}</pre>
             <pre id="code-8">{'   let currentMax;'}</pre>
-            <pre id="code-8">{'   ints.forEach(int => {'}</pre>
-            <pre id="code-9">{'      if (int < currentMax) {'}</pre>
-            <pre id="code-9">{'         return false;'}</pre>
-            <pre id="code-9">{'      }'}</pre>
-            <pre id="code-9">{'      currentMax = int;'}</pre>
-            <pre id="code-10">{'   }'}</pre>
-            <pre id="code-11">{'   return true;'}</pre>
-            <pre id="code-12">{'}'}</pre>
-            <pre id="code-6">{''}</pre>
-            <pre id="code-7">{'function shuffle(ints) {'}</pre>
-            <pre id="code-7">{'   let currentIndex = ints.length;'}</pre>
-            <pre id="code-7">{'   let randomIndex;'}</pre>
-            <pre id="code-7">{'   while (currentIndex != 0) {'}</pre>
-            <pre id="code-7">{'      randomIndex = Math.floor(Math.random() * currentIndex);'}</pre>
-            <pre id="code-7">{'      currentIndex--;'}</pre>
-            <pre id="code-7">{'      [ints[currentIndex], ints[randomIndex]] = [array[randomIndex], array[currentIndex]];'}</pre>
-            <pre id="code-10">{'   }'}</pre>
-            <pre id="code-11">{'   return ints;'}</pre>
-            <pre id="code-12">{'}'}</pre>
+            <pre id="code-9">{'   ints.forEach(int => {'}</pre>
+            <pre id="code-10">{'      if (int < currentMax) {'}</pre>
+            <pre id="code-11">{'         return false;'}</pre>
+            <pre id="code-12">{'      }'}</pre>
+            <pre id="code-13">{'      currentMax = int;'}</pre>
+            <pre id="code-14">{'   }'}</pre>
+            <pre id="code-15">{'   return true;'}</pre>
+            <pre id="code-16">{'}'}</pre>
+            <pre id="code-17">{''}</pre>
+            <pre id="code-18">{'function shuffle(ints) {'}</pre>
+            <pre id="code-19">{'   let currentIndex = ints.length;'}</pre>
+            <pre id="code-20">{'   let randomIndex;'}</pre>
+            <pre id="code-21">{'   while (currentIndex != 0) {'}</pre>
+            <pre id="code-22">{'      randomIndex = Math.floor(Math.random() * currentIndex);'}</pre>
+            <pre id="code-23">{'      currentIndex--;'}</pre>
+            <pre id="code-24">{'      [ints[currentIndex], ints[randomIndex]] = [array[randomIndex], array[currentIndex]];'}</pre>
+            <pre id="code-25">{'   }'}</pre>
+            <pre id="code-26">{'   return ints;'}</pre>
+            <pre id="code-27">{'}'}</pre>
         </div>
     );
 
