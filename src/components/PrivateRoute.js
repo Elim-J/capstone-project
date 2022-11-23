@@ -7,11 +7,10 @@ const PrivateRoute =  ({ children }) => {
 
     const [jwt, setJwt] = useLocalState("", "jwt");
     const [isLoading, setIsLoading] = useState(true);
-    const [isValid, setIsValid] = useState(null);
+    const [isValid, setIsValid] = useState(false);
 
     useEffect(() => {
         if (jwt){
-            //need to validate jwt here 
             fetch(`/api/auth/validate?token=${jwt}`, {
                 headers: {
                     "content-type": "application/json",
@@ -28,7 +27,6 @@ const PrivateRoute =  ({ children }) => {
     });
     
     
-
     return isLoading ? <CircularProgress/> : isValid ? children : <Navigate to="/login"/>;
 };
 

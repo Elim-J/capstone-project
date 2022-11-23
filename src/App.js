@@ -17,31 +17,6 @@ function App() {
 
   const [jwt, setJwt] = useLocalState("", "jwt");
 
-    // useEffect(() => {
-    //     if(!jwt){
-    //         const reqBody = {
-    //             "username": "Vince",
-    //             "password": "asdfasdf"
-    //         }
-        
-    //         //default fetch is get
-    //         fetch('api/auth/login', 
-    //         {
-    //             headers: {
-    //                 "content-type": "application/json"
-    //             },
-    //             method: "post",
-    //             body: JSON.stringify(reqBody)
-    //         }).then(response => Promise.all([response.json(), response.headers]))
-    //         .then(([body, headers]) => {
-    //             setJwt(headers.get("authorization")); //JWT
-    //             console.log('jwt acquired');
-    //         });
-    //     }
-        
-
-    // }, []);
-
   return (
       <Routes>
       <Route path="/" element={<Home/>}/>

@@ -16,49 +16,40 @@ import { createTheme, ThemeProvider } from '@mui/material/styles';
 
 const Login = () => {
 
-    const [jwt, setJwt] = useLocalState("", "jwt");
+  const [jwt, setJwt] = useLocalState("", "jwt");
 
-    const sendLoginRequest = (e) => {
-        e.preventDefault();
-        console.log('sending req');
-        const data = new FormData(e.currentTarget);
-        const reqBody = {
-            "username": data.get('email'),
-            "password": data.get('password'),
-        };
-        console.log(JSON.stringify(reqBody));
-    
-        //default fetch is get
-        fetch('api/auth/login', 
-        {
-            headers: {
-                "content-type": "application/json"
-            },
-            method: "post",
-            body: JSON.stringify(reqBody)
-        }).then(response => {
-            if(response.status === 200)
-                return Promise.all([response.json(), response.headers])
-            else
-                return Promise.reject("Invalid login attempt");
-        })
-        .then(([body, headers]) => {
-            setJwt(headers.get("authorization")); //JWT
-            console.log('jwt acquired');
-            window.location.href = '/';
-        }).catch((msg) => alert(msg));
-    };
-
-    const theme = createTheme();
-
-    const handleSubmit = (event) => {
-        event.preventDefault();
-        const data = new FormData(event.currentTarget);
-        console.log({
-            email: data.get('email'),
-            password: data.get('password'),
-        });
+  const sendLoginRequest = (e) => {
+      e.preventDefault();
+      console.log('sending req');
+      const data = new FormData(e.currentTarget);
+      const reqBody = {
+          "username": data.get('username'),
+          "password": data.get('password'),
+      };
+      console.log(JSON.stringify(reqBody));
+  
+      //default fetch is get
+      fetch('api/auth/login', 
+      {
+          headers: {
+              "content-type": "application/json"
+          },
+          method: "post",
+          body: JSON.stringify(reqBody)
+      }).then(response => {
+          if(response.status === 200)
+              return Promise.all([response.json(), response.headers])
+          else
+              return Promise.reject("Invalid login attempt");
+      })
+      .then(([body, headers]) => {
+          setJwt(headers.get("authorization")); //JWT
+          console.log('jwt acquired');
+          window.location.href = '/';
+      }).catch((msg) => alert(msg));
   };
+
+  const theme = createTheme();
 
   return (
     <ThemeProvider theme={theme}>
@@ -83,10 +74,10 @@ const Login = () => {
               margin="normal"
               required
               fullWidth
-              id="email"
-              label="Email Address"
-              name="email"
-              autoComplete="email"
+              id="username"
+              label="Username"
+              name="username"
+              autoComplete="username"
               autoFocus
             />
             <TextField
@@ -107,14 +98,14 @@ const Login = () => {
             >
               Sign In
             </Button>
-            <Grid container>
-              <Grid item xs>
+            <Grid container  alignItems="center" justifyContent="center" direction="column">
+              {/* <Grid item xs>
                 <Link href="#" variant="body2">
                   Forgot password?
                 </Link>
-              </Grid>
-              <Grid item>
-                <Link href="#" variant="body2">
+              </Grid> */}
+              <Grid item xs>
+                <Link href="/signup" variant="body2">
                   {"Don't have an account? Sign Up"}
                 </Link>
               </Grid>
