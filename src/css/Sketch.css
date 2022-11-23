@@ -1,0 +1,30 @@
+/* #circularcursor {
+    background-color: transparent;
+    border:1px solid black;    
+    height:25px;
+    width:25px;
+    border-radius:50%;
+    -moz-border-radius:50%;
+    -webkit-border-radius:50%;
+    position: absolute;
+    z-index: 1;
+  } */
+
+.canvas-btn {
+    position: absolute;
+    margin-left: 10px;
+    margin-top: 15rem;
+    border-radius: 5px;
+    border-style: solid;
+    padding: 5px 5px;
+    /* border-color: gray; */
+    border-width: thin;
+}
+
+.btn-width {
+    min-width: 50px;
+}
+/* 
+.mouse-state {
+    cursor: crosshair;
+} */
