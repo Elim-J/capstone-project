@@ -1,6 +1,6 @@
 body {
     margin: 0;
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    font-family: source-code-pro, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
       'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
       sans-serif;
     -webkit-font-smoothing: antialiased;
@@ -63,12 +63,13 @@ body {
   
   ul {
     margin-bottom: 0;
-    
+    font-family: source-code-pro
   }
   
   h1, h2, h3, h4, h5, h6 {
     margin: 0 0;
     font-weight: bolder;
+    font-family: source-code-pro, sans-serif;
     /*background-color: rgb(156, 48, 48)
     */
   }

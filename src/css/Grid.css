@@ -21,8 +21,7 @@
     background-color: rgb(255, 255, 255);
     border-style: solid;
     border-width: 3px ;
-    border-color:  rgb(252, 176, 12) ;
-    
+    border-color:  rgb(235, 163, 6) ;
     
 }
 .row-container {
@@ -38,4 +37,6 @@
     bottom: 0;
     width: 100%;
     background-color: rgba(8, 66, 73, 0.822);
+    
 }
+

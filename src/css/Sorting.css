@@ -61,7 +61,8 @@
     text-align: center;
     font-weight: bold;
     font-size: x-large;
-    
+    font-family: 'Courier New', Courier, monospace;
+    /**/
 }
 
 .code-message {
