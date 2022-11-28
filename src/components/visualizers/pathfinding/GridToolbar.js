@@ -17,8 +17,8 @@ const GridToolbar = ({ onSearch, setAlg, onClear, onRandomGrid, onClearWalls, ed
     return (
         <div className="toolbarContainer">
             <div className="justify-content-between">
-                <ul className="toolbarRow d-flex flex-column flex-lg-row">
-                    <li className="toolbarItem d-flex flex-column flex-md-row">
+                <ul className="toolbarRow d-flex flex-column flex-lg-row"> Hello
+                    <li className="toolbarItem d-flex flex-column flex-md-row"> 
                         <h5 className='Toolbar-txt'>Show Animations&nbsp;&nbsp;</h5>
                         <label className="checkBox">
                             <input id="animation-checkBox"
@@ -67,8 +67,8 @@ const GridToolbar = ({ onSearch, setAlg, onClear, onRandomGrid, onClearWalls, ed
                             editModeHandler();
                             }} sx={{width: 160}}>
                             {!edit ? 
-                            <> <EditIcon /><span>&nbsp;&nbsp;<h5 className='Toolbar-txt'>Edit Board</h5></span>
-                            </> : <><PlayCircleOutlineIcon /><span className='Toolbar-txt'>&nbsp;&nbsp;Visualize</span></>}
+                            <> <span className='Toolbar-txt'> &nbsp;&nbsp;Edit</span>
+                            </> : <><span className='Toolbar-txt'>&nbsp;&nbsp;Visualize</span></>}
                             
                         </Button>
                     </li>
