@@ -84,7 +84,7 @@ const GridToolbar = ({ onSearch, setAlg, onClear, onRandomGrid, onClearWalls, ed
                         <Button className="my-btn" variant="dark" onClick={() => {
                             if(edit)
                                 onRandomGrid();
-                            }}>Randomize Grid</Button>
+                            }}>Random Grid</Button>
                     </li>
                 </ul>             
             </div>
