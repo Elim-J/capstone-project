@@ -19,7 +19,7 @@ const GridToolbar = ({ onSearch, setAlg, onClear, onRandomGrid, onClearWalls, ed
             <div className="justify-content-between">
                 <ul className="toolbarRow d-flex flex-column flex-lg-row">
                     <li className="toolbarItem d-flex flex-column flex-md-row">
-                        <h5>Show animations&nbsp;&nbsp;</h5>
+                        <h5>Show Animations&nbsp;&nbsp;</h5>
                         <label className="checkBox">
                             <input id="animation-checkBox"
                                 type="checkbox"
@@ -67,7 +67,7 @@ const GridToolbar = ({ onSearch, setAlg, onClear, onRandomGrid, onClearWalls, ed
                             editModeHandler();
                             }} sx={{width: 160}}>
                             {!edit ? 
-                            <> <EditIcon /><span>&nbsp;&nbsp;Edit board</span>
+                            <> <EditIcon /><span>&nbsp;&nbsp;<h5>Edit board</h5></span>
                             </> : <><PlayCircleOutlineIcon /><span>&nbsp;&nbsp;Visualize</span></>}
                             
                         </Button>
@@ -75,16 +75,17 @@ const GridToolbar = ({ onSearch, setAlg, onClear, onRandomGrid, onClearWalls, ed
 
                     {/* TODO in edit mode, put these and any other editing tools where the action bar is */}
                     <li className="toolbarItem d-flex flex-column flex-md-row">
-                        <Button variant="secondary" className="my-btn ms-2" onClick={() => {
+                    <Button variant="secondary" className="my-btn ms-2" onClick={() => {
                             if(edit)
                                 onClearWalls();
-                            }}>Clear Walls</Button>
+                            }}> <h5>Clear Walls</h5></Button> 
+                            
                     </li>
                     <li className="toolbarItem d-flex flex-column flex-md-row">
                         <Button className="my-btn" variant="dark" onClick={() => {
                             if(edit)
                                 onRandomGrid();
-                            }}>Random Grid</Button>
+                            }}><h5>Random Grid</h5></Button>
                     </li>
                 </ul>             
             </div>

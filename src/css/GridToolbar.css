@@ -1,6 +1,6 @@
 body {
     margin: 0;
-    font-family: source-code-pro, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    font-family: sans-serif, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
       'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
       sans-serif;
     -webkit-font-smoothing: antialiased;
@@ -69,7 +69,7 @@ body {
   h1, h2, h3, h4, h5, h6 {
     margin: 0 0;
     font-weight: bolder;
-    font-family: source-code-pro, sans-serif;
+    font-family: sans-serif;
     /*background-color: rgb(156, 48, 48)
     */
   }
@@ -135,4 +135,7 @@ body {
 
   .algorithm-dropdown-toggle:focus {
     box-shadow: none !important;
+  }
+  .my-btn ms-2 {
+    font-family: ans-serif;
   }
