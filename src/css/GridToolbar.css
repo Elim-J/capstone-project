@@ -70,9 +70,23 @@ body {
     margin: 0 0;
     font-weight: bolder;
     font-family: sans-serif;
-    /*background-color: rgb(156, 48, 48)
-    */
+    font: 100px;
+    background-color: rgb(156, 48, 48)
+    
   }
+  .Toolbar-txt{
+    align-content: left;
+    font-size: 15px;
+    font-weight: bold;
+    font-family: sans-serif;
+    object-fit: cover;
+    text-align: center;
+    padding: 10px 40px;
+
+    background-color: rgb(95, 35, 145)
+    
+  }
+  
   
   .checkBox {
     position: relative;
