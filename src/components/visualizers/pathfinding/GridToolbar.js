@@ -17,7 +17,7 @@ const GridToolbar = ({ onSearch, setAlg, onClear, onRandomGrid, onClearWalls, ed
     return (
         <div className="toolbarContainer">
             <div className="justify-content-between">
-                <ul className="toolbarRow d-flex flex-column flex-lg-row"> Hell
+                <ul className="toolbarRow d-flex flex-column flex-lg-row">&nbsp;<h5 className='Toolbar-txt'>*Press Edit first to add walls to the grid</h5> &nbsp; 
                     <li className="toolbarItem d-flex flex-column flex-md-row"> 
                         <h5 className='Toolbar-txt'>Show Animations&nbsp;&nbsp;</h5>
                         <label className="checkBox">
