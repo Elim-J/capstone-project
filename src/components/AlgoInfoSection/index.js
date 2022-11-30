@@ -38,7 +38,7 @@ const AlgoInfoSection = () => {
 								<ToolsH2>{el.title}</ToolsH2>
 								<ToolsP>{el.description}</ToolsP>
 								</ToolsCard>
-								<CardButton to={el.link}>Learn More</CardButton>
+								<CardButton to={el.link} >Learn More</CardButton>
 							</ToolsWrapper>
 									))}
 			</ReviewSlider>

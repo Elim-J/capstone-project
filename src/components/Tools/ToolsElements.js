@@ -34,6 +34,12 @@ export const ToolsContainerBlue = styled.div`
   @media screen and (max-width: 768px) {
     height: 1300px;
   }
+  @media screen and (min-height: 1081px) {
+    height: 1440px;
+  }
+  @media screen and (min-height: 1800px) {
+    height: 2160px;
+  }
 `
 
 
