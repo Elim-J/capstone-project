@@ -26,7 +26,7 @@ export function bfs(grid) {
   } catch (E) {
     return E;
   }
-  let vid = [generateFrame(grid, rows, cols, null, 'Starting bfs algorithm...', [])];
+  let vid = [generateFrame(grid, rows, cols, null, 'Starting bfs algorithm...', [], [0, 1, 2, 3])];
   grid[startPos.row][startPos.column].isDiscovered = true;
   queue.push(startPos);
   while (queue.length > 0) {
@@ -45,7 +45,7 @@ export function bfs(grid) {
       searchNode = queue.shift();
     }
     grid[searchNode.row][searchNode.column].isExplored = true;
-    vid.push(generateFrame(grid, rows, cols, null, 'Removed node from queue', []));
+    vid.push(generateFrame(grid, rows, cols, null, 'Removed node from queue', [], [4]));
     if (grid[searchNode.row][searchNode.column].isEnd) {
       let path = [];
       let currentNode = searchNode;
@@ -56,7 +56,7 @@ export function bfs(grid) {
       path.reverse();
       for (let i = 1; i < path.length; i++){
         let currentPath = path.slice(0, i);
-        vid.push(generateFrame(grid, rows, cols, currentPath, 'Returning path', []));
+        vid.push(generateFrame(grid, rows, cols, currentPath, 'Returning path', [], [5, 6, 7, 8, 9, 10, 11, 12]));
       }
       return vid;
     } else {
@@ -72,7 +72,7 @@ export function bfs(grid) {
           column: searchNode.column,
           prevNode: searchNode,
         });
-        vid.push(generateFrame(grid, rows, cols, null, 'Visiting node above', []));
+        vid.push(generateFrame(grid, rows, cols, null, 'Visiting node above', [], [13, 14]));
       }
       if (
         //Search Left
@@ -86,7 +86,7 @@ export function bfs(grid) {
           column: searchNode.column - 1,
           prevNode: searchNode,
         });
-        vid.push(generateFrame(grid, rows, cols, null, 'Visiting node to the left', []));
+        vid.push(generateFrame(grid, rows, cols, null, 'Visiting node to the left', [], [15, 16]));
       }
       if (
         //Search Down
@@ -100,7 +100,7 @@ export function bfs(grid) {
           column: searchNode.column,
           prevNode: searchNode,
         });
-        vid.push(generateFrame(grid, rows, cols, null, 'Visiting node below', []));
+        vid.push(generateFrame(grid, rows, cols, null, 'Visiting node below', [], [17, 18]));
       }
       if (
         //Search Right
@@ -114,7 +114,7 @@ export function bfs(grid) {
           column: searchNode.column + 1,
           prevNode: searchNode,
         });
-        vid.push(generateFrame(grid, rows, cols, null, 'Visiting node to the right', []));
+        vid.push(generateFrame(grid, rows, cols, null, 'Visiting node to the right', [], [19, 20]));
       }
     }
   }
