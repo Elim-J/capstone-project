@@ -3,10 +3,11 @@ import Collapse from '@mui/material/Collapse';
 import Container from "@mui/material/Container";
 import { DialogTitle, Box, Button, createTheme, ThemeProvider } from "@mui/material";
 import CloseIcon from '@mui/icons-material/Close';
-import { SortingAlgs, PathfindingAlgs } from "../../../constants/SortingAlgs";
+import { SortingAlgs } from "../../../constants/SortingAlgs";
+import { PathfindingAlgs } from "../../../constants/PathfindingAlgs";
 
 
-const CodeContent = ({alg, open, setOpen, getMessage}) => {
+const CodeContent = ({alg, open, setOpen, getMessage, pivot, heuristic}) => {
 
     //copy and pasted from actionbar. refactor later
     const { palette } = createTheme();
@@ -28,6 +29,44 @@ const CodeContent = ({alg, open, setOpen, getMessage}) => {
                 break;
             case SortingAlgs.InsertSort:
                 code = InsertSort;
+                break;
+            case SortingAlgs.RandomSort:
+                code = RandomSort;
+                break;
+            case SortingAlgs.SelectionSort:
+                code = SelectionSort;
+                break;
+            case SortingAlgs.QuickSort:
+                if (pivot == 'first'){
+                    code = QuickSortFirstPivot;
+                    break;
+                }
+                if (pivot == 'middle'){
+                    code = QuickSortMiddlePivot;
+                    break;
+                }
+                if (pivot == 'last'){
+                    code = QuickSortLastPivot;
+                    break;
+                }
+                if (pivot == 'random'){
+                    code = QuickSortRandomPivot;
+                    break;
+                }
+            case PathfindingAlgs.Astar:
+                if (heuristic == 'Euclidean'){
+                    code = AStarEuclidean;
+                    break;
+                }
+                if (heuristic == 'Manhattan'){
+                    code = AStarManhattan;
+                    break;
+                }
+            case PathfindingAlgs.Bfs:
+                code = BFS;
+                break;
+            case PathfindingAlgs.MitmBfs:
+                code = MitmBFS;
                 break;
             default:
                 code = "Nothing selected";
@@ -225,40 +264,58 @@ const CodeContent = ({alg, open, setOpen, getMessage}) => {
     const BFS = (
         <div className="code-content">
             <pre id="code-1">{'function BFS(startNode){'}</pre>
-            <pre id="code-3">{'   startNode.prev = NULL'}</pre>
-            <pre id="code-4">{'   queue.offer(startNode)'}</pre>
+            <pre id="code-2">{'   startNode.prev = NULL'}</pre>
+            <pre id="code-3">{'   queue.offer(startNode)'}</pre>
+            <pre id="code-4">{'   while(!queue.isEmpty()){'}</pre>
+            <pre id="code-5">{'      let node = queue.poll();'}</pre>
+            <pre id="code-6">{'      if (node.isEnd) {'}</pre>
+            <pre id="code-7">{'         let path = [];'}</pre>
+            <pre id="code-8">{'         while (node){'}</pre>
+            <pre id="code-9">{'            path.insert(node);'}</pre>
+            <pre id="code-10">{'            node = node.prev;'}</pre>
+            <pre id="code-11">{'         }'}</pre>
+            <pre id="code-12">{'         return path;'}</pre>
+            <pre id="code-13">{'      }'}</pre>
+            <pre id="code-14">{'      node.above.prev = node;'}</pre>
+            <pre id="code-15">{'      queue.offer(node.above'}</pre>
+            <pre id="code-16">{'      node.right.prev = node;'}</pre>
+            <pre id="code-17">{'      queue.offer(node.right'}</pre>
+            <pre id="code-18">{'      node.below.prev = node;'}</pre>
+            <pre id="code-19">{'      queue.offer(node.below'}</pre>
+            <pre id="code-20">{'      node.left.prev = node;'}</pre>
+            <pre id="code-21">{'      queue.offer(node.left'}</pre>
+            <pre id="code-22">{'   }'}</pre>
+            <pre id="code-23">{'}'}</pre>
+        </div>
+    );
+
+    const MitmBFS = (
+        <div className="code-content">
+            <pre id="code-1">{'function BFS(startNode){'}</pre>
+            <pre id="code-2">{'   startNode.prev = NULL'}</pre>
+            <pre id="code-3">{'   queue.offer(startNode)'}</pre>
+            <pre id="code-4">{'   endNode.prev = NULL'}</pre>
+            <pre id="code-5">{'   queue.offer(endNode)'}</pre>
             <pre id="code-6">{'   while(!queue.isEmpty()){'}</pre>
-            <pre id="code-7">{'      let node = priorityQueue.poll();'}</pre>
+            <pre id="code-7">{'      let node = queue.poll();'}</pre>
             <pre id="code-8">{'      if (node.isEnd) {'}</pre>
             <pre id="code-9">{'         let path = [];'}</pre>
             <pre id="code-10">{'         while (node){'}</pre>
             <pre id="code-11">{'            path.insert(node);'}</pre>
             <pre id="code-12">{'            node = node.prev;'}</pre>
             <pre id="code-13">{'         }'}</pre>
-            <pre id="code-14">{'      }'}</pre>
-            <pre id="code-15">{'      node.above.heuristic = calcHeuristic(node.above, endNodes);'}</pre>
+            <pre id="code-14">{'         return path;'}</pre>
+            <pre id="code-15">{'      }'}</pre>
             <pre id="code-16">{'      node.above.prev = node;'}</pre>
-            <pre id="code-17">{'      priorityQueue.offer(node.above'}</pre>
-            <pre id="code-18">{'      node.right.heuristic = calcHeuristic(node.right, endNodes);'}</pre>
-            <pre id="code-19">{'      node.right.prev = node;'}</pre>
-            <pre id="code-20">{'      priorityQueue.offer(node.right'}</pre>
-            <pre id="code-21">{'      node.below.heuristic = calcHeuristic(node.below, endNodes);'}</pre>
-            <pre id="code-22">{'      node.below.prev = node;'}</pre>
-            <pre id="code-23">{'      priorityQueue.offer(node.below'}</pre>
-            <pre id="code-24">{'      node.left.heuristic = calcHeuristic(node.left, endNodes);'}</pre>
-            <pre id="code-25">{'      node.left.prev = node;'}</pre>
-            <pre id="code-26">{'      priorityQueue.offer(node.left'}</pre>
-            <pre id="code-27">{'   }'}</pre>
-            <pre id="code-28">{'}'}</pre>
-            <pre id="code-29">{''}</pre>
-            <pre id="code-30">{'function calcHeuristic(node, endNodes[]){'}</pre>
-            <pre id="code-31">{'   let minHeuristic;'}</pre>
-            <pre id="code-32">{'   endNodes.forEach(endNode => {'}</pre>
-            <pre id="code-33">{'      let distance = Math.abs(node.x - endNode.x) + Math.abs(node.y - endNode.y);'}</pre>
-            <pre id="code-34">{'      minHeuristic = Math.min(minHeuristic, distance);'}</pre>
-            <pre id="code-35">{'   }'}</pre>
-            <pre id="code-36">{'   return minHeuristic;'}</pre>
-            <pre id="code-37">{'}'}</pre>
+            <pre id="code-17">{'      queue.offer(node.above'}</pre>
+            <pre id="code-18">{'      node.right.prev = node;'}</pre>
+            <pre id="code-19">{'      queue.offer(node.right'}</pre>
+            <pre id="code-20">{'      node.below.prev = node;'}</pre>
+            <pre id="code-21">{'      queue.offer(node.below'}</pre>
+            <pre id="code-22">{'      node.left.prev = node;'}</pre>
+            <pre id="code-23">{'      queue.offer(node.left'}</pre>
+            <pre id="code-24">{'   }'}</pre>
+            <pre id="code-25">{'}'}</pre>
         </div>
     );
 
