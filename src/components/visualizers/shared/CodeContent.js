@@ -49,7 +49,7 @@ const CodeContent = ({alg, open, setOpen, getMessage, pivot, heuristic}) => {
                     code = QuickSortLastPivot;
                     break;
                 }
-                if (pivot == QuickSortPivots.Random){
+                else{
                     code = QuickSortRandomPivot;
                     break;
                 }

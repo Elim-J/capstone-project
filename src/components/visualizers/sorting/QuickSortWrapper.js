@@ -32,8 +32,8 @@ export default function QuickSortWrapper() {
   }, []);
 
   const getMessage = () => {
-    if (vid && vid[currentFrame] && vid[currentFrame][0]){
-        return vid[currentFrame][0].message;
+    if (vid && vid[currentFrame] && vid[currentFrame].message){
+        return vid[currentFrame].message;
     } else {
         return "";
     }

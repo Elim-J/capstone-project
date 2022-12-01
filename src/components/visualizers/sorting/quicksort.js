@@ -59,7 +59,7 @@ export function quickSort(arr, pivotType) {
                 }
             }
             nodeToPartition.rightSubTree = rightSubTree;
-            vid.push(generateFrame(JSON.parse(JSON.stringify(rootOfTree)), 'Created right sub tree...', '[Highlight ending code]', []));
+            vid.push(generateFrame(JSON.parse(JSON.stringify(rootOfTree)), 'Create Branches...', '[Highlight ending code]', []));
 
             nodeToPartition.elements[0].color = 'black';
 
