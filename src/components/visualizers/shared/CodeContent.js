@@ -107,7 +107,7 @@ const CodeContent = ({alg, open, setOpen, getMessage, pivot, heuristic}) => {
             <pre id="code-8">{'         ints[j + 1] = current;'}</pre>
             <pre id="code-9">{'      }'}</pre>
             <pre id="code-10">{'   }'}</pre>
-            <pre id="code-11">{'   return ints'}</pre>
+            <pre id="code-11">{'   return ints;'}</pre>
             <pre id="code-12">{'}'}</pre>
         </div>
     );

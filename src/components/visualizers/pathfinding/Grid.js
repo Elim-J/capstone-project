@@ -336,7 +336,8 @@ const Grid = () => {
         </div>
         <div className="code-wrapper">
                     <CodeContent 
-                    alg={alg} 
+                    alg={alg}
+                    heuristic={heuristic} 
                     open={openCode} 
                     setOpen={setOpenCode}
                     getMessage={getMessage}/>
