@@ -4,8 +4,10 @@ import { Button } from '@mui/material';
 import { useCallback, useState } from "react";
 import { quickSort } from './quicksort.js';
 import '../../../css/quicksort.css';
-
-
+import PlayArrowIcon from '@mui/icons-material/PlayArrow';
+import PauseIcon from '@mui/icons-material/Pause';
+import NavigateBeforeIcon from '@mui/icons-material/NavigateBefore';
+import NavigateNextIcon from '@mui/icons-material/NavigateNext';
 
 const qsTree = {
     elements: [1,2,3,4],
@@ -164,9 +166,9 @@ const handlePivot = () => {
       <div className="Quicksort-toolbarContainer">
             <div className="justify-content-between">
                 <ul className="Quicksort-Toolbar">
-                  &nbsp;<Button onClick={handleStepBackward}><h5 className='Toolbar-text'>Step back</h5></Button>&nbsp; 
-                  &nbsp;<Button onClick={handlePlayAndPause}><h5 className='Toolbar-text'>Play/Pause</h5></Button>&nbsp;
-                  &nbsp;<Button onClick={handleStepForward}><h5 className='Toolbar-text'>Step forward</h5></Button>&nbsp;
+                  &nbsp;<Button onClick={handleStepBackward}><h5 className='Toolbar-text'><NavigateBeforeIcon/></h5></Button>&nbsp; 
+                  &nbsp;<Button onClick={handlePlayAndPause}><h5 className='Toolbar-text'>{isPaused ? <PlayArrowIcon/> : <PauseIcon/>} </h5></Button>&nbsp;
+                  &nbsp;<Button onClick={handleStepForward}><h5 className='Toolbar-text'><NavigateNextIcon/></h5></Button>&nbsp;
                   &nbsp;<Button onClick={handleRandomArr}><h5 className='Toolbar-text'>Random Data</h5></Button>&nbsp;
                    
                   <label className="dropdown">
