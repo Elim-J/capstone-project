@@ -8,6 +8,7 @@ import PlayArrowIcon from '@mui/icons-material/PlayArrow';
 import PauseIcon from '@mui/icons-material/Pause';
 import NavigateBeforeIcon from '@mui/icons-material/NavigateBefore';
 import NavigateNextIcon from '@mui/icons-material/NavigateNext';
+import ActionBar from './Actionbar';
 
 const qsTree = {
     elements: [1,2,3,4],
@@ -187,7 +188,20 @@ const handlePivot = () => {
                 </ul>
             </div>
       </div>
-      
+      <ActionBar 
+                currentFrame={currentFrame}
+                setCurrentFrame={setCurrentFrame}
+                vid={vid}
+                setVid={setVid}
+                isPaused={isPaused}
+                setIsPaused={setIsPaused}
+                /*openCode={openCode}
+                setOpenCode={setOpenCode}
+                openInfo={openInfo}
+                setOpenInfo={setOpenInfo}
+                alg={alg}
+                setAlg={setAlg}*/
+                />
                                    
     </div>
       </>
