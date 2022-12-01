@@ -277,13 +277,13 @@ const CodeContent = ({alg, open, setOpen, getMessage, pivot, heuristic}) => {
             <pre id="code-12">{'         return path;'}</pre>
             <pre id="code-13">{'      }'}</pre>
             <pre id="code-14">{'      node.above.prev = node;'}</pre>
-            <pre id="code-15">{'      queue.offer(node.above'}</pre>
-            <pre id="code-16">{'      node.right.prev = node;'}</pre>
-            <pre id="code-17">{'      queue.offer(node.right'}</pre>
+            <pre id="code-15">{'      queue.offer(node.above);'}</pre>
+            <pre id="code-16">{'      node.left.prev = node;'}</pre>
+            <pre id="code-17">{'      queue.offer(node.left);'}</pre>
             <pre id="code-18">{'      node.below.prev = node;'}</pre>
-            <pre id="code-19">{'      queue.offer(node.below'}</pre>
-            <pre id="code-20">{'      node.left.prev = node;'}</pre>
-            <pre id="code-21">{'      queue.offer(node.left'}</pre>
+            <pre id="code-19">{'      queue.offer(node.below);'}</pre>
+            <pre id="code-20">{'      node.right.prev = node;'}</pre>
+            <pre id="code-21">{'      queue.offer(node.right);'}</pre>
             <pre id="code-22">{'   }'}</pre>
             <pre id="code-23">{'}'}</pre>
         </div>
@@ -307,13 +307,13 @@ const CodeContent = ({alg, open, setOpen, getMessage, pivot, heuristic}) => {
             <pre id="code-14">{'         return path;'}</pre>
             <pre id="code-15">{'      }'}</pre>
             <pre id="code-16">{'      node.above.prev = node;'}</pre>
-            <pre id="code-17">{'      queue.offer(node.above'}</pre>
-            <pre id="code-18">{'      node.right.prev = node;'}</pre>
-            <pre id="code-19">{'      queue.offer(node.right'}</pre>
+            <pre id="code-17">{'      queue.offer(node.above);'}</pre>
+            <pre id="code-18">{'      node.left.prev = node;'}</pre>
+            <pre id="code-19">{'      queue.offer(node.left);'}</pre>
             <pre id="code-20">{'      node.below.prev = node;'}</pre>
-            <pre id="code-21">{'      queue.offer(node.below'}</pre>
-            <pre id="code-22">{'      node.left.prev = node;'}</pre>
-            <pre id="code-23">{'      queue.offer(node.left'}</pre>
+            <pre id="code-21">{'      queue.offer(node.below);'}</pre>
+            <pre id="code-22">{'      node.right.prev = node;'}</pre>
+            <pre id="code-23">{'      queue.offer(node.right);'}</pre>
             <pre id="code-24">{'   }'}</pre>
             <pre id="code-25">{'}'}</pre>
         </div>
@@ -337,16 +337,16 @@ const CodeContent = ({alg, open, setOpen, getMessage, pivot, heuristic}) => {
             <pre id="code-15">{'      }'}</pre>
             <pre id="code-16">{'      node.above.heuristic = calcHeuristic(node.above, endNodes);'}</pre>
             <pre id="code-17">{'      node.above.prev = node;'}</pre>
-            <pre id="code-18">{'      priorityQueue.offer(node.above'}</pre>
-            <pre id="code-19">{'      node.right.heuristic = calcHeuristic(node.right, endNodes);'}</pre>
-            <pre id="code-20">{'      node.right.prev = node;'}</pre>
-            <pre id="code-21">{'      priorityQueue.offer(node.right'}</pre>
+            <pre id="code-18">{'      priorityQueue.offer(node.above);'}</pre>
+            <pre id="code-19">{'      node.left.heuristic = calcHeuristic(node.left, endNodes);'}</pre>
+            <pre id="code-20">{'      node.left.prev = node;'}</pre>
+            <pre id="code-21">{'      priorityQueue.offer(node.left);'}</pre>
             <pre id="code-22">{'      node.below.heuristic = calcHeuristic(node.below, endNodes);'}</pre>
             <pre id="code-23">{'      node.below.prev = node;'}</pre>
-            <pre id="code-24">{'      priorityQueue.offer(node.below'}</pre>
-            <pre id="code-25">{'      node.left.heuristic = calcHeuristic(node.left, endNodes);'}</pre>
-            <pre id="code-26">{'      node.left.prev = node;'}</pre>
-            <pre id="code-27">{'      priorityQueue.offer(node.left'}</pre>
+            <pre id="code-24">{'      priorityQueue.offer(node.below);'}</pre>
+            <pre id="code-25">{'      node.right.heuristic = calcHeuristic(node.right, endNodes);'}</pre>
+            <pre id="code-26">{'      node.right.prev = node;'}</pre>
+            <pre id="code-27">{'      priorityQueue.offer(node.right);'}</pre>
             <pre id="code-28">{'   }'}</pre>
             <pre id="code-29">{'}'}</pre>
             <pre id="code-30">{''}</pre>
@@ -379,16 +379,16 @@ const CodeContent = ({alg, open, setOpen, getMessage, pivot, heuristic}) => {
             <pre id="code-13">{'      }'}</pre>
             <pre id="code-14">{'      node.above.heuristic = calcHeuristic(node.above, endNodes);'}</pre>
             <pre id="code-15">{'      node.above.prev = node;'}</pre>
-            <pre id="code-16">{'      priorityQueue.offer(node.above'}</pre>
-            <pre id="code-17">{'      node.right.heuristic = calcHeuristic(node.right, endNodes);'}</pre>
-            <pre id="code-18">{'      node.right.prev = node;'}</pre>
-            <pre id="code-19">{'      priorityQueue.offer(node.right'}</pre>
+            <pre id="code-16">{'      priorityQueue.offer(node.above);'}</pre>
+            <pre id="code-17">{'      node.left.heuristic = calcHeuristic(node.left, endNodes);'}</pre>
+            <pre id="code-18">{'      node.left.prev = node;'}</pre>
+            <pre id="code-19">{'      priorityQueue.offer(node.left);'}</pre>
             <pre id="code-20">{'      node.below.heuristic = calcHeuristic(node.below, endNodes);'}</pre>
             <pre id="code-21">{'      node.below.prev = node;'}</pre>
-            <pre id="code-22">{'      priorityQueue.offer(node.below'}</pre>
-            <pre id="code-23">{'      node.left.heuristic = calcHeuristic(node.left, endNodes);'}</pre>
-            <pre id="code-24">{'      node.left.prev = node;'}</pre>
-            <pre id="code-25">{'      priorityQueue.offer(node.left'}</pre>
+            <pre id="code-22">{'      priorityQueue.offer(node.below);'}</pre>
+            <pre id="code-23">{'      node.right.heuristic = calcHeuristic(node.right, endNodes);'}</pre>
+            <pre id="code-24">{'      node.right.prev = node;'}</pre>
+            <pre id="code-25">{'      priorityQueue.offer(node.right);'}</pre>
             <pre id="code-26">{'   }'}</pre>
             <pre id="code-27">{'}'}</pre>
             <pre id="code-28">{''}</pre>

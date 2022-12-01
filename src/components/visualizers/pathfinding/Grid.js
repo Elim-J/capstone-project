@@ -141,9 +141,19 @@ const Grid = () => {
         }
     };
 
+    const highlightCodeLine = (lines) => {
+        const prevHighlight = document.querySelectorAll('.highlight');
+        prevHighlight?.forEach((element, i) => {
+            element.className = '';
+        });
+        lines?.forEach((element, i) => {
+            document.getElementById(`code-${element}`).className ='highlight';
+        });
+    };
+
     const getMessage = () => {
-        if (vid && vid[currentFrame] && vid[currentFrame][0]){
-            return vid[currentFrame][0].message;
+        if (vid && vid[currentFrame] && vid[currentFrame]?.info?.message){
+            return vid[currentFrame].info.message;
         } else {
             return "";
         }
