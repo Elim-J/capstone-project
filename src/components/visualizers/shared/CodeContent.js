@@ -3,7 +3,7 @@ import Collapse from '@mui/material/Collapse';
 import Container from "@mui/material/Container";
 import { DialogTitle, Box, Button, createTheme, ThemeProvider } from "@mui/material";
 import CloseIcon from '@mui/icons-material/Close';
-import { SortingAlgs } from "../../../constants/SortingAlgs";
+import { QuickSortPivots, SortingAlgs } from "../../../constants/SortingAlgs";
 import { PathfindingAlgs } from "../../../constants/PathfindingAlgs";
 
 
@@ -37,19 +37,19 @@ const CodeContent = ({alg, open, setOpen, getMessage, pivot, heuristic}) => {
                 code = SelectionSort;
                 break;
             case SortingAlgs.QuickSort:
-                if (pivot == 'first'){
+                if (pivot == QuickSortPivots.First){
                     code = QuickSortFirstPivot;
                     break;
                 }
-                if (pivot == 'middle'){
+                if (pivot == QuickSortPivots.Middle){
                     code = QuickSortMiddlePivot;
                     break;
                 }
-                if (pivot == 'last'){
+                if (pivot == QuickSortPivots.Last){
                     code = QuickSortLastPivot;
                     break;
                 }
-                if (pivot == 'random'){
+                if (pivot == QuickSortPivots.Random){
                     code = QuickSortRandomPivot;
                     break;
                 }

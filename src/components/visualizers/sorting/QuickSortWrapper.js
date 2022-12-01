@@ -3,8 +3,9 @@ import Tree from 'react-d3-tree';
 import { Button } from '@mui/material'; 
 import { useCallback, useState } from "react";
 import { quickSort } from './quicksort.js';
-import { QuickSortPivots } from '../../../constants/SortingAlgs.js';
+import { QuickSortPivots, SortingAlgs } from '../../../constants/SortingAlgs.js';
 import { Speed, DefaultSpeed } from "../../../constants/SharedConstants";
+import CodeContent from '../shared/CodeContent';
 import '../../../css/quicksort.css';
 
 export default function QuickSortWrapper() {
@@ -19,6 +20,7 @@ export default function QuickSortWrapper() {
   const [pivot, setPivot] = useState('random');
   const [ints, setInts] = useState(tempInts);
   const [speed, setSpeed] = useState(DefaultSpeed);
+  const [openCode, setOpenCode] = useState(true);
   let frame = useRef(currentFrame);
 
   const currentSpeed = useRef(speed);
@@ -28,6 +30,14 @@ export default function QuickSortWrapper() {
     setInts(Array.from({length: 10}, () => Math.floor(Math.random() * 100)));
     setVid(quickSort(ints, QuickSortPivots.Random));
   }, []);
+
+  const getMessage = () => {
+    if (vid && vid[currentFrame] && vid[currentFrame][0]){
+        return vid[currentFrame][0].message;
+    } else {
+        return "";
+    }
+}
 
   const handleRandomArr = () => {
     setCurrentFrame(0);
@@ -168,6 +178,15 @@ const handlePivot = (e) => {
           pathFunc="straight"
           depthFactor="35"
         />}
+                  <div className="code-wrapper">
+                    <CodeContent 
+                    alg={SortingAlgs.QuickSort} 
+                    open={openCode} 
+                    setOpen={setOpenCode}
+                    getMessage={getMessage}
+                    pivot={pivot}
+                    />
+                </div>
         
       </div>
           <Button onClick={handleStepBackward}>Step back</Button>
