@@ -147,7 +147,8 @@ const handlePivot = () => {
 
     const [dimensions, translate, containerRef] = useCenteredTree();
     return (
-      <>
+    <>
+    <div className='body'>
       {console.log('rerender')}
       <div className="tree-container" ref={containerRef}>
 
@@ -188,6 +189,7 @@ const handlePivot = () => {
       </div>
       
                                    
+    </div>
       </>
     );
   }

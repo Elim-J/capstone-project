@@ -2,6 +2,9 @@
     fill: red;
     border: none;
   } */
+  .body{
+    background-color: rgb(28, 140, 253);
+  }
   .QuickSortWrapper{
     background-color: rgb(37, 144, 180);
   }
@@ -45,6 +48,6 @@
     float: none;
     clear: both;
     justify-content: center;
-    background-color:rgba(6, 20, 46, 0.795);
+    background-color:rgba(24, 61, 131, 0.795);
     border: 5px solid rgb(0, 0, 0);
   }
