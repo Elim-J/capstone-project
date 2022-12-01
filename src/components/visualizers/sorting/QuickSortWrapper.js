@@ -44,6 +44,7 @@ const qsTree = {
 //style={containerStyles}
 export default function QuickSortWrapper() {
 
+
   const [vid, setVid] = useState([]);
   const [currentFrame, setCurrentFrame] = useState(0);
   const [isPaused, setIsPaused] = useState(true);
@@ -163,10 +164,10 @@ const handlePivot = () => {
       <div className="Quicksort-toolbarContainer">
             <div className="justify-content-between">
                 <ul className="Quicksort-Toolbar">
-                  &nbsp;<Button onClick={handleStepBackward} className='StepBack'>Step back</Button>&nbsp; 
-                  &nbsp;<Button onClick={handlePlayAndPause}>Play/Pause</Button>&nbsp;
-                  &nbsp;<Button onClick={handleStepForward}>Step forward</Button>&nbsp;
-                  &nbsp;<Button onClick={handleRandomArr}>Generate Random Data</Button>&nbsp;
+                  &nbsp;<Button onClick={handleStepBackward}><h5 className='Toolbar-text'>Step back</h5></Button>&nbsp; 
+                  &nbsp;<Button onClick={handlePlayAndPause}><h5 className='Toolbar-text'>Play/Pause</h5></Button>&nbsp;
+                  &nbsp;<Button onClick={handleStepForward}><h5 className='Toolbar-text'>Step forward</h5></Button>&nbsp;
+                  &nbsp;<Button onClick={handleRandomArr}><h5 className='Toolbar-text'>Random Data</h5></Button>&nbsp;
                    
                   <label className="dropdown">
                             <select id="alg-select"
@@ -183,9 +184,8 @@ const handlePivot = () => {
                 </ul>
             </div>
       </div>
-          
-         
-         
+      
+                                   
       </>
     );
   }
