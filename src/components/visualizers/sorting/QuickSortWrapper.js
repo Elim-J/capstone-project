@@ -6,6 +6,7 @@ import { quickSort } from './quicksort.js';
 import '../../../css/quicksort.css';
 
 
+
 const qsTree = {
     elements: [1,2,3,4],
     attributes: {
@@ -159,11 +160,15 @@ const handlePivot = () => {
         />}
         
       </div>
-          <Button onClick={handleStepBackward}>Step back</Button>
-          <Button onClick={handlePlayAndPause}>Play/Pause</Button>
-          <Button onClick={handleStepForward}>Step forward</Button>
-          <Button onClick={handleRandomArr}>Generate Random Data</Button>
-          <label className="dropdown">
+      <div className="Quicksort-toolbarContainer">
+            <div className="justify-content-between">
+                <ul className="Quicksort-Toolbar">
+                  &nbsp;<Button onClick={handleStepBackward} className='StepBack'>Step back</Button>&nbsp; 
+                  &nbsp;<Button onClick={handlePlayAndPause}>Play/Pause</Button>&nbsp;
+                  &nbsp;<Button onClick={handleStepForward}>Step forward</Button>&nbsp;
+                  &nbsp;<Button onClick={handleRandomArr}>Generate Random Data</Button>&nbsp;
+                   
+                  <label className="dropdown">
                             <select id="alg-select"
                                 onChange={(e) => {
                                     handlePivot(e.target.value);
@@ -175,6 +180,12 @@ const handlePivot = () => {
                               <option value='Random'>Random</option>
                             </select>
                         </label>
+                </ul>
+            </div>
+      </div>
+          
+         
+         
       </>
     );
   }
