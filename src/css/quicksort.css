@@ -3,7 +3,10 @@
     border: none;
   } */
   .body{
-    background-color: rgb(28, 140, 253);
+    background-color: rgb(47, 185, 248);
+    height: 110%;
+    position: absolute;
+    width: 100%;
   }
   .QuickSortWrapper{
     background-color: rgb(37, 144, 180);
@@ -24,9 +27,7 @@
     font-size: 15px;
     padding: 10px 50px;
   }
-  .btn1{
-    border: 50px solid rgb(255, 0, 0);
-  }
+
   .dropdown{
     font-family: sans-serif;
   }
