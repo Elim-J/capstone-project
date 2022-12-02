@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import Video from '../../videos/video1.mp4';
-import { Button } from '../ButtonElement'
+import { ButtonR } from '../ButtonElement'
 import { 
   HeroContainer,
   HeroBg,
@@ -40,19 +40,18 @@ const HeroSection = () => {
           Sign up for a new account to start tracking your progress today!
         </HeroP>
         <HeroBtnWrapper>
-          <Button to='signup' 
+          <ButtonR to='/signup' 
           onMouseEnter={onHover} 
           onMouseLeave={onHover}
           primary='true'
           dark='true'
           smooth={"true"}
           duration={500}
-          
           exact='true'
           offfset={-80}
           >
             Get started {hover ? <ArrowForward /> : <ArrowRight />}
-          </Button>
+          </ButtonR>
         </HeroBtnWrapper>
       </HeroContent>
     </HeroContainer>
