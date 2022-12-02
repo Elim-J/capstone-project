@@ -8,7 +8,7 @@ export function quickSort(arr, pivotType) {
         rootOfTree.elements.push(ele);
     }
 
-    let vid = [generateFrame(JSON.parse(JSON.stringify(rootOfTree)), 'Starting...', '[Highlight starting code]', [])];
+    let vid = [generateFrame(JSON.parse(JSON.stringify(rootOfTree)), 'Starting...', '[Highlight starting code]', [], [0, 1, 2, 4, 5, 6])];
 
     while (!sorted(rootOfTree)) {
 
@@ -59,7 +59,7 @@ export function quickSort(arr, pivotType) {
                 }
             }
             nodeToPartition.rightSubTree = rightSubTree;
-            vid.push(generateFrame(JSON.parse(JSON.stringify(rootOfTree)), 'Create Branches...', '[Highlight ending code]', []));
+            vid.push(generateFrame(JSON.parse(JSON.stringify(rootOfTree)), 'Create Branches...', '[Highlight ending code]', [], [7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17]));
 
             nodeToPartition.elements[0].color = 'black';
 
@@ -95,11 +95,11 @@ export function quickSort(arr, pivotType) {
             nodeToMerge.rightSubTree = null;
             nodeToMerge.highlight = false;
 
-            vid.push(generateFrame(JSON.parse(JSON.stringify(rootOfTree)), 'Merged...', '[Highlight ending code]', []));
+            vid.push(generateFrame(JSON.parse(JSON.stringify(rootOfTree)), 'Merged...', '[Highlight ending code]', [], [17]));
         }
     }
 
-    vid.push(generateFrame(JSON.parse(JSON.stringify(rootOfTree)), 'Returning...', '[Highlight ending code]', []));
+    vid.push(generateFrame(JSON.parse(JSON.stringify(rootOfTree)), 'Returning...', '[Highlight ending code]', [], [17]));
     return vid;
 }
 
