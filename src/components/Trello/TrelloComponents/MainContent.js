@@ -5,6 +5,8 @@ import uuid from 'react-uuid';
 import Board from './Board';
 import imgArr from './Data';
 
+import DrawingPad from './DrawingPad'
+
 
 export default function MainContent(){
     
@@ -87,7 +89,7 @@ export default function MainContent(){
    
     return(
         <>
-            <button className={isActive? 'btnA' : 'btnB'} onClick={openMenuOverlay}>{isActive? <span className='text'>Close Menu</span> : <span className='text'>Add Board</span>}</button>
+            {/* <button className={isActive? 'btnA' : 'btnB'} onClick={openMenuOverlay}>{isActive? <span className='text'>Close Menu</span> : <span className='text'>Add Board</span>}</button>
             <Form 
                 isActive = {isActive}
                 newBoard = {newBoard}
@@ -99,7 +101,10 @@ export default function MainContent(){
             {boards.map(board => (
                 <Board key={board.id} title={board.title} description={board.description} members={board.members} image={board.image}/>
             ))}
-            </div>   
+            </div>    */}
+
+
+            <DrawingPad />
         </>
     )
 

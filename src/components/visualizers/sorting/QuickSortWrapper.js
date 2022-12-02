@@ -21,7 +21,7 @@ const qsTree = {
                 {
                     elements: [8,2],
                     attributes: {
-                        hightlight: 'blue',
+                        highlight: 'blue',
                     }
                 }
                 
