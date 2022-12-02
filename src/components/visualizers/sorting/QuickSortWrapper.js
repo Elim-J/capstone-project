@@ -193,9 +193,11 @@ const handlePivot = () => {
                 setCurrentFrame={setCurrentFrame}
                 vid={vid}
                 setVid={setVid}
+                /*speed={speed}
+                setSpeed={setSpeed}
                 isPaused={isPaused}
                 setIsPaused={setIsPaused}
-                /*openCode={openCode}
+                openCode={openCode}
                 setOpenCode={setOpenCode}
                 openInfo={openInfo}
                 setOpenInfo={setOpenInfo}

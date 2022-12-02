@@ -3,17 +3,17 @@
     border: none;
   } */
   .body{
-    background-color: rgb(47, 185, 248);
+    background-color: rgb(19, 115, 160);
     height: 110%;
     position: absolute;
     width: 100%;
   }
   .QuickSortWrapper{
-    background-color: rgb(37, 144, 180);
+    background-color: rgb(37, 124, 153);
   }
   .tree-container {
     display: flex;
-    background-color: rgb(40, 149, 185);
+    background-color: rgb(33, 128, 160);
     align-items: flex-end;
     /*margin: 20px 20px;*/
     border: 5px solid black;
