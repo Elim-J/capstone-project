@@ -3,7 +3,7 @@ body{
    box-sizing: border-box;
 }
 
-button {
+.btnA, .btnB {
     display: flex;
     width: 10rem;
     height: 2rem;
