@@ -43,7 +43,7 @@ export const  SidebarMenu = styled.ul`
   grid-template-rows: repeat(6, 80px);
   text-align: center;
   @media screen and (max-width: 480px) {
-    grid-template-rows: repeat(6, 60px);
+    grid-template-rows: repeat(6, 60px); //change height of sidebar menu under 480 px
   }
 `
 
@@ -86,6 +86,7 @@ export const SidebarLinkR = styled(LinkR)`
 export const SideBtnWrap = styled.div`
   display: flex;
   justify-content: center;
+  align-items: center;
 `
 
 

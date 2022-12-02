@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import { MdKeyboardArrowRight, MdArrowForward } from 'react-icons/md';
+import { Link as LinkR } from 'react-router-dom'
 
 export const HeroContainer = styled.div`
 	background: #0c0c0c;
@@ -86,7 +87,7 @@ export const HeroBtnWrapper = styled.div`
 	align-items: center;
 `
 
-export const Button = styled.button`
+export const Button = styled(LinkR)`
 	margin-left: 8px;
 	font-size: 20px;
 `

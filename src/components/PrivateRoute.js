@@ -24,6 +24,10 @@ const PrivateRoute =  ({ children }) => {
                 setIsLoading(false);
             })
         }
+        else
+        {
+            setIsLoading(false);
+        }
     });
     
     

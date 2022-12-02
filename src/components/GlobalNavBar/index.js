@@ -9,7 +9,6 @@ import {
   MobileIcon,
   NavMenu,
   NavItem,
-  NavLinks,
   NavLinksPages,
   NavBtn,
   NavBtnLink
@@ -51,61 +50,49 @@ const Navbar = ({ toggle }) => {
               <NavItem>
                 <NavLinksPages
                   to='/algorithms'
-                  smooth={true}
+                  smooth={"true"}
                   duration={500}
-                  spy={true}
+                  
                   exact='false'
                   offset={-80}
-                  activeClass='active'
+                  activeclass='active'
                 >Algorithms</NavLinksPages>
               </NavItem>
 
               <NavItem>
                 <NavLinksPages
                   to='/trello'
-                  smooth={true}
+                  smooth={"true"}
                   duration={500}
-                  spy={true}
+                  
                   exact='false'
                   offset={-80}
-                  activeClass='active'
+                  activeclass='active'
                 >Trello</NavLinksPages>
               </NavItem>
               
             <NavItem>
                 <NavLinksPages
                   to='/sorting'
-                  smooth={true}
+                  smooth={"true"}
                   duration={500}
-                  spy={true}
+                  
                   exact='false'
                   offset={-80}
-                  activeClass='active'
+                  activeclass='active'
                 >Sorting</NavLinksPages>
               </NavItem>
 
               <NavItem>
                 <NavLinksPages
                   to='/pathfind'
-                  smooth={true}
+                  smooth={"true"}
                   duration={500}
-                  spy={true}
+                  
                   exact='false'
                   offset={-80}
-                  activeClass='active'
+                  activeclass='active'
                 >Pathfinding</NavLinksPages>
-              </NavItem>
-
-              <NavItem>
-                <NavLinksPages
-                  to='/quicksort'
-                  smooth={true}
-                  duration={500}
-                  spy={true}
-                  exact='false'
-                  offset={-80}
-                  activeClass='active'
-                >QuickSort</NavLinksPages>
               </NavItem>
               
             </NavMenu>

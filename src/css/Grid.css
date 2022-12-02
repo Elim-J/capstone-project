@@ -22,8 +22,18 @@
     display: flex;
     justify-content: center;
     background-color: rgba(0,0,0, .2);
-    overflow: hidden;
     position: fixed;
+    overflow-x: auto;
+    overflow-y: hidden;
     bottom: 0;
     width: 100%;
 }
+
+@media screen and (max-width: 1618px) {
+    .actionbar{
+        /* sorting actionbar make the buttons into a sidebar like button */
+        justify-content:flex-start;
+        overflow-x: auto;
+        overflow-y: hidden;
+    }
+  }
