@@ -16,6 +16,8 @@ import CodeOffIcon from '@mui/icons-material/CodeOff';
 import HelpIcon from '@mui/icons-material/Help';
 import { SortingAlgs } from "../../../constants/SortingAlgs";
 import { useNavigate } from 'react-router-dom';
+import KeyboardDoubleArrowDownIcon from '@mui/icons-material/KeyboardDoubleArrowDown';
+import KeyboardDoubleArrowUpIcon from '@mui/icons-material/KeyboardDoubleArrowUp';
 
 const ActionBar = ({currentFrame, setCurrentFrame, vid, setVid, speed, setSpeed, isPaused, setIsPaused, openCode, setOpenCode, openInfo, setOpenInfo, alg, setAlg}) => {
 
@@ -164,7 +166,7 @@ const ActionBar = ({currentFrame, setCurrentFrame, vid, setVid, speed, setSpeed,
                                 )}
                         </select>
                     </label>
-                <ButtonGroup size="large" color="black">
+                <ButtonGroup size="large" color="white">
                     <Button variant="text" title="Skip to beginning" onClick={handleReset}>
                         <SkipPreviousIcon/>
                     </Button>
@@ -188,10 +190,11 @@ const ActionBar = ({currentFrame, setCurrentFrame, vid, setVid, speed, setSpeed,
                         <ShuffleIcon/>
                     </Button>
                     <Button variant="text" title="Increase speed" onClick={handleIncreaseSpeed}>
-                        Increase Speed
+                        <KeyboardDoubleArrowUpIcon/>
+                        
                     </Button>
                     <Button variant="text" title="Decrease speed" onClick={handleDecreaseSpeed}>
-                        Decrease Speed
+                      <KeyboardDoubleArrowDownIcon/>
                     </Button>    
                     <Button variant="text" title={openCode ? "Hide Code" : "Show code"} onClick={() => setOpenCode(!openCode)}>
                         {openCode ? <CodeOffIcon/> : <CodeIcon/>}

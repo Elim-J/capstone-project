@@ -17,6 +17,8 @@ import HelpIcon from '@mui/icons-material/Help';
 import { SortingAlgs } from "../../../constants/SortingAlgs";
 import { quickSort } from './quicksort.js';
 import { useNavigate } from 'react-router-dom';
+import KeyboardDoubleArrowDownIcon from '@mui/icons-material/KeyboardDoubleArrowDown';
+import KeyboardDoubleArrowUpIcon from '@mui/icons-material/KeyboardDoubleArrowUp';
 
 const QuickSortActionBar = ({currentFrame, setCurrentFrame, vid, setVid, speed, setSpeed, isPaused, setIsPaused, openCode, setOpenCode, openInfo, setOpenInfo}) => { //, alg, setAlg
 
@@ -179,10 +181,10 @@ const QuickSortActionBar = ({currentFrame, setCurrentFrame, vid, setVid, speed, 
                         <ShuffleIcon/>
                     </Button>
                     <Button variant="text" title="Increase speed" onClick={handleIncreaseSpeed}>
-                        Increase Speed
+                        <KeyboardDoubleArrowUpIcon/>
                     </Button>
                     <Button variant="text" title="Decrease speed" onClick={handleDecreaseSpeed}>
-                        Decrease Speed
+                        <KeyboardDoubleArrowDownIcon/>
                     </Button>    
                     <Button variant="text" title={openCode ? "Hide Code" : "Show code"} onClick={() => setOpenCode(!openCode)}>
                         {openCode ? <CodeOffIcon/> : <CodeIcon/>}

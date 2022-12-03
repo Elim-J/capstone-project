@@ -2,11 +2,54 @@
     fill: red;
     border: none;
   } */
-
+  .body{
+    background-color: rgb(19, 115, 160);
+    height: 110%;
+    position: absolute;
+    width: 100%;
+  }
+  .QuickSortWrapper{
+    background-color: rgb(37, 124, 153);
+  }
   .tree-container {
     display: flex;
+    background-color: rgb(33, 128, 160);
     align-items: flex-end;
     margin: 40px 60px;
     border: 2px solid black;
     height: 65vh;
+  }
+
+  .Toolbar-text{
+    color: rgb(0, 0, 0);
+    text-align: center;
+    margin: 0 0;
+    font-family: sans-serif;
+    font-size: 15px;
+    padding: 10px 50px;
+  }
+
+  .dropdown{
+    font-family: sans-serif;
+  }
+  .Quicksort-Toolbar{
+    justify-items: center;
+    font-family: sans-serif;
+    text-align: center;
+    padding: 10px 10px;
+
+  }
+  .justify-content-between{
+    nav-right: 5 px solid rgba(0, 0, 0, 0.726);
+  }
+  .Quicksort-toolbarContainer {
+    margin: 20px 20px;
+    padding: 0 60px;
+    border-top: 1px solid #e6e6e6;
+    border-bottom: 1px solid #e6e6e6;
+    float: none;
+    clear: both;
+    justify-content: center;
+    background-color:rgba(24, 61, 131, 0.795);
+    border: 5px solid rgb(0, 0, 0);
   }

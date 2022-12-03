@@ -44,7 +44,7 @@ const SortWrapper = () => {
 
     return (
         <div className="sort-wrapper">
-            <InfoModal open={openInfo} setOpen={setOpenInfo}/>
+            {/* <InfoModal open={openInfo} setOpen={setOpenInfo}/> */}
 
             {/* This should probably be its own component */}
             <div className="sorting-content">
