@@ -141,8 +141,8 @@ function aStar(g, heuristic) {
     vid.push(generateFrame(grid, rows, cols, null, 'Failed to find path', [], [5, 26, 27]))
     return vid;
   }
-  function generateFrame(grid, rows, cols, path, message, highlightCode, highlightedCode) {
-    let frame = {info: {rows: rows, cols: cols, message: message, highlightCode: highlightCode}, grid: [], highlightedLines: highlightedCode};
+  function generateFrame(grid, rows, cols, path, message, highlightCode, highlightedLines) {
+    let frame = {info: {rows: rows, cols: cols, message: message, highlightCode: highlightCode}, grid: [], highlightedLines: highlightedLines};
     for (let i = 0; i < rows; i++) {
       let thisRow = [];
       for (let j = 0; j < cols; j++) {

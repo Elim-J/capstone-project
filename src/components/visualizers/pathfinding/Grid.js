@@ -25,7 +25,7 @@ const Grid = () => {
     let lastStartCellRow = 0,
         lastStartCellCol = 0;
 
-    let startingVid = aStar(StartingGrid);
+    let startingVid = aStar(StartingGrid, AStarHeuristics.Manhattan);
 
     const [grid, setGrid] = useState(startingVid[0].grid);
     const [lastStartCell, setLastStartCell] = useState({row: 0, col: 0});
@@ -54,6 +54,10 @@ const Grid = () => {
         setGrid(createGrid);
         setIsPaused(true);
     }, []);
+
+    useEffect(() => {
+        highlightCodeLine(vid[currentFrame]?.highlightedLines);
+    }, [currentFrame]);
 
     const randomizeStartAndEnd = () => {
         START_CELL_ROW = Math.floor(Math.random() * row);
@@ -147,7 +151,7 @@ const Grid = () => {
             element.className = '';
         });
         lines?.forEach((element, i) => {
-            document.getElementById(`code-${element}`).className ='highlight';
+            document.getElementById(`code-${element}`).className = 'highlight';
         });
     };
 
@@ -157,7 +161,7 @@ const Grid = () => {
         } else {
             return "";
         }
-    }
+    };
 
     const gridWithNodes = (
         <div className="grid-with-nodes">
@@ -360,7 +364,7 @@ const Grid = () => {
         handleReset={handleReset} openCode={openCode}
         setOpenCode={setOpenCode}
         />}
-        
+        {console.log(vid[currentFrame])}        
         </>
     );
 }
