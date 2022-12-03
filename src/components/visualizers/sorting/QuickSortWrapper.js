@@ -83,6 +83,7 @@ export default function QuickSortWrapper() {
 
   const [dimensions, translate, containerRef] = useCenteredTree();
   const separation = { nonSiblings: 4, siblings: 4 }
+  const scaleExtent= { min: 0.1, max: 3 }
   return (
     <>
     <div className='body'>
@@ -101,6 +102,7 @@ export default function QuickSortWrapper() {
       pathFunc="straight"
       depthFactor="150"
       separation = {separation}
+      scaleExtent = {scaleExtent}
     />}
       
     </div>
