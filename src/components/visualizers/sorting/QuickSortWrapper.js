@@ -82,6 +82,7 @@ export default function QuickSortWrapper() {
   };
 
   const [dimensions, translate, containerRef] = useCenteredTree();
+  const separation = { nonSiblings: 4, siblings: 4 }
   return (
     <>
     <div className='body'>
@@ -92,15 +93,15 @@ export default function QuickSortWrapper() {
 
       {vid[currentFrame]?.rootTree &&
       <Tree
-        data={vid[currentFrame].rootTree}
-        dimensions={dimensions}
-        translate={translate}
-        renderCustomNodeElement={renderRectSvgNode}
-        orientation="vertical"
-        pathFunc="straight"
-        depthFactor="150"
-        
-      />}
+      data={vid[currentFrame].rootTree}
+      dimensions={dimensions}
+      translate={translate}
+      renderCustomNodeElement={renderRectSvgNode}
+      orientation="vertical"
+      pathFunc="straight"
+      depthFactor="150"
+      separation = {separation}
+    />}
       
     </div>
     
