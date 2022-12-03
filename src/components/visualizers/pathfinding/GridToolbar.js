@@ -17,9 +17,9 @@ const GridToolbar = ({ onSearch, alg, setAlg, onClear, onRandomGrid, onClearWall
     return (
         <div className="toolbarContainer">
             <div className="justify-content-between">
-                <ul className="toolbarRow d-flex flex-column flex-lg-row">
-                    <li className="toolbarItem d-flex flex-column flex-md-row">
-                        <h5>Show animations&nbsp;&nbsp;</h5>
+                 <ul className="toolbarRow d-flex flex-column flex-lg-row">&nbsp;<div className='Toolbar-txt'>*Press Edit first to add walls to the grid</div> &nbsp; 
+                    <li className="toolbarItem d-flex flex-column flex-md-row"> 
+                        <div className='Toolbar-txt'>Show Animations&nbsp;&nbsp;</div>
                         <label className="checkBox">
                             <input id="animation-checkBox"
                                 type="checkbox"
@@ -31,7 +31,7 @@ const GridToolbar = ({ onSearch, alg, setAlg, onClear, onRandomGrid, onClearWall
                     </li>
 
                     <li className="toolbarItem d-flex flex-column flex-md-row">
-                        <h5>Algorithm&nbsp;&nbsp;</h5>
+                        <div className='Toolbar-txt'>Algorithm&nbsp;&nbsp;</div>
                         <label className="dropdown">
                             <select className="form-select algorithm-dropdown-toggle" id="alg-select" disabled
                                 onChange={(e) => {
@@ -65,9 +65,8 @@ const GridToolbar = ({ onSearch, alg, setAlg, onClear, onRandomGrid, onClearWall
                             editModeHandler();
                             }} sx={{width: 160}}>
                             {!edit ? 
-                            <> <EditIcon /><span>&nbsp;&nbsp;Edit board</span>
-                            </> : <><PlayCircleOutlineIcon /><span>&nbsp;&nbsp;Visualize</span></>}
-                            
+                            <> <div className='Toolbar-txt'> &nbsp;&nbsp;Edit</div>
+                            </> : <><div className='Toolbar-txt'>&nbsp;&nbsp;Visualize</div></>}
                         </Button>
                     </li>
 
@@ -76,13 +75,13 @@ const GridToolbar = ({ onSearch, alg, setAlg, onClear, onRandomGrid, onClearWall
                         <Button variant="secondary" className="my-btn ms-2" onClick={() => {
                             if(edit)
                                 onClearWalls();
-                            }}>Clear Walls</Button>
+                            }}><div className='Toolbar-txt'>Clear-Walls </div></Button> 
                     </li>
                     <li className="toolbarItem d-flex flex-column flex-md-row">
                         <Button className="my-btn" variant="dark" onClick={() => {
                             if(edit)
                                 onRandomGrid();
-                            }}>Randomize Grid</Button>
+                            }}><div className='Toolbar-txt'>Random Grid</div></Button>
                     </li>
                     {alg == PathfindingAlgs.Astar && 
                         <li className="toolbarItem d-flex flex-column flex-md-row">

@@ -50,48 +50,50 @@ const Navbar = ({ toggle }) => {
               <NavItem>
                 <NavLinks
                   to='about'
-                  smooth={true}
+                  smooth={"true"}
                   duration={500}
-                  spy={true}
+                  
                   exact='true'
                   offset={-80}
-                  activeClass='active'
+                  activeclass='active'
                 >
                   About</NavLinks>
               </NavItem>
               <NavItem>
                 <NavLinks
                   to='discover'
-                  smooth={true}
+                  smooth={"true"}
                   duration={500}
-                  spy={true}
-                  exact='true'
+                  
+                  exact='false'
                   offset={-80}
-                  activeClass='active'
+                  activeclass='active'
                 >
                   Discover</NavLinks>
               </NavItem>
+
               <NavItem>
                 <NavLinks
                   to='tools'
-                  smooth={true}
+                  smooth={"true"}
                   duration={500}
-                  spy={true}
-                  exact='true'
+                  
+                  exact='false'
                   offset={-80}
-                  activeClass='active'
+                  activeclass='active'
                 >
                   Tools</NavLinks>
               </NavItem>
+
               <NavItem>
                 <NavLinks
                   to='signup'
-                  smooth={true}
+                  smooth={"true"}
                   duration={500}
-                  spy={true}
-                  exact='true'
+                  
+                  exact='false'
                   offset={-80}
-                  activeClass='active'
+                  activeclass='active'
                 >Sign Up</NavLinks>
               </NavItem>
 
@@ -99,24 +101,24 @@ const Navbar = ({ toggle }) => {
               <NavItem>
                 <NavLinksPages
                   to='/algorithms'
-                  smooth={true}
+                  smooth={"true"}
                   duration={500}
-                  spy={true}
+                  
                   exact='false'
                   offset={-80}
-                  activeClass='active'
+                  activeclass='active'
                 >Algorithms</NavLinksPages>
               </NavItem>
 
               <NavItem>
                 <NavLinksPages
                   to='/trello'
-                  smooth={true}
+                  smooth={"true"}
                   duration={500}
-                  spy={true}
+                  
                   exact='false'
                   offset={-80}
-                  activeClass='active'
+                  activeclass='active'
                 >Trello</NavLinksPages>
               </NavItem>
 
@@ -126,7 +128,7 @@ const Navbar = ({ toggle }) => {
 
 
             <NavBtn>
-              <NavBtnLink to='/signin'>Sign In</NavBtnLink>
+              <NavBtnLink to='/login'>Sign In</NavBtnLink>
             </NavBtn>
           </NavbarContainer>
         </Nav>

@@ -1,6 +1,6 @@
 body {
     margin: 0;
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    font-family: sans-serif, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
       'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
       sans-serif;
     -webkit-font-smoothing: antialiased;
@@ -30,10 +30,12 @@ body {
     padding: 0 60px;
     border-top: 1px solid #e6e6e6;
     border-bottom: 1px solid #e6e6e6;
+    background-color:rgba(57, 83, 131, 0.795);
+    border: 5px solid  #51b5b1;
     float: none;
     clear: both;
     justify-content: center;
-    background-color: whitesmoke;
+    
   }
   
   
@@ -41,12 +43,14 @@ body {
     justify-items: center;
     text-align: center;
     padding: 10px 10px;
-    border-right: 1px solid #e6e6e6;
+    /*border-right: 1px solid #c53434;*/
+    padding: 10px 40px;
     /* border-left: 1px solid #e6e6e6; */
   }
   
   .toolbarItem:first-child{
-    border-left: 1px solid #e6e6e6;
+    border-left: 1px solid #000000;
+    font-weight: bold;
   }
   a {
     transition: all 0.3s ease-out 0s;
@@ -61,7 +65,30 @@ body {
   
   h1, h2, h3, h4, h5, h6 {
     margin: 0 0;
+    font-weight: bolder;
+    font-family: sans-serif;
+    font: 100px;
+    text-align: center;
+    font-size: 15px;
+    font-weight: bold;
+    font-family: sans-serif;
+    object-fit: cover;
+   
+    
   }
+  .Toolbar-txt{
+    text-align: center;
+    font-size: 15px;
+    font-weight: bold;
+    font-family: sans-serif;
+    object-fit: cover;
+    color: white;
+    padding: 10px 40px;
+
+    /*background-color: rgb(255, 255, 255)
+    */
+  }
+
   
   .checkBox {
     position: relative;

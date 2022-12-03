@@ -2,28 +2,51 @@
     max-width: 80%;
     margin: auto;
 } */
+.grid-wrapper {
+    background-color: rgb(3, 55, 80);
+    height: 110%;
+    position: absolute;
+    width: 100%;
+} 
 .grid-with-nodes {
     width: fit-content;
     margin: auto;
 }
+
 
 .grid-container {
     max-width: 80%;
     width: fit-content;
     margin: auto;
     text-align: center;
-
+    background-color: rgb(255, 255, 255);
+    border-style: solid;
+    border-width: 3px ;
+    border-color:  rgb(235, 163, 6) ;
 }
 .row-container {
     display: flex;
+    
 }
 
 .actionbar {
     display: flex;
     justify-content: center;
     background-color: rgba(0,0,0, .2);
-    overflow: hidden;
     position: fixed;
+    overflow-x: auto;
+    overflow-y: hidden;
     bottom: 0;
     width: 100%;
 }
+.ActionBarIcon{
+    color: white;
+}
+@media screen and (max-width: 1618px) {
+    .actionbar{
+        /* sorting actionbar make the buttons into a sidebar like button */
+        justify-content:flex-start;
+        overflow-x: auto;
+        overflow-y: hidden;
+    }
+  }

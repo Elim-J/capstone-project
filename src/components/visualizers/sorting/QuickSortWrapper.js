@@ -1,12 +1,12 @@
 import React, { useEffect, useRef } from 'react';
 import Tree from 'react-d3-tree';
-import { Button } from '@mui/material'; 
 import { useCallback, useState } from "react";
 import { quickSort } from './quicksort.js';
 import { QuickSortPivots, SortingAlgs } from '../../../constants/SortingAlgs.js';
 import { Speed, DefaultSpeed } from "../../../constants/SharedConstants";
 import CodeContent from '../shared/CodeContent';
 import '../../../css/quicksort.css';
+import QuickSortActionBar from './QuickSortActionBar.js';
 
 export default function QuickSortWrapper() {
 
@@ -157,7 +157,7 @@ const handlePivot = (e) => {
       
       {/* <rect r="15" x="0" y="10" width="130" height="100" fill="none"></rect> */}
       <g className="r3dt-label">
-          <text>{nodeDatum.data}</text>
+          <text className='Numbers' style={{fontSize:'35px', fontStyle:'normal'}}>{nodeDatum.data}</text>
       </g>
       
     </g>
@@ -177,11 +177,13 @@ const handlePivot = (e) => {
     return [dimensions, translate, containerRef];
   };
 
-    const [dimensions, translate, containerRef] = useCenteredTree();
-    return (
-      <>
-      {console.log('rerender')}
-      <div className="tree-container" ref={containerRef}>
+  const [dimensions, translate, containerRef] = useCenteredTree();
+  const separation = { nonSiblings: 4, siblings: 4 }
+  const scaleExtent= { min: 0.1, max: 3 }
+  
+  return (
+    <>
+    <div className='body'>
 
         {vid[frame.current]?.rootTree &&
         <Tree
@@ -191,7 +193,9 @@ const handlePivot = (e) => {
           renderCustomNodeElement={renderRectSvgNode}
           orientation="vertical"
           pathFunc="straight"
-          depthFactor="35"
+          depthFactor="150"
+          separation = {separation}
+          scaleExtent = {scaleExtent}
         />}
                   <div className="code-wrapper">
                     <CodeContent 

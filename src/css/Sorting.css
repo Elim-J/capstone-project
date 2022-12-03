@@ -1,14 +1,21 @@
 .sort-wrapper {
-    height: 100vh;
+    height: 1800px;
     width: 100%;
-    background: linear-gradient(
-        to bottom,
-        #09203F, #537895); 
+    overflow: hidden;
+    position: fixed;
+    display: flex;
+    flex-direction: column;
+    background: linear-gradient(to bottom,
+        #020e20, #175686); 
 }
 
 .sorting-content {
+    height: 800px;
     display: flex;
+    flex-direction: column;
+    
 }
+
 .graph-wrapper {
     display: flex;
     border: 5px;
@@ -22,7 +29,7 @@
 .rect {
     display: flex;
     background-color: grey;
-    border: 2px solid black;
+    border: 3px solid black;
     width: 40px;
     margin-right: 3px;
     margin-left: 3px;
@@ -39,14 +46,13 @@
 .actionbar {
     display: flex;
     justify-content: center;
-    background-color: rgba(0,0,0, .2);
-    overflow: hidden;
+    background-color: rgba(0, 0, 0, .2);
     position: fixed;
     bottom: 0;
     width: 100%;
 }
 
-.code-modal{
+.code-modal {
     padding: 20px 20px;
     padding-left: 50px;
 }
@@ -58,7 +64,11 @@
 .code-message {
     text-align: center;
     padding: 15px 15px;
-    height: 15px;
+    height: 50px;
+    color:  rgb(0, 0, 0);
+    background-color: rgba(255, 255, 0.75);
+    font-weight: bolder;
+    font-size: large;
 }
 
 /* TODO color scheme needs to change */
@@ -70,13 +80,15 @@
     right: 0;
     /* border-radius: 5px; */
     /* background-color: rgba(112, 112, 112, 1); */
-    background-color: rgb(173, 216, 230);
+    border: solid 5px rgb(0, 0, 0); 
+    background-color: rgb(42, 128, 156);
     box-shadow: rgba(0, 0, 0, 0.25) 0px 7px 14px, rgba(0, 0, 0, 0.22) 0px 5px 5px;
 }
 
 .code-content {
     padding: 15px 0;
 }
+
 .code-content pre {
     padding: 0;
     margin: 0;
@@ -87,3 +99,89 @@
     transition: background-color .8s linear;
 }
 
+/* 2k monitor styles */
+@media  screen and (min-width: 2560px) {
+    .sort-wrapper{
+     height: -webkit-fill-available;
+    }
+ 
+    .sorting-content{
+     zoom: 1.4;
+    }
+    .actionbar{
+     zoom: 1.4;
+    }
+ }
+
+ /* 4k monitor styles */
+@media  screen and (min-width: 4096px) {
+    .sort-wrapper{
+     height: -webkit-fill-available;
+    }
+    .sorting-content{
+     zoom: 2;
+    }
+    .actionbar{
+     zoom: 2;
+    }
+ }
+
+
+@media screen and (max-width: 1618px) {
+
+    /* the action bar for pathfinding needs to be responsive, still need ideas on how to do so */
+    .actionbar {
+        background: red;
+
+    }
+}
+
+@media screen and (max-width: 1441px) {
+
+    /* code display box needs to be under the .sorting-content */
+    .code-wrapper {
+        margin: 25px 50px;
+        position: absolute;
+        height: fit-content;
+        top: 650px;
+        right: auto;
+        bottom: 75px;
+        left: 0;
+    }
+    .sort-wrapper{
+        overflow: scroll;
+        height: -webkit-fill-available;
+        padding-bottom: 600px;
+    }
+}
+@media screen and (max-width: 780px) and (max-height: 1100px) {
+
+    /* code display box needs to be under the .sorting-content */
+    .code-wrapper {
+        position: absolute;
+        height: fit-content;
+        top: 626px;
+        right: auto;
+        left: 0;
+    }
+
+    .graph-wrapper{
+        justify-content: flex-start;
+        overflow: visible;
+        margin-left: auto;
+        padding-left: 50px;
+        padding-right: 50px;
+    }
+    .sorting-content
+    {
+        justify-content: flex-start;
+        overflow: visible;
+        
+    }
+    .sort-wrapper{
+        padding-bottom: 500px;
+        zoom: 60%;
+        overflow: auto;
+    }
+
+}

@@ -16,7 +16,8 @@ import CodeOffIcon from '@mui/icons-material/CodeOff';
 import HelpIcon from '@mui/icons-material/Help';
 import { SortingAlgs } from "../../../constants/SortingAlgs";
 import { useNavigate } from 'react-router-dom';
-import { Speed, DefaultSpeed } from "../../../constants/SharedConstants";
+import KeyboardDoubleArrowDownIcon from '@mui/icons-material/KeyboardDoubleArrowDown';
+import KeyboardDoubleArrowUpIcon from '@mui/icons-material/KeyboardDoubleArrowUp';
 
 const ActionBar = ({currentFrame, setCurrentFrame, vid, setVid, speed, setSpeed, isPaused, setIsPaused, openCode, setOpenCode, openInfo, setOpenInfo, alg, setAlg}) => {
 
@@ -54,7 +55,7 @@ const ActionBar = ({currentFrame, setCurrentFrame, vid, setVid, speed, setSpeed,
 
             const stepForward = () => {
                 handleStepForward();
-                console.log("currentSpeed.current", currentSpeed.current);
+                console.log("in play");
                 const timeoutId = setTimeout(stepForward, currentSpeed.current);
                 setTimeoutId(timeoutId);
             }
@@ -74,39 +75,6 @@ const ActionBar = ({currentFrame, setCurrentFrame, vid, setVid, speed, setSpeed,
             setIsPaused(true);
             clearTimeout(timeoutId);
             setTimeoutId(null);
-        }
-    }
-
-    function handleChangeSpeed(e){
-        if (e == Speed.FourX){
-            setSpeed(speed => {
-                            currentSpeed.current = DefaultSpeed / 4;
-                            return DefaultSpeed / 4;
-                        });
-        }
-        else if (e == Speed.TwoX){
-            setSpeed(speed => {
-                currentSpeed.current = DefaultSpeed / 2;
-                return DefaultSpeed / 2;
-            });
-        }
-        else if (e == Speed.OneX){
-            setSpeed(speed => {
-                currentSpeed.current = DefaultSpeed;
-                return DefaultSpeed;
-            });
-        }
-        else if (e == Speed.HalfX){
-            setSpeed(speed => {
-                currentSpeed.current = DefaultSpeed * 2;
-                return DefaultSpeed * 2;
-            });
-        }
-        else if (e == Speed.QuarterX){
-            setSpeed(speed => {
-                currentSpeed.current = DefaultSpeed * 4;
-                return DefaultSpeed * 4;
-            });
         }
     }
 
@@ -198,7 +166,7 @@ const ActionBar = ({currentFrame, setCurrentFrame, vid, setVid, speed, setSpeed,
                                 )}
                         </select>
                     </label>
-                <ButtonGroup size="large" color="black">
+                <ButtonGroup size="large" color="white">
                     <Button variant="text" title="Skip to beginning" onClick={handleReset}>
                         <SkipPreviousIcon/>
                     </Button>
@@ -221,24 +189,13 @@ const ActionBar = ({currentFrame, setCurrentFrame, vid, setVid, speed, setSpeed,
                     }}> 
                         <ShuffleIcon/>
                     </Button>
-                    <label className="dropdown">
-                        <select className="form-select algorithm-dropdown-toggle" id="alg-select"
-                            onChange={(e) => {
-                                handleChangeSpeed(e.target.value);
-                            }}
-                            defaultValue={Speed.OneX}>
-                                {Object.values(Speed).map(val => (
-                                    <option
-                                        aria-selected="true"
-                                        key={val}
-                                        value={val}
-                                        >
-                                        {val}
-                                    </option>
-                                    )
-                                )}
-                        </select>
-                    </label>   
+                    <Button variant="text" title="Increase speed" onClick={handleIncreaseSpeed}>
+                        <KeyboardDoubleArrowUpIcon/>
+                        
+                    </Button>
+                    <Button variant="text" title="Decrease speed" onClick={handleDecreaseSpeed}>
+                      <KeyboardDoubleArrowDownIcon/>
+                    </Button>    
                     <Button variant="text" title={openCode ? "Hide Code" : "Show code"} onClick={() => setOpenCode(!openCode)}>
                         {openCode ? <CodeOffIcon/> : <CodeIcon/>}
                     </Button>

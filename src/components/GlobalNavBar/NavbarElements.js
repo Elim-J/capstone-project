@@ -4,7 +4,7 @@ import { Link as LinkS } from 'react-scroll'
 
 export const Nav = styled.nav`
   background: ${({ scrollNav }) => (scrollNav ? '#000' : '#000')};
-  height: 80px;
+  height: 90px;
   margin-top: -80px;
   display: flex;
   justify-content: flex-start;
@@ -17,6 +17,18 @@ export const Nav = styled.nav`
   @media screen and (max-width: 900px) {
   transition: 0.8s all ease;
   }
+
+  @media  screen and (min-width: 2000px) {
+    display: flex-end;
+    font-size: 1.7rem;
+    height: 150px;
+  }
+    /* 4k monitor styles */
+    @media  screen and (min-width: 4096px) {
+    display: flex-end;
+    font-size: 2rem;
+  }
+
 `
 
 
@@ -28,6 +40,9 @@ export const NavbarContainer = styled.div`
   z-index: 1;
   padding: 0 24px;
   max-width: 2000px;
+@media  screen and (min-width: 2000px) {
+  max-width: 4096px;
+}
 `
 
 
@@ -41,6 +56,12 @@ export const NavLogo = styled(LinkR)`
   font-weight: bold;
   font-size: 1.8rem;
   text-decoration: none;
+  @media  screen and (min-width: 2000px) {
+  font-size: 2.8rem;
+  }
+  @media  screen and (min-width: 4096px) {
+  font-size: 3.2rem;
+  }
 `
 
 
@@ -63,9 +84,9 @@ export const NavMenu = styled.ul`
   align-items: center;
   list-style: none;
   text-align: center;
+  height: fit-content;
 
   white-space: nowrap;
-
 
   @media screen and (max-width: 768px) {
     display: none;
@@ -136,5 +157,11 @@ export const NavBtnLink = styled(LinkR)`
     transition: all 0.2s ease-in-out;
     background: #08b9b4;
     color: #010606
+  }
+  @media  screen and (min-width: 2000px) {
+  font-size: 28px;
+  }
+  @media  screen and (min-width: 4096px) {
+  font-size: 32px;
   }
 `

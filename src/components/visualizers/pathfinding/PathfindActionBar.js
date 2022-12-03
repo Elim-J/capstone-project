@@ -92,7 +92,7 @@ const PathfindActionBar = forwardRef(({grid, setGrid, currentFrame, setCurrentFr
     return (
         <div className="actionbar">
             <ThemeProvider theme={btnTheme}>
-                <ButtonGroup size="large" color="black">
+                <ButtonGroup size="large" color="white">
                     <Button variant="text" onClick={() => {
                         handleReset();
                         handlePause();
