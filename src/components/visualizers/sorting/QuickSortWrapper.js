@@ -31,13 +31,28 @@ export default function QuickSortWrapper() {
     setVid(quickSort(ints, QuickSortPivots.Random));
   }, []);
 
+  useEffect(() => {
+    highlightCodeLine(vid[currentFrame]?.highlightedLines);
+  }, [currentFrame]);
+
   const getMessage = () => {
     if (vid && vid[currentFrame] && vid[currentFrame].message){
         return vid[currentFrame].message;
     } else {
         return "";
     }
-}
+  };
+
+  const highlightCodeLine = (lines) => {
+    console.log('highlighting ' + lines);
+    const prevHighlight = document.querySelectorAll('.highlight');
+    prevHighlight?.forEach((element, i) => {
+        element.className = '';
+    });
+    lines?.forEach((element, i) => {
+        document.getElementById(`code-${element}`).className = 'highlight';
+    });
+  };
 
   const handleRandomArr = () => {
     setCurrentFrame(0);

@@ -206,8 +206,8 @@ function isBeingPartitioned(tree) {
 }
 
 
-function generateFrame(tree, message, code) {
-    let frame = { rootTree: fixTree(tree), message: message, code: code };
+function generateFrame(tree, message, code, deprecated, highlightedLines) {
+    let frame = { rootTree: fixTree(tree), message: message, code: code, highlightedLines: highlightedLines};
 
     return frame;
 }
