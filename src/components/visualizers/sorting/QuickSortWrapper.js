@@ -61,7 +61,7 @@ export default function QuickSortWrapper() {
       
       {/* <rect r="15" x="0" y="10" width="130" height="100" fill="none"></rect> */}
       <g className="r3dt-label">
-          <text>{nodeDatum.data}</text>
+          <text className='Numbers' style={{fontSize:'35px', fontStyle:'normal'}}>{nodeDatum.data}</text>
       </g>
       
     </g>
@@ -84,6 +84,9 @@ export default function QuickSortWrapper() {
   const [dimensions, translate, containerRef] = useCenteredTree();
   return (
     <>
+    <div className='body'>
+
+    
     {console.log('rerender')}
     <div className="tree-container" ref={containerRef}>
 
@@ -95,10 +98,12 @@ export default function QuickSortWrapper() {
         renderCustomNodeElement={renderRectSvgNode}
         orientation="vertical"
         pathFunc="straight"
-        depthFactor="35"
+        depthFactor="150"
+        
       />}
       
     </div>
+    
     <QuickSortActionBar
       currentFrame={currentFrame}
       setCurrentFrame={setCurrentFrame}
@@ -113,6 +118,7 @@ export default function QuickSortWrapper() {
       // openInfo={openInfo}
       // setOpenInfo={setOpenInfo}
       />
+    </div>  
     </>
   );
 }
