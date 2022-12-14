@@ -66,21 +66,21 @@
     padding: 15px 15px;
     height: 50px;
     color:  rgb(0, 0, 0);
-    background-color: rgba(255, 255, 0.75);
     font-weight: bolder;
     font-size: large;
 }
 
 /* TODO color scheme needs to change */
 .code-wrapper {
+    width: 550px;
     /* border: solid 3px rgb(187, 187, 187); */
     margin: 25px 50px;
     position: fixed;
-    bottom: 75px;
+    bottom: 20px;
     right: 0;
     /* border-radius: 5px; */
     /* background-color: rgba(112, 112, 112, 1); */
-    border: solid 5px rgb(0, 0, 0); 
+    /* border: solid 5px rgb(0, 0, 0);  */
     background-color: rgb(42, 128, 156);
     box-shadow: rgba(0, 0, 0, 0.25) 0px 7px 14px, rgba(0, 0, 0, 0.22) 0px 5px 5px;
 }

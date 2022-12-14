@@ -2,11 +2,13 @@ import React, {useState, useEffect, useRef} from "react";
 import Cell from "./Cell";
 import "../../../css/Grid.css";
 import GridToolbar from "./GridToolbar";
-import {PathfindingAlgs, StartingGrid} from "../../../constants/PathfindingAlgs";
+import {PathfindingAlgs, StartingGrid, AStarHeuristics} from "../../../constants/PathfindingAlgs";
 import aStar from "./aStar";
 import {bfs} from "./bfs";
 import PathfindActionBar from "./PathfindActionBar";
 import { mitmbfs } from "./mitmbfs";
+import CodeContent from '../shared/CodeContent';
+
 
 
 const Grid = () => {
@@ -23,7 +25,7 @@ const Grid = () => {
     let lastStartCellRow = 0,
         lastStartCellCol = 0;
 
-    let startingVid = aStar(StartingGrid);
+    let startingVid = aStar(StartingGrid, AStarHeuristics.Manhattan);
 
     const [grid, setGrid] = useState(startingVid[0].grid);
     const [lastStartCell, setLastStartCell] = useState({row: 0, col: 0});
@@ -34,6 +36,9 @@ const Grid = () => {
     const [speed, setSpeed] = useState(250); //ms
     const [showAni, setShowAni] = useState(true);
     const [mouseInGrid, setMouseInGrid] = useState(false);
+    const [openCode, setOpenCode] = useState(true);
+    const [openInfo, setOpenInfo] = useState(true);
+    const [heuristic, setHeuristic] = useState(AStarHeuristics.Manhattan);
 
     const [editMode, setEditMode] = useState(false);
 
@@ -49,6 +54,10 @@ const Grid = () => {
         setGrid(createGrid);
         setIsPaused(true);
     }, []);
+
+    useEffect(() => {
+        highlightCodeLine(vid[currentFrame]?.highlightedLines);
+    }, [currentFrame, vid]);
 
     const randomizeStartAndEnd = () => {
         START_CELL_ROW = Math.floor(Math.random() * row);
@@ -104,7 +113,7 @@ const Grid = () => {
     };
 
     const clearGrid = () => {
-        console.log('Clearing grid');
+        // console.log('Clearing grid');
         for(let i = 0; i < grid.length; i++){
             for(let j = 0; j < grid[i].length; j++){
                 grid[i][j].isBlocked = false;
@@ -115,12 +124,12 @@ const Grid = () => {
 
     const searchHandler = () => {
         //TODO add isBusy state to check if search can be ran
-        console.log('search handler targetAlg: ' + alg);
+        // console.log('search handler targetAlg: ' + alg);
         if(alg == PathfindingAlgs.None){
             //send error?
         } else if (alg == PathfindingAlgs.Astar){
-            console.log('setting vid to astar');
-            setVid(aStar(grid));
+            // console.log('setting vid to astar');
+            setVid(aStar(grid, heuristic));
             // setAlg(targetAlg);
         } else if (alg == PathfindingAlgs.Bfs){
             let vid = bfs(grid);
@@ -132,7 +141,26 @@ const Grid = () => {
             setVid(vid);
             setCurrentFrame(0);
             setGrid(vid[0].grid);
-            console.log('line 135');
+            // console.log('line 135');
+        }
+    };
+
+    const highlightCodeLine = (lines) => {
+        const prevHighlight = document.querySelectorAll('.highlight');
+        console.log(lines);
+        prevHighlight?.forEach((element, i) => {
+            element.className = '';
+        });
+        lines?.forEach((element, i) => {
+            document.getElementById(`code-${element}`).className = 'highlight';
+        });
+    };
+
+    const getMessage = () => {
+        if (vid && vid[currentFrame] && vid[currentFrame]?.info?.message){
+            return vid[currentFrame].info.message;
+        } else {
+            return "";
         }
     };
 
@@ -167,7 +195,7 @@ const Grid = () => {
     //mouse handlers
     //only refreshing the dom if return a new object?
     const updateGridWall = (row, col) => {
-        console.log("updateGridWall", row, col);
+        // console.log("updateGridWall", row, col);
         grid[row][col].isBlocked = !grid[row][col].isBlocked;
         setGrid(grid.slice());
     };
@@ -175,7 +203,7 @@ const Grid = () => {
     //TODO running into issues where clicking quickly causes mouse up and down events to do weird things
 
     const updateGridEndCell = (row, col, isEnter) => {
-        console.log("updateGridEndCell", row, col);
+        // console.log("updateGridEndCell", row, col);
         if (grid[row][col].isStart){
             return;
         }
@@ -194,7 +222,7 @@ const Grid = () => {
     };
 
     const updateGridStartCell = (row, col) => {
-        console.log("updateGridStartCell", row, col);
+        // console.log("updateGridStartCell", row, col);
         if (mouseInGrid){
             grid[row][col].isStart = !grid[row][col].isStart;
             if (grid[row][col].isStart){
@@ -264,10 +292,10 @@ const Grid = () => {
     };
 
     const contextMenuHandler = (row, col) => {
-        console.log("contextMenuHandler", row, col)
+        // console.log("contextMenuHandler", row, col)
         if (!editMode || grid[row][col].isStart)
             return;
-        console.log('in menu handler');
+        // console.log('in menu handler');
         grid[row][col].isBlocked = false;
         grid[row][col].isEnd = !grid[row][col].isEnd;
         setGrid(grid.slice());
@@ -283,14 +311,14 @@ const Grid = () => {
     };
     const childStateRef = useRef();
     const handleAnimationToggle = (e) => {
-        console.log('handle animation toggle' + e.target.checked);
+        // console.log('handle animation toggle' + e.target.checked);
         setShowAni(e.target.checked);  
     };
 
     const handleMouseLeaveGrid = () => {
         // console.log('handleMouseLeaveGrid');
         if (startMove){
-            console.log('here', lastStartCell.row, lastStartCell.col);
+            // console.log('here', lastStartCell.row, lastStartCell.col);
             grid[lastStartCell.row][lastStartCell.col].isBlocked = false;
             grid[lastStartCell.row][lastStartCell.col].isEnd = false;
             grid[lastStartCell.row][lastStartCell.col].isStart = true;
@@ -311,22 +339,33 @@ const Grid = () => {
 
     return (
         <>
-        <GridToolbar onSearch={searchHandler} setAlg={setAlg} 
+        <GridToolbar onSearch={searchHandler} alg={alg} setAlg={setAlg} 
             onClearWalls={clearGrid} onRandomGrid={randomizeGrid} 
             edit={editMode} setEditMode={setEditMode}
             handleReset={handleReset}
             setShowAni={handleAnimationToggle}
+            setHeuristic={setHeuristic}
         />
         <div onMouseEnter={handleMouseEnterGrid} onMouseLeave={handleMouseLeaveGrid} className="grid-container"> 
             {gridWithNodes}
         </div>
+        <div className="code-wrapper">
+                    <CodeContent 
+                    alg={alg}
+                    heuristic={heuristic} 
+                    open={openCode} 
+                    setOpen={setOpenCode}
+                    getMessage={getMessage}/>
+                </div>
         {!editMode && 
         <PathfindActionBar ref={childStateRef} grid={grid} setGrid={setGrid} 
         currentFrame={currentFrame} setCurrentFrame={setCurrentFrame} vid={vid} setVid={setVid}
         speed={speed} setSpeed={setSpeed}
         isPaused={isPaused} setIsPaused={setIsPaused}
-        handleReset={handleReset}/>}
-        
+        handleReset={handleReset} openCode={openCode}
+        setOpenCode={setOpenCode}
+        />}
+        {console.log(vid[currentFrame])}        
         </>
     );
 }

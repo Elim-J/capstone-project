@@ -37,7 +37,8 @@ export function mitmbfs(grid) {
       cols,
       null,
       "Starting meet-in-the-middle bfs algorithm...",
-      []
+      [],
+      [0, 1, 2, 3, 4, 5]
     ),
   ];
   grid[startPos.row][startPos.column].isDiscovered = true;
@@ -54,7 +55,7 @@ export function mitmbfs(grid) {
     const searchNode = queue.shift();
     grid[searchNode.row][searchNode.column].isExplored = true;
     vid.push(
-      generateFrame(grid, rows, cols, null, "Removed node from queue", [])
+      generateFrame(grid, rows, cols, null, "Removed node from queue", [], [6])
     );
     let path = findPath(grid, searchNode, rows, cols);
     if (path) {
@@ -62,7 +63,7 @@ export function mitmbfs(grid) {
       for (let i = 1; i < path.length; i++) {
         let currentPath = path.slice(0, i);
         vid.push(
-          generateFrame(grid, rows, cols, currentPath, "Returning path", [])
+          generateFrame(grid, rows, cols, currentPath, "Returning path", [], [7, 8, 9, 10, 11, 12, 13, 14])
         );
       }
       return vid;
@@ -87,7 +88,7 @@ export function mitmbfs(grid) {
         prevNode: searchNode,
       });
       vid.push(
-        generateFrame(grid, rows, cols, null, "Visiting node above", [])
+        generateFrame(grid, rows, cols, null, "Visiting node above", [], [15, 16])
       );
     }
     if (
@@ -110,7 +111,7 @@ export function mitmbfs(grid) {
         prevNode: searchNode,
       });
       vid.push(
-        generateFrame(grid, rows, cols, null, "Visiting node to the left", [])
+        generateFrame(grid, rows, cols, null, "Visiting node to the left", [], [17, 18])
       );
     }
     if (
@@ -134,7 +135,7 @@ export function mitmbfs(grid) {
         prevNode: searchNode,
       });
       vid.push(
-        generateFrame(grid, rows, cols, null, "Visiting node below", [])
+        generateFrame(grid, rows, cols, null, "Visiting node below", [], [19, 20])
       );
     }
     if (
@@ -157,7 +158,7 @@ export function mitmbfs(grid) {
         prevNode: searchNode,
       });
       vid.push(
-        generateFrame(grid, rows, cols, null, "Visiting node to the right", [])
+        generateFrame(grid, rows, cols, null, "Visiting node to the right", [], [21, 22])
       );
     }
   }
@@ -264,15 +265,15 @@ function calcPath(node1, node2) {
   return startPath;
 }
 
-function generateFrame(grid, rows, cols, path, message, highlightCode) {
+function generateFrame(grid, rows, cols, path, message, skip, highlightCode) {
   let frame = {
     info: {
       rows: rows,
       cols: cols,
       message: message,
-      highlightCode: highlightCode,
     },
     grid: [],
+    highlightedLines: highlightCode,
   };
   for (let i = 0; i < rows; i++) {
     let thisRow = [];

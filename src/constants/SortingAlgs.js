@@ -5,3 +5,10 @@ export const SortingAlgs = {
     SelectionSort: "Selection Sort",
     QuickSort: "Quick Sort"
 }
+
+export const QuickSortPivots = {
+    Random: "Random",
+    First: "First",
+    Middle: "Middle",
+    Last: "Last"
+}
