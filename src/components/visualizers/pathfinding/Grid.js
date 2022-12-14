@@ -57,7 +57,7 @@ const Grid = () => {
 
     useEffect(() => {
         highlightCodeLine(vid[currentFrame]?.highlightedLines);
-    }, [currentFrame]);
+    }, [currentFrame, vid]);
 
     const randomizeStartAndEnd = () => {
         START_CELL_ROW = Math.floor(Math.random() * row);
@@ -147,6 +147,7 @@ const Grid = () => {
 
     const highlightCodeLine = (lines) => {
         const prevHighlight = document.querySelectorAll('.highlight');
+        console.log(lines);
         prevHighlight?.forEach((element, i) => {
             element.className = '';
         });

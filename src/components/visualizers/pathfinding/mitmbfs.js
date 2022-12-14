@@ -265,15 +265,15 @@ function calcPath(node1, node2) {
   return startPath;
 }
 
-function generateFrame(grid, rows, cols, path, message, highlightCode) {
+function generateFrame(grid, rows, cols, path, message, skip, highlightCode) {
   let frame = {
     info: {
       rows: rows,
       cols: cols,
       message: message,
-      highlightCode: highlightCode,
     },
     grid: [],
+    highlightedLines: highlightCode,
   };
   for (let i = 0; i < rows; i++) {
     let thisRow = [];

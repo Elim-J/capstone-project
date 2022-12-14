@@ -4,9 +4,10 @@
 } */
 .grid-wrapper {
     background-color: rgb(3, 55, 80);
-    height: 110%;
+    height: 100%;
     position: absolute;
     width: 100%;
+    overflow: hidden;
 } 
 .grid-with-nodes {
     width: fit-content;
@@ -21,8 +22,10 @@
     text-align: center;
     background-color: rgb(255, 255, 255);
     border-style: solid;
-    border-width: 3px ;
-    border-color:  rgb(235, 163, 6) ;
+    border-width: 5px ;
+    border-color:  black;
+    zoom: 0.8;
+    overflow: hidden;
 }
 .row-container {
     display: flex;

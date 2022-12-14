@@ -100,13 +100,13 @@ const CodeContent = ({alg, open, setOpen, getMessage, pivot, heuristic}) => {
             <pre id="code-1">{'   for (let i = 1; i < ints.length; i++) {'}</pre>
             <pre id="code-2">{'      let current = ints[i];'}</pre>
             <pre id="code-3">{'      let j = i-1;'}</pre>
-            <pre id="code-4">{'         while ((j > -1) && (current < ints[j])) {'}</pre>
-            <pre id="code-5">{'            ints[j+1] = ints[j];'}</pre>
-            <pre id="code-6">{'            j--;'}</pre>
-            <pre id="code-7">{'         }'}</pre>
-            <pre id="code-8">{'         ints[j + 1] = current;'}</pre>
-            <pre id="code-9">{'      }'}</pre>
-            <pre id="code-10">{'   }'}</pre>
+            <pre id="code-4">{'      while ((j > -1) && (current < ints[j])) {'}</pre>
+            <pre id="code-5">{'         ints[j+1] = ints[j];'}</pre>
+            <pre id="code-6">{'         j--;'}</pre>
+            <pre id="code-7">{'      }'}</pre>
+            <pre id="code-8">{'      ints[j + 1] = current;'}</pre>
+            <pre id="code-9">{'   }'}</pre>
+            {/* <pre id="code-10">{'   }'}</pre> */}
             <pre id="code-11">{'   return ints;'}</pre>
             <pre id="code-12">{'}'}</pre>
         </div>
@@ -133,7 +133,7 @@ const CodeContent = ({alg, open, setOpen, getMessage, pivot, heuristic}) => {
     );
 
     const RandomSort = (
-        <div className="code-content">
+        <div className="code-content" style = {{'zoom': '0.8'}}>
             <pre id="code-0">{'function randomSort(ints) {'}</pre>
             <pre id="code-1">{'   while(!isSorted(ints)) {'}</pre>
             <pre id="code-2">{'      ints = shuffle(ints);'}</pre>
@@ -158,7 +158,7 @@ const CodeContent = ({alg, open, setOpen, getMessage, pivot, heuristic}) => {
             <pre id="code-21">{'   while (currentIndex != 0) {'}</pre>
             <pre id="code-22">{'      randomIndex = Math.floor(Math.random() * currentIndex);'}</pre>
             <pre id="code-23">{'      currentIndex--;'}</pre>
-            <pre id="code-24">{'      [ints[currentIndex], ints[randomIndex]] = [array[randomIndex], array[currentIndex]];'}</pre>
+            <pre id="code-24">{'      swap(ints[currentIndex], ints[randomIndex]);'}</pre>
             <pre id="code-25">{'   }'}</pre>
             <pre id="code-26">{'   return ints;'}</pre>
             <pre id="code-27">{'}'}</pre>
@@ -184,7 +184,8 @@ const CodeContent = ({alg, open, setOpen, getMessage, pivot, heuristic}) => {
             <pre id="code-14">{'         larger.push(ints[i]);'}</pre>
             <pre id="code-15">{'      }'}</pre>
             <pre id="code-16">{'  }'}</pre>
-            <pre id="code-17">{'  return quickSort(smaller).concat(ints[pivot], quickSort(larger));'}</pre>
+            <pre id="code-17">{'  return quickSort(smaller)'}</pre>
+            <pre id="code-17.5">{'         .concat(ints[pivot], quickSort(larger));'}</pre>
             <pre id="code-18">{'}'}</pre>
         </div>
     )
@@ -208,7 +209,8 @@ const CodeContent = ({alg, open, setOpen, getMessage, pivot, heuristic}) => {
             <pre id="code-14">{'         larger.push(ints[i]);'}</pre>
             <pre id="code-15">{'      }'}</pre>
             <pre id="code-16">{'  }'}</pre>
-            <pre id="code-17">{'  return quickSort(smaller).concat(ints[pivot], quickSort(larger));'}</pre>
+            <pre id="code-17">{'  return quickSort(smaller)'}</pre>
+            <pre id="code-17.5">{'         .concat(ints[pivot], quickSort(larger));'}</pre>
             <pre id="code-18">{'}'}</pre>
         </div>
     )
@@ -232,7 +234,8 @@ const CodeContent = ({alg, open, setOpen, getMessage, pivot, heuristic}) => {
             <pre id="code-14">{'         larger.push(ints[i]);'}</pre>
             <pre id="code-15">{'      }'}</pre>
             <pre id="code-16">{'  }'}</pre>
-            <pre id="code-17">{'  return quickSort(smaller).concat(ints[pivot], quickSort(larger));'}</pre>
+            <pre id="code-17">{'  return quickSort(smaller)'}</pre>
+            <pre id="code-17.5">{'         .concat(ints[pivot], quickSort(larger));'}</pre>
             <pre id="code-18">{'}'}</pre>
         </div>
     )
@@ -256,13 +259,14 @@ const CodeContent = ({alg, open, setOpen, getMessage, pivot, heuristic}) => {
             <pre id="code-14">{'         larger.push(ints[i]);'}</pre>
             <pre id="code-15">{'      }'}</pre>
             <pre id="code-16">{'  }'}</pre>
-            <pre id="code-17">{'  return quickSort(smaller).concat(ints[pivot], quickSort(larger));'}</pre>
+            <pre id="code-17">{'  return quickSort(smaller)'}</pre>
+            <pre id="code-17.5">{'         .concat(ints[pivot], quickSort(larger));'}</pre>
             <pre id="code-18">{'}'}</pre>
         </div>
     )
 
     const BFS = (
-        <div className="code-content">
+        <div className="code-content" style = {{'zoom': '0.8'}}>
             <pre id="code-0">{'function BFS(startNode){'}</pre>
             <pre id="code-1">{'   startNode.prev = NULL'}</pre>
             <pre id="code-2">{'   queue.offer(startNode)'}</pre>
@@ -290,7 +294,7 @@ const CodeContent = ({alg, open, setOpen, getMessage, pivot, heuristic}) => {
     );
 
     const MitmBFS = (
-        <div className="code-content">
+        <div className="code-content" style = {{'zoom': '0.8'}}>
             <pre id="code-0">{'function BFS(startNode){'}</pre>
             <pre id="code-1">{'   startNode.prev = NULL'}</pre>
             <pre id="code-2">{'   queue.offer(startNode)'}</pre>
@@ -320,7 +324,7 @@ const CodeContent = ({alg, open, setOpen, getMessage, pivot, heuristic}) => {
     );
 
     const AStarManhattan = (
-        <div className="code-content">
+        <div className="code-content" style = {{'zoom': '0.6'}}>
             <pre id="code-0">{'//priorityQueue is a queue sorted by the heuristic of each node'}</pre>
             <pre id="code-1">{'function AStarManhattan(startNode, endNodes){'}</pre>
             <pre id="code-2">{'   startNode.heuristic = calcHeuristic(node, endNodes);'}</pre>
@@ -362,7 +366,7 @@ const CodeContent = ({alg, open, setOpen, getMessage, pivot, heuristic}) => {
     );
 
     const AStarEuclidean = (
-        <div className="code-content">
+        <div className="code-content" style = {{'zoom': '0.6'}}>
             <pre id="code-0">{'//priorityQueue is a queue sorted by the heuristic of each node'}</pre>
             <pre id="code-1">{'function AStarManhattan(startNode, endNodes){'}</pre>
             <pre id="code-2">{'   startNode.heuristic = calcHeuristic(node, endNodes);'}</pre>

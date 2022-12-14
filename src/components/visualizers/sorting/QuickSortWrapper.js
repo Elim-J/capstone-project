@@ -126,8 +126,8 @@ export default function QuickSortWrapper() {
       setPivot={setPivot}
       ints={ints}
       setAlg={setAlg}
-      // openCode={openCode}
-      // setOpenCode={setOpenCode}
+      openCode={openCode}
+      setOpenCode={setOpenCode}
       // openInfo={openInfo}
       // setOpenInfo={setOpenInfo}
       />

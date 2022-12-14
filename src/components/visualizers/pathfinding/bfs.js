@@ -121,8 +121,8 @@ export function bfs(grid) {
   return vid;
 }
 
-function generateFrame(grid, rows, cols, path, message, highlightCode) {
-  let frame = {info: {rows: rows, cols: cols, message: message, highlightCode: highlightCode}, grid: []};
+function generateFrame(grid, rows, cols, path, message, skip, highlightCode) {
+  let frame = {info: {rows: rows, cols: cols, message: message}, grid: [], highlightedLines: highlightCode};
   for (let i = 0; i < rows; i++) {
     let thisRow = [];
     for (let j = 0; j < cols; j++) {
