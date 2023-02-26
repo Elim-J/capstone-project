@@ -28,6 +28,7 @@ const QuickSortActionBar = ({currentFrame, setCurrentFrame, vid, setVid, speed, 
     let currentSpeed = useRef(speed);
     
     const handleRandomArr = () => {
+        console.log('handleRandomArr');
         handlePause();
         setCurrentFrame(0);
         frame.current = 0;
