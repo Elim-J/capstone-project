@@ -2,59 +2,37 @@ import React, { useEffect, useRef } from 'react';
 import Tree from 'react-d3-tree';
 import { useCallback, useState } from "react";
 import { quickSort } from './quicksort.js';
+import { QuickSortPivots, SortingAlgs } from '../../../constants/SortingAlgs.js';
+import { Speed, DefaultSpeed } from "../../../constants/SharedConstants";
+import CodeContent from '../shared/CodeContent';
 import '../../../css/quicksort.css';
 import QuickSortActionBar from './QuickSortActionBar.js';
 
-
-const qsTree = {
-    elements: [1,2,3,4],
-    attributes: {
-        highlightRed: '0-3',
-    },
-    children: [
-        {
-            elements: [1,2],
-            attributes: {
-                highlight: ''
-            },
-            children: [
-                {
-                    elements: [8,2],
-                    attributes: {
-                        highlight: 'blue',
-                    }
-                }
-                
-            ]
-        },
-        {
-            elements: [1,2,5,7],
-            attributes: {
-                highlight: 'red',
-            },
-            children: [
-
-            ]
-        }
-    ]
-
-};
-
 //style={containerStyles}
 export default function QuickSortWrapper() {
+
+  let tempInts = Array.from({length: 10}, () => Math.floor(Math.random() * 100));
 
   const [vid, setVid] = useState([]);
   const [currentFrame, setCurrentFrame] = useState(0);
   const [isPaused, setIsPaused] = useState(true);
   const [speed, setSpeed] = useState(500);
-  // const [timeoutId, setTimeoutId] = useState(null);
+  const [timeoutId, setTimeoutId] = useState(null);
+  const [pivot, setPivot] = useState(QuickSortPivots.Random);
+  const [ints, setInts] = useState(tempInts);
+  const [openCode, setOpenCode] = useState(true);
+  const [alg, setAlg] = useState(SortingAlgs.QuickSort)
   let frame = useRef(currentFrame);
 
   useEffect(() => {
     // handleRandomArr();
-    setVid(quickSort([13, 0, 29, 21, 2, 25, 10, 19, 3, 10], 'random'));
+    setInts(Array.from({length: 10}, () => Math.floor(Math.random() * 100)));
+    setVid(quickSort(ints, QuickSortPivots.Random));
   }, []);
 
+  useEffect(() => {
+    highlightCodeLine(vid[currentFrame]?.highlightedLines);
+  }, [currentFrame]);
 
   const renderRectSvgNode = ({ nodeDatum, toggleNode }) => (
     <g className="r3dt-node">
@@ -66,6 +44,25 @@ export default function QuickSortWrapper() {
       
     </g>
   );
+
+  const highlightCodeLine = (lines) => {
+    console.log('highlighting ' + lines);
+    const prevHighlight = document.querySelectorAll('.highlight');
+    prevHighlight?.forEach((element, i) => {
+        element.className = '';
+    });
+    lines?.forEach((element, i) => {
+        document.getElementById(`code-${element}`).className = 'highlight';
+    });
+  };
+
+  const getMessage = () => {
+    if (vid && vid[currentFrame] && vid[currentFrame].message){
+        return vid[currentFrame].message;
+    } else {
+        return "";
+    }
+  };
 
   const useCenteredTree = (defaultTranslate = { x: 0, y: 0 }) => {
     const [translate, setTranslate] = useState(defaultTranslate);
@@ -104,6 +101,15 @@ export default function QuickSortWrapper() {
       separation = {separation}
       scaleExtent = {scaleExtent}
     />}
+    <div className="code-wrapper">
+                    <CodeContent 
+                    alg={SortingAlgs.QuickSort} 
+                    open={openCode} 
+                    setOpen={setOpenCode}
+                    getMessage={getMessage}
+                    pivot={pivot}
+                    />
+                </div>
       
     </div>
     
@@ -116,8 +122,12 @@ export default function QuickSortWrapper() {
       setSpeed={setSpeed}
       isPaused={isPaused}
       setIsPaused={setIsPaused}
-      // openCode={openCode}
-      // setOpenCode={setOpenCode}
+      pivot={pivot}
+      setPivot={setPivot}
+      ints={ints}
+      setAlg={setAlg}
+      openCode={openCode}
+      setOpenCode={setOpenCode}
       // openInfo={openInfo}
       // setOpenInfo={setOpenInfo}
       />

@@ -6,8 +6,10 @@ import NavigateBeforeIcon from '@mui/icons-material/NavigateBefore';
 import NavigateNextIcon from '@mui/icons-material/NavigateNext';
 import SkipNextIcon from '@mui/icons-material/SkipNext';
 import SkipPreviousIcon from '@mui/icons-material/SkipPrevious';
+import CodeIcon from '@mui/icons-material/Code';
+import CodeOffIcon from '@mui/icons-material/CodeOff';
 
-const PathfindActionBar = forwardRef(({grid, setGrid, currentFrame, setCurrentFrame, vid, setVid, speed, setSpeed, isPaused, setIsPaused, handleReset}, _ref) => {
+const PathfindActionBar = forwardRef(({grid, setGrid, currentFrame, setCurrentFrame, vid, setVid, speed, setSpeed, isPaused, setIsPaused, handleReset, openCode, setOpenCode}, _ref) => {
 
     const [timeoutId, setTimeoutId] = useState(null);
 
@@ -110,6 +112,12 @@ const PathfindActionBar = forwardRef(({grid, setGrid, currentFrame, setCurrentFr
                     </Button>
                     <Button variant="text" onClick={handleSkipToEnd}>
                         <SkipNextIcon/>
+                    </Button>
+                    <Button variant="text" title={openCode ? "Hide Code" : "Show code"} onClick={() => {
+                        console.log('clicked');
+                        setOpenCode(!openCode)}
+                    }>
+                        {openCode ? <CodeOffIcon/> : <CodeIcon/>}
                     </Button>
                     
                     {/* <Button variant="text" onClick={handleIncreaseSpeed}>

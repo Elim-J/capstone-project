@@ -27,6 +27,7 @@ const ActionBar = ({currentFrame, setCurrentFrame, vid, setVid, speed, setSpeed,
     
     function handleStepForward() {
         if(currentFrame < vid.length - 1){
+            console.log('handleStepForward');
             handlePause();
             setCurrentFrame(currentFrame => currentFrame + 1);
         }
@@ -112,6 +113,7 @@ const ActionBar = ({currentFrame, setCurrentFrame, vid, setVid, speed, setSpeed,
     }
 
     function handleShuffle(){
+        console.log('handleShuffle');
         let vid;
         const randomArr = Array.from({length: 20}, () => Math.floor(Math.random() * 30));        
         if (alg == SortingAlgs.BubbleSort){
@@ -182,11 +184,7 @@ const ActionBar = ({currentFrame, setCurrentFrame, vid, setVid, speed, setSpeed,
                     <Button variant="text" title="Skip to end" onClick={handleSkipToEnd}>
                         <SkipNextIcon/>
                     </Button>
-                    <Button variant="text" title="Randomize" onClick={() =>{
-                        const randomArr = Array.from({length: 20}, () => Math.floor(Math.random() * 30));
-                        setVid(bubbleSort(randomArr));
-                        setCurrentFrame(0);
-                    }}> 
+                    <Button variant="text" title="Randomize" onClick={handleShuffle}> 
                         <ShuffleIcon/>
                     </Button>
                     <Button variant="text" title="Increase speed" onClick={handleIncreaseSpeed}>

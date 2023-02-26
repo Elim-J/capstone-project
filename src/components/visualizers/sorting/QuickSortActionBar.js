@@ -19,8 +19,8 @@ import { quickSort } from './quicksort.js';
 import { useNavigate } from 'react-router-dom';
 import KeyboardDoubleArrowDownIcon from '@mui/icons-material/KeyboardDoubleArrowDown';
 import KeyboardDoubleArrowUpIcon from '@mui/icons-material/KeyboardDoubleArrowUp';
-
-const QuickSortActionBar = ({currentFrame, setCurrentFrame, vid, setVid, speed, setSpeed, isPaused, setIsPaused, openCode, setOpenCode, openInfo, setOpenInfo}) => { //, alg, setAlg
+import { QuickSortPivots } from "../../../constants/SortingAlgs";
+const QuickSortActionBar = ({currentFrame, setCurrentFrame, vid, setVid, speed, setSpeed, isPaused, setIsPaused, openCode, setOpenCode, openInfo, setOpenInfo, pivot, setPivot, ints, setAlg}) => { //, alg, setAlg
 
     const [timeoutId, setTimeoutId] = useState(null);
 
@@ -28,6 +28,7 @@ const QuickSortActionBar = ({currentFrame, setCurrentFrame, vid, setVid, speed, 
     let currentSpeed = useRef(speed);
     
     const handleRandomArr = () => {
+        console.log('handleRandomArr');
         handlePause();
         setCurrentFrame(0);
         frame.current = 0;
@@ -87,9 +88,12 @@ const QuickSortActionBar = ({currentFrame, setCurrentFrame, vid, setVid, speed, 
         }
     };
 
-    const handlePivot = () => {
-        //TODO
-    };
+    const handlePivot = (e) => {
+  setPivot(e);
+  setCurrentFrame(0);
+  frame.current = 0;
+  setVid(quickSort(ints, e));
+}
     
     const handleReset = () => {
         handlePause();
@@ -121,9 +125,24 @@ const QuickSortActionBar = ({currentFrame, setCurrentFrame, vid, setVid, speed, 
         console.log(currentSpeed.current);
     }
 
+    function handlePickAlg(alg){
+        setAlg(alg);
+        const randomArr = Array.from({length: 20}, () => Math.floor(Math.random() * 30));
+        let vid;
+        if (alg == SortingAlgs.BubbleSort){
+            vid = bubbleSort(randomArr);
+        } else if (alg == SortingAlgs.InsertSort){
+            vid = insertSort(randomArr);
+        } else if (alg == SortingAlgs.RandomSort){
+            vid = randomsort(randomArr);
+        } else if (alg == SortingAlgs.SelectionSort){
+            vid = selectionsort(randomArr);
+        }
+        setVid(vid);
+        setCurrentFrame(0);
+    }
 
-
-    
+    let navigate = useNavigate();
     const { palette } = createTheme();
     const { augmentColor } = palette;
     const createColor = (mainColor) => augmentColor({ color: { main: mainColor } });
@@ -161,6 +180,30 @@ const QuickSortActionBar = ({currentFrame, setCurrentFrame, vid, setVid, speed, 
                                 )}
                         </select>
                     </label> */}
+                    <label className="dropdown">
+                        <select className="form-select algorithm-dropdown-toggle" id="alg-select"
+                            onChange={(e) => {
+                                // console.log(e.target.value);
+                                // onSearch(e.target.value);
+                                if(e.target.value != SortingAlgs.QuickSort)
+                                {
+                                    navigate('/sorting');
+                                }
+                                handlePickAlg(e.target.value);
+                            }}
+                            defaultValue={SortingAlgs.QuickSort}>
+                                {Object.values(SortingAlgs).map(val => (
+                                    <option
+                                        aria-selected="true"
+                                        key={val}
+                                        value={val}
+                                        >
+                                        {val}
+                                    </option>
+                                    )
+                                )}
+                        </select>
+                    </label>
                 <ButtonGroup size="large" color="black">
                     <Button variant="text" title="Skip to beginning" onClick={handleReset}>
                         <SkipPreviousIcon/>
@@ -194,17 +237,23 @@ const QuickSortActionBar = ({currentFrame, setCurrentFrame, vid, setVid, speed, 
                         <HelpIcon/>
                     </Button>
                     <label className="dropdown">
-                            <select id="alg-select"
-                                onChange={(e) => {
-                                    handlePivot(e.target.value);
-                                }}
-                            >
-                              <option value='First'>First</option>
-                              <option value='Middle'>Middle</option>
-                              <option value='Last'>Last</option>
-                              <option value='Random'>Random</option>
-                            </select>
-                        </label>
+                        <select className="form-select algorithm-dropdown-toggle" id="alg-select"
+                            onChange={(e) => {
+                                handlePivot(e.target.value);
+                            }}
+                            defaultValue={QuickSortPivots.Random}>
+                                {Object.values(QuickSortPivots).map(val => (
+                                    <option
+                                        aria-selected="true"
+                                        key={val}
+                                        value={val}
+                                        >
+                                        {val}
+                                    </option>
+                                    )
+                                )}
+                        </select>
+                    </label>
                 </ButtonGroup>
                 
             </ThemeProvider>

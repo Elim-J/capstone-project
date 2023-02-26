@@ -19,7 +19,7 @@ body {
   
   .toolbarRow {
     display: flex;
-    flex-wrap: wrap;
+    flex-wrap: nowrap;
     align-items: center;
     justify-content: center;
     margin: 0;
@@ -40,7 +40,7 @@ body {
   
   
   .toolbarItem {
-    justify-items: center;
+    justify-items: left;
     text-align: center;
     padding: 10px 10px;
     /*border-right: 1px solid #c53434;*/
@@ -48,10 +48,10 @@ body {
     /* border-left: 1px solid #e6e6e6; */
   }
   
-  .toolbarItem:first-child{
+  /* .toolbarItem:first-child{
     border-left: 1px solid #000000;
     font-weight: bold;
-  }
+  } */
   a {
     transition: all 0.3s ease-out 0s;
     outline: none !important;
@@ -73,6 +73,7 @@ body {
     font-weight: bold;
     font-family: sans-serif;
     object-fit: cover;
+    color: white;
    
     
   }
@@ -83,10 +84,7 @@ body {
     font-family: sans-serif;
     object-fit: cover;
     color: white;
-    padding: 10px 40px;
-
-    /*background-color: rgb(255, 255, 255)
-    */
+    /* padding: 10px 40px; */
   }
 
   
